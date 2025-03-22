@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <title>Seeger Perocho - UI/UX Designer</title>
+    <link rel="icon" href="img/logowhite.png" type="image/x-icon">
+    <link href="https://fonts.cdnfonts.com/css/neue-haas-grotesk-display-pro" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'neue': ['Neue Haas Grotesk Display Pro', 'sans-serif'],
+                    },
+                    colors: {
+                        'neon': '#e6fb04',
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            cursor: none !important;
+        }
+        .circular-text {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            pointer-events: none;
+            z-index: 9999;
+            animation: spin 8s linear infinite;
+            mix-blend-mode: difference;
+            color: white;
+            font-size: 12px;
+            letter-spacing: 1px;
+            transform: translate(-50%, -50%);
+        }
+        @keyframes spin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        .circular-text svg {
+            width: 100%;
+            height: 100%;
+        }
+        .circular-text path {
+            fill: none;
+        }
+        .circular-text text {
+            fill: currentColor;
+            font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #181B1D;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: transform 1s cubic-bezier(0.87, 0, 0.13, 1);
+        }
+        .loading-screen.hide {
+            transform: translateY(-100%);
+        }
+        .loading-screen img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        .loading-screen p {
+            color: white;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+        .main-content {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .main-content.show {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 1s ease 0.8s;
+        }
+        .content-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease;
+        }
+        .content-section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-text .word {
+            display: inline-block;
+            color: #666;
+            transition: all 0.8s ease;
+            margin-right: 0.3em;
+            opacity: 0.3;
+        }
+        .reveal-text .word.revealed {
+            color: white;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-[#181B1D] text-white font-neue overflow-x-hidden [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
+    <div class="loading-screen">
+        <img src="img/logowhite.png" alt="Logo">
+        <p>Assembling pixels and ideas...</p>
+    </div>
+
+    <div class="main-content">
+        <div class="circular-text">
+            <svg viewBox="0 0 100 100">
+                <path id="curve" d="M 50 50 m -37 0 a 37 37 0 1 1 74 0 a 37 37 0 1 1 -74 0"/>
+                <text>
+                    <textPath href="#curve">SCROLL DOWN • SCROLL DOWN • SCROLL DOWN •</textPath>
+                </text>
+            </svg>
+        </div>
+
+        <div class="fixed top-6 left-0 right-0 flex justify-center z-[999]">
+            <nav class="flex justify-center items-center bg-black/85 backdrop-blur-sm shadow-lg rounded-full px-2 sm:px-3 py-2 gap-1 sm:gap-2 md:gap-3">
+                <a href="#about" class="uppercase tracking-wider font-medium text-[11px] sm:text-[13px] px-2 sm:px-4 py-2 transition-colors hover:text-neon">ABOUT</a>
+                <a href="#works" class="uppercase tracking-wider font-medium text-[11px] sm:text-[13px] px-2 sm:px-4 py-2 transition-colors hover:text-neon">WORKS</a>
+                <a href="#skills" class="uppercase tracking-wider font-medium text-[11px] sm:text-[13px] px-2 sm:px-4 py-2 transition-colors hover:text-neon">SKILLS</a>
+                <a href="#contact" class="bg-neon text-black px-4 font-medium sm:px-6 py-2 rounded-full uppercase tracking-wider text-[11px] sm:text-[13px] hover:bg-white transition-colors">CONTACT</a>
+            </nav>
+        </div>
+
+        <div class="content-section bg-cover bg-center bg-no-repeat" style="background-image: url('img/portbg.png')">
+
+            <div class="container mx-auto px-4 pt-60 pb-32">
+                <div class="relative">
+                    <h1 class="text-[12vw] z-98 leading-[0.9] tracking-tight mb-8 md:mb-0">
+                        DESIGN WITH<br>
+                        <span class="text-neon italic font-medium">FOCUS.</span>
+                    </h1>
+                    <div class="flex items-start gap-4 md:gap-2 max-w-sm md:absolute md:bottom-[1vw] md:right-0 mt-8 md:mt-0">
+                        <img src="img/logowhite.png" alt="Logo" class="w-6 h-6 mt-1 flex-shrink-0">
+                        <p class="text-md text-white leading-relaxed text-gray-400 max-w-[280px]">
+                            Seeger Perocho is a UI/UX Designer from the Philippines, producing quality designs to provide design solutions
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main class="content-section container mx-auto px-4 py-32">
+            <div class="flex gap-16 relative">
+                <div class="flex gap-4 items-start text-md relative after:content-[''] after:absolute after:right-[-32px] after:top-0 after:w-[1px] after:h-[200%] after:bg-white/5">
+                    <span class="text-neon">01</span>
+                    <span class="opacity-50">About me</span>
+                </div>
+                <div class="space-y-8 flex-1">
+                    <div class="text-[4vw] leading-tight max-w-4xl reveal-text">
+                    I'm a UI/UX Designer crafting beautiful and clean designs that can get those numbers pumping in your website.
+                </div>
+                    <div class="text-[4vw] leading-tight max-w-4xl reveal-text">
+                        Whether you're a startup looking for an impactful website or an established brand seeking to elevate your digital presence, I'm the guy that can turn your vision to reality.
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <section class="content-section bg-[#111415] pt-48 pb-32">
+            <div class="container mx-auto px-4">
+            <div class="flex gap-16">
+                <div class="w-[95px] flex-shrink-0" style="height: 6200px">
+                    <div class="sticky top-32">
+                        <div class="flex gap-4 items-start text-sm relative after:content-[''] after:absolute after:right-[-30px] after:top-[-192px] after:w-[1px] after:h-[31500%] after:bg-white/5">
+                            <span class="text-neon">02</span>
+                            <span class="opacity-50">Works</span>
+                        </div>
+                        <div class="mt-20">
+                            <div class="opacity-50 text-sm">(Selected Works)</div>
+                            <div class="text-[5vw] leading-none mt-2">
+                                SW<br>
+                                2K<br>
+                                20+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-32 flex-1">
+                    <!-- StackedAI -->
+                    <div class="space-y-6">
+                        <div class="pl-4 mb-6">
+                            <div class="flex items-center gap-4 text-sm mb-4">
+                                <span class="opacity-50">UI/UX</span>
+                                <span class="opacity-50">•</span>
+                                <span class="opacity-50">2025</span>
+                            </div>
+                            <h3 class="text-3xl mb-4">StackedAI</h3>
+                            <p class="opacity-50 max-w-lg">A chatbot that uses natural language processing to create humanlike conversational dialogue.</p>
+                        </div>
+                        <img src="img/stackedAI.png" alt="StackedAI Preview" class="w-full rounded-lg">
+                    </div>
+
+                    <!-- Keira -->
+                    <div class="space-y-6">
+                        <div class="pl-4 mb-6">
+                            <div class="flex items-center gap-4 text-sm mb-4">
+                                <span class="opacity-50">UI/UX</span>
+                                <span class="opacity-50">•</span>
+                                <span class="opacity-50">2024</span>
+                            </div>
+                            <h3 class="text-3xl mb-4">Keira</h3>
+                            <p class="opacity-50 max-w-lg">A clean, modern, and elegant E-Commerce website for clothing and apparel.</p>
+                        </div>
+                        <img src="img/keira.png" alt="Keira Preview" class="w-full rounded-lg">
+                    </div>
+
+                    <!-- Animeal -->
+                    <div class="space-y-6">
+                        <div class="pl-4 mb-6">
+                            <div class="flex items-center gap-4 text-sm mb-4">
+                                <span class="opacity-50">UI/UX</span>
+                                <span class="opacity-50">•</span>
+                                <span class="opacity-50">2023</span>
+                            </div>
+                            <h3 class="text-3xl mb-4">ANIMEAL</h3>
+                            <p class="opacity-50 max-w-lg">A gaming news center focused to provide information. Discussion within the community of anime fanatics.</p>
+                        </div>
+                        <img src="img/animealweb.png" alt="Animeal Preview" class="w-full rounded-lg">
+                    </div>
+
+                    <!-- KITTY -->
+                    <div class="space-y-6">
+                        <div class="pl-4 mb-6">
+                            <div class="flex items-center gap-4 text-sm mb-4">
+                                <span class="opacity-50">UI/UX</span>
+                                <span class="opacity-50">•</span>
+                                <span class="opacity-50">2022</span>
+                            </div>
+                            <h3 class="text-3xl mb-4">KITTY.</h3>
+                            <p class="opacity-50 max-w-lg">An online store for everything that your lovely pets may need.</p>
+                        </div>
+                        <img src="img/kitty.png" alt="KITTY Preview" class="w-full rounded-lg">
+                    </div>
+
+                    <!-- Rave -->
+                    <div class="space-y-6">
+                        <div class="pl-4 mb-6">
+                            <div class="flex items-center gap-4 text-sm mb-4">
+                                <span class="opacity-50">UI/UX</span>
+                                <span class="opacity-50">•</span>
+                                <span class="opacity-50">2021</span>
+                            </div>
+                            <h3 class="text-3xl mb-4">Rave</h3>
+                            <p class="opacity-50 max-w-lg">Rave is an innovative music platform designed to connect people with personalized listening without boundaries. Play music & anywhere.</p>
+                        </div>
+                        <img src="img/rave.png" alt="Rave Preview" class="w-full rounded-lg">
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            const circularText = document.querySelector('.circular-text');
+            circularText.style.left = e.clientX + 'px';
+            circularText.style.top = e.clientY + 'px';
+        });
+
+        // Loading screen and content animations
+        window.addEventListener('load', () => {
+            const loadingScreen = document.querySelector('.loading-screen');
+            const mainContent = document.querySelector('.main-content');
+            const contentSections = document.querySelectorAll('.content-section');
+            
+            if (performance.navigation.type === 1 || !localStorage.getItem('hasVisited')) {
+                setTimeout(() => {
+                    loadingScreen.classList.add('hide');
+                    mainContent.classList.add('show');
+                    setTimeout(() => {
+                        contentSections.forEach((section, index) => {
+                            setTimeout(() => {
+                                section.classList.add('show');
+                            }, index * 200);
+                        });
+                    }, 1000);
+                    localStorage.setItem('hasVisited', 'true');
+                }, 2000);
+            } else {
+                loadingScreen.style.display = 'none';
+                mainContent.classList.add('show');
+                contentSections.forEach(section => section.classList.add('show'));
+            }
+        });
+
+        // Text reveal animation
+        const revealTexts = document.querySelectorAll('.reveal-text');
+        let lastScrollY = window.scrollY;
+        let scrollDirection = 'none';
+        let scrollTimeout;
+        
+        // Split text into words
+        revealTexts.forEach(text => {
+            const words = text.textContent.trim().split(/\s+/);
+            text.textContent = '';
+            words.forEach(word => {
+                const span = document.createElement('span');
+                span.textContent = word;
+                span.className = 'word';
+                text.appendChild(span);
+            });
+        });
+
+        // Check if word is in middle of viewport with offset
+        function getWordPosition(element) {
+            const rect = element.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            const middlePoint = windowHeight * 0.5;
+            return {
+                distance: Math.abs(rect.top + rect.height / 2 - middlePoint),
+                isAboveMiddle: rect.top + rect.height / 2 < middlePoint
+            };
+        }
+
+        // Update words based on scroll position and proximity
+        function updateWords() {
+            const currentScrollY = window.scrollY;
+            const newDirection = currentScrollY > lastScrollY ? 'down' : 'up';
+            const viewportMiddle = window.innerHeight * 0.5;
+            const triggerRange = 100; // Distance from middle where words start to reveal
+
+            revealTexts.forEach(text => {
+                const words = Array.from(text.querySelectorAll('.word'));
+                const visibleWords = words.filter(word => {
+                    const rect = word.getBoundingClientRect();
+                    const wordMiddle = rect.top + (rect.height / 2);
+                    const distanceFromMiddle = Math.abs(wordMiddle - viewportMiddle);
+                    return distanceFromMiddle < triggerRange;
+                });
+
+                if (newDirection === 'down') {
+                    visibleWords.forEach((word, index) => {
+                        const rect = word.getBoundingClientRect();
+                        const wordMiddle = rect.top + (rect.height / 2);
+                        if (wordMiddle <= viewportMiddle) {
+                            setTimeout(() => word.classList.add('revealed'), index * 100);
+                        }
+                    });
+                } else {
+                    [...visibleWords].reverse().forEach((word, index) => {
+                        const rect = word.getBoundingClientRect();
+                        const wordMiddle = rect.top + (rect.height / 2);
+                        if (wordMiddle > viewportMiddle) {
+                            setTimeout(() => word.classList.remove('revealed'), index * 100);
+                        }
+                    });
+                }
+            });
+
+            lastScrollY = currentScrollY;
+        }
+
+        // Scroll event handler with debounce
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            updateWords();
+            
+            scrollTimeout = setTimeout(() => {
+                scrollDirection = 'none';
+            }, 150);
+        });
+
+        window.addEventListener('resize', updateWords);
+        
+        // Initial check
+        updateWords();
+    </script>
+</body>
+</html>
