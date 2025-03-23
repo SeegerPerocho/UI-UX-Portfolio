@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" style="scroll-behavior: smooth;">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seeger Perocho - UI/UX Designer</title>
     <link rel="icon" href="img/logowhite.png" type="image/x-icon">
     <link href="https://fonts.cdnfonts.com/css/neue-haas-grotesk-display-pro" rel="stylesheet">
@@ -21,21 +22,25 @@
         }
     </script>
     <style>
-        * {
-            cursor: none !important;
-        }
         .circular-text {
             position: fixed;
             width: 100px;
             height: 100px;
             pointer-events: none;
-            z-index: 9999;
+            z-index: 1;
             animation: spin 8s linear infinite;
             mix-blend-mode: difference;
             color: white;
             font-size: 12px;
             letter-spacing: 1px;
             transform: translate(-50%, -50%);
+        }
+        @media (max-width: 768px) {
+            .circular-text {
+                left: 50% !important;
+                bottom: 5px;
+                top: auto !important;
+            }
         }
         @keyframes spin {
             from { transform: translate(-50%, -50%) rotate(0deg); }
@@ -75,6 +80,23 @@
             width: 60px;
             height: 60px;
             margin-bottom: 20px;
+        }
+        .fixed-logo {
+            width: 30px;
+            height: 30px;
+            position: fixed;
+            left: 50%;
+            bottom: 90px;
+            transform: translateX(-50%);
+            z-index: 2;
+            pointer-events: none;
+            mix-blend-mode: difference;
+            display: block;
+        }
+        @media (min-width: 768px) {
+            .fixed-logo {
+                display: none;
+            }
         }
         .loading-screen p {
             color: white;
@@ -118,6 +140,7 @@
         <p>Assembling pixels and ideas...</p>
     </div>
 
+
     <div class="main-content">
         <div class="circular-text">
             <svg viewBox="0 0 100 100">
@@ -127,27 +150,26 @@
                 </text>
             </svg>
         </div>
+        <img src="img/logowhite.png" alt="Logo" class="fixed-logo">
 
         <div class="fixed top-6 left-0 right-0 flex justify-center z-[999]">
-            <nav class="flex justify-center items-center bg-black/85 backdrop-blur-sm shadow-lg rounded-full px-2 sm:px-3 py-2 gap-1 sm:gap-2 md:gap-3">
-                <a href="#about" class="uppercase tracking-wider font-medium text-[11px] sm:text-[13px] px-2 sm:px-4 py-2 transition-colors hover:text-neon">ABOUT</a>
-                <a href="#works" class="uppercase tracking-wider font-medium text-[11px] sm:text-[13px] px-2 sm:px-4 py-2 transition-colors hover:text-neon">WORKS</a>
-                <a href="#skills" class="uppercase tracking-wider font-medium text-[11px] sm:text-[13px] px-2 sm:px-4 py-2 transition-colors hover:text-neon">SKILLS</a>
-                <a href="#contact" class="bg-neon text-black px-4 font-medium sm:px-6 py-2 rounded-full uppercase tracking-wider text-[11px] sm:text-[13px] hover:bg-white transition-colors">CONTACT</a>
+            <nav class="flex justify-center items-center bg-black/90 md:bg-black/85 backdrop-blur-sm shadow-lg rounded-full px-3 md:px-3 py-2.5 md:py-2 gap-2 md:gap-3">
+                <a href="#about" class="uppercase tracking-wider font-medium text-[11px] md:text-[13px] px-2 md:px-4 py-1.5 md:py-2 transition-colors hover:text-neon">ABOUT</a>
+                <a href="#works" class="uppercase tracking-wider font-medium text-[11px] md:text-[13px] px-2 md:px-4 py-1.5 md:py-2 transition-colors hover:text-neon">WORKS</a>
+                <a href="#skills" class="uppercase tracking-wider font-medium text-[11px] md:text-[13px] px-2 md:px-4 py-1.5 md:py-2 transition-colors hover:text-neon">SKILLS</a>
+                <a href="#contact" class="bg-neon text-black px-4 md:px-6 py-1.5 md:py-2 rounded-full font-medium uppercase tracking-wider text-[11px] md:text-[13px] hover:bg-white transition-colors">CONTACT</a>
             </nav>
         </div>
 
-        <div class="content-section bg-cover bg-center bg-no-repeat" style="background-image: url('img/portbg.png')">
-
-            <div class="container mx-auto px-4 pt-60 pb-32">
-                <div class="relative">
-                    <h1 class="text-[12vw] z-98 leading-[0.9] tracking-tight mb-8 md:mb-0">
+        <div class="content-section min-h-screen md:min-h-0 flex items-center md:block bg-cover bg-center bg-no-repeat" style="background-image: url('img/portbg.png')">
+            <div class="container mx-auto px-4 md:pt-60 md:pb-32">
+                <div class="relative flex flex-col justify-center md:block">
+                    <h1 class="text-[18vw] md:text-[12vw] z-98 leading-[0.9] tracking-tight mb-8 md:mb-0">
                         DESIGN WITH<br>
                         <span class="text-neon italic font-medium">FOCUS.</span>
                     </h1>
-                    <div class="flex items-start gap-4 md:gap-2 max-w-sm md:absolute md:bottom-[1vw] md:right-0 mt-8 md:mt-0">
-                        <img src="img/logowhite.png" alt="Logo" class="w-6 h-6 mt-1 flex-shrink-0">
-                        <p class="text-md text-white leading-relaxed text-gray-400 max-w-[280px]">
+                    <div class="flex items-start max-w-sm md:absolute md:bottom-[1vw] md:right-0 mt-8 md:mt-0">
+                        <p class="text-base md:text-md text-white leading-relaxed text-gray-400 max-w-[280px]">
                             Seeger Perocho is a UI/UX Designer from the Philippines, producing quality designs to provide design solutions
                         </p>
                     </div>
@@ -155,55 +177,76 @@
             </div>
         </div>
 
-        <main class="content-section container mx-auto px-4 py-32">
-            <div class="flex gap-16 relative">
-                <div class="flex gap-4 items-start text-md relative after:content-[''] after:absolute after:right-[-32px] after:top-0 after:w-[1px] after:h-[200%] after:bg-white/5">
+        <main class="content-section min-h-screen md:min-h-0 flex items-center md:block container mx-auto px-4 md:py-32">
+            <div class="flex flex-col md:flex-row gap-8 md:gap-16 relative">
+                <div class="flex gap-4 items-start text-sm md:text-md relative after:content-[''] after:hidden md:after:block after:absolute after:right-[-47px] after:top-0 after:w-[1px] after:h-[200%] after:bg-white/5">
                     <span class="text-neon">01</span>
                     <span class="opacity-50">About me</span>
                 </div>
-                <div class="space-y-8 flex-1">
-                    <div class="text-[4vw] leading-tight max-w-4xl reveal-text">
-                    I'm a UI/UX Designer crafting beautiful and clean designs that can get those numbers pumping in your website.
-                </div>
-                    <div class="text-[4vw] leading-tight max-w-4xl reveal-text">
+                <div class="ml-8 space-y-6 sm:space-y-8 flex-1">
+                    <div class="text-[8vw] sm:text-[4vw] leading-tight max-w-4xl reveal-text">
+                        I'm a UI/UX Designer crafting beautiful and clean designs that can get those numbers pumping in your website.
+                    </div>
+                    <div class="text-[8vw] sm:text-[4vw] leading-tight max-w-4xl reveal-text">
                         Whether you're a startup looking for an impactful website or an established brand seeking to elevate your digital presence, I'm the guy that can turn your vision to reality.
                     </div>
                 </div>
             </div>
         </main>
 
-        <section class="content-section bg-[#111415] pt-48 pb-32">
+        <section class="content-section min-h-screen bg-[#111415] py-20 sm:py-32">
             <div class="container mx-auto px-4">
-            <div class="flex gap-16">
-                <div class="w-[95px] flex-shrink-0" style="height: 6200px">
-                    <div class="sticky top-32">
-                        <div class="flex gap-4 items-start text-sm relative after:content-[''] after:absolute after:right-[-30px] after:top-[-192px] after:w-[1px] after:h-[31500%] after:bg-white/5">
+            <div class="flex flex-col sm:flex-row gap-8 sm:gap-16">
+                <div class="sm:w-[95px] flex-shrink-0" style="height: auto">
+                    <div class="sm:sticky sm:top-32">
+                        <div class="flex gap-4 items-start text-xs sm:text-sm relative after:content-[''] after:hidden sm:after:block after:absolute after:right-[-35px] after:top-[-128px] after:w-[1px] after:h-[31500%] after:bg-white/5">
                             <span class="text-neon">02</span>
                             <span class="opacity-50">Works</span>
                         </div>
-                        <div class="mt-20">
-                            <div class="opacity-50 text-sm">(Selected Works)</div>
-                            <div class="text-[5vw] leading-none mt-2">
-                                SW<br>
-                                2K<br>
-                                20+
+                        <div class="mt-8 sm:mt-20">
+                            <div class="flex items-center gap-4">
+                                <div class="opacity-50 text-xs sm:text-sm">(Selected Works)</div>
+                                <div class="text-[8vw] sm:text-[5vw] leading-none">
+                                    <span class="sm:hidden">SW 2K 20+</span>
+                                    <span class="hidden sm:block">
+                                        SW<br>
+                                        2K<br>
+                                        20+
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="space-y-32 flex-1">
+                <div class="space-y-24 sm:space-y-32 flex-1">
                     <!-- StackedAI -->
+                    <div class="space-y-6 sm:space-y-8">
+                        <div class="pl-4 sm:pl-6 mb-6 sm:mb-8">
+                            <div class="flex items-center gap-2 sm:gap-4 text-xs sm:text-sm mb-3 sm:mb-4">
+                                <span class="opacity-50">UI/UX</span>
+                                <span class="opacity-50">•</span>
+                                <span class="opacity-50">2025</span>
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl mb-3 sm:mb-4">StackedAI</h3>
+                            <p class="opacity-50 max-w-lg text-sm sm:text-base">A chatbot that uses natural language processing to create humanlike conversational dialogue.</p>
+                        </div>
+                        <img src="img/stackedAI.png" alt="StackedAI Preview" class="w-full rounded-lg">
+                    </div>
+                    
+                     <!-- BagoScout -->
                     <div class="space-y-6">
                         <div class="pl-4 mb-6">
                             <div class="flex items-center gap-4 text-sm mb-4">
                                 <span class="opacity-50">UI/UX</span>
                                 <span class="opacity-50">•</span>
-                                <span class="opacity-50">2025</span>
+                                <span class="opacity-50">2024</span>
                             </div>
-                            <h3 class="text-3xl mb-4">StackedAI</h3>
-                            <p class="opacity-50 max-w-lg">A chatbot that uses natural language processing to create humanlike conversational dialogue.</p>
+                            <h3 class="text-3xl mb-4">BagoScout</h3>
+                            <p class="opacity-50 mb-20 max-w-lg">A website that aims to provide sustainable modernized online job portal for the locals of Bago City.
+
+                            </p>
                         </div>
-                        <img src="img/stackedAI.png" alt="StackedAI Preview" class="w-full rounded-lg">
+                        <img src="img/bagoscout.png" alt="StackedAI Preview" class="w-full rounded-lg">
                     </div>
 
                     <!-- Keira -->
@@ -233,7 +276,18 @@
                         </div>
                         <img src="img/animealweb.png" alt="Animeal Preview" class="w-full rounded-lg">
                     </div>
-
+                    <div class="space-y-6">
+                        <div class="pl-4 mb-6">
+                            <div class="flex items-center gap-4 text-sm mb-4">
+                                <span class="opacity-50">UI/UX</span>
+                                <span class="opacity-50">•</span>
+                                <span class="opacity-50">2023</span>
+                            </div>
+                            <h3 class="text-3xl mb-4">Cycle</h3>
+                            <p class="opacity-50 max-w-lg">A chatbot that uses natural language processing to create humanlike conversational dialogue.</p>
+                        </div>
+                        <img src="img/cycle.png" alt="StackedAI Preview" class="w-full rounded-lg">
+                    </div>
                     <!-- KITTY -->
                     <div class="space-y-6">
                         <div class="pl-4 mb-6">
@@ -269,9 +323,11 @@
 
     <script>
         document.addEventListener('mousemove', (e) => {
-            const circularText = document.querySelector('.circular-text');
-            circularText.style.left = e.clientX + 'px';
-            circularText.style.top = e.clientY + 'px';
+            if (window.innerWidth > 768) {
+                const circularText = document.querySelector('.circular-text');
+                circularText.style.left = e.clientX + 'px';
+                circularText.style.top = e.clientY + 'px';
+            }
         });
 
         // Loading screen and content animations
@@ -292,7 +348,7 @@
                         });
                     }, 1000);
                     localStorage.setItem('hasVisited', 'true');
-                }, 2000);
+                }, 100);
             } else {
                 loadingScreen.style.display = 'none';
                 mainContent.classList.add('show');
@@ -381,6 +437,8 @@
         
         // Initial check
         updateWords();
+
+
     </script>
 </body>
 </html>
