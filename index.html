@@ -80,6 +80,9 @@
             width: 60px;
             height: 60px;
             margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
         .fixed-logo {
             width: 30px;
@@ -132,6 +135,34 @@
             color: white;
             opacity: 1;
         }
+        /* Fix for mobile extra width */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        .container {
+            width: 100%;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            box-sizing: border-box;
+        }
+        @media (max-width: 640px) {
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
     </style>
 </head>
 <body class="min-h-screen bg-[#181B1D] text-white font-neue overflow-x-hidden [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
@@ -180,7 +211,7 @@
             <div class="flex flex-col md:flex-row gap-8 md:gap-16 relative">
                 <div class="flex gap-4 items-start text-sm md:text-md relative after:content-[''] after:hidden md:after:block after:absolute after:right-[-47px] after:top-0 after:w-[1px] after:h-[200%] after:bg-white/5">
                     <span class="text-neon">01</span>
-                    <span class="opacity-50">About me</span>
+                    <span>About me</span>
                 </div>
                 <div class="ml-8 space-y-6 sm:space-y-8 flex-1">
                     <div class="text-[8vw] sm:text-[4vw] leading-tight max-w-4xl reveal-text">
@@ -200,7 +231,7 @@
                     <div class="sm:sticky sm:top-32">
                         <div class="flex gap-4 items-start text-xs sm:text-sm relative after:content-[''] after:hidden sm:after:block after:absolute after:right-[-35px] after:top-[-128px] after:w-[1px] after:h-[31500%] after:bg-white/5">
                             <span class="text-neon">02</span>
-                            <span class="opacity-50">Works</span>
+                            <span>Works</span>
                         </div>
                         <div class="mt-8 sm:mt-20">
                             <div class="flex sm:block items-center gap-4 sm:gap-0">
@@ -222,9 +253,9 @@
                     <div class="space-y-6 sm:space-y-8">
                         <div class="pl-4 sm:pl-6 mb-6 sm:mb-8">
                             <div class="flex items-center gap-2 sm:gap-4 text-xs sm:text-sm mb-3 sm:mb-4">
-                                <span class="opacity-50">UI/UX</span>
-                                <span class="opacity-50">•</span>
-                                <span class="opacity-50">2025</span>
+                                <span>UI/UX</span>
+                                <span>•</span>
+                                <span>2025</span>
                             </div>
                             <h3 class="text-2xl sm:text-3xl mb-3 sm:mb-4">StackedAI</h3>
                             <p class="opacity-50 max-w-lg text-sm sm:text-base">A chatbot that uses natural language processing to create humanlike conversational dialogue.</p>
@@ -236,9 +267,9 @@
                     <div class="space-y-6">
                         <div class="pl-4 mb-6">
                             <div class="flex items-center gap-4 text-sm mb-4">
-                                <span class="opacity-50">UI/UX</span>
-                                <span class="opacity-50">•</span>
-                                <span class="opacity-50">2024</span>
+                                <span>UI/UX</span>
+                                <span>•</span>
+                                <span>2024</span>
                             </div>
                             <h3 class="text-3xl mb-4">BagoScout</h3>
                             <p class="opacity-50 mb-20 max-w-lg">A website that aims to provide sustainable modernized online job portal for the locals of Bago City.
@@ -252,9 +283,9 @@
                     <div class="space-y-6">
                         <div class="pl-4 mb-6">
                             <div class="flex items-center gap-4 text-sm mb-4">
-                                <span class="opacity-50">UI/UX</span>
-                                <span class="opacity-50">•</span>
-                                <span class="opacity-50">2024</span>
+                                <span>UI/UX</span>
+                                <span>•</span>
+                                <span>2024</span>
                             </div>
                             <h3 class="text-3xl mb-4">Keira</h3>
                             <p class="opacity-50 max-w-lg">A clean, modern, and elegant E-Commerce website for clothing and apparel.</p>
@@ -266,9 +297,9 @@
                     <div class="space-y-6">
                         <div class="pl-4 mb-6">
                             <div class="flex items-center gap-4 text-sm mb-4">
-                                <span class="opacity-50">UI/UX</span>
-                                <span class="opacity-50">•</span>
-                                <span class="opacity-50">2023</span>
+                                <span>UI/UX</span>
+                                <span>•</span>
+                                <span>2023</span>
                             </div>
                             <h3 class="text-3xl mb-4">ANIMEAL</h3>
                             <p class="opacity-50 max-w-lg">A gaming news center focused to provide information. Discussion within the community of anime fanatics.</p>
@@ -278,9 +309,9 @@
                     <div class="space-y-6">
                         <div class="pl-4 mb-6">
                             <div class="flex items-center gap-4 text-sm mb-4">
-                                <span class="opacity-50">UI/UX</span>
-                                <span class="opacity-50">•</span>
-                                <span class="opacity-50">2023</span>
+                                <span>UI/UX</span>
+                                <span>•</span>
+                                <span>2023</span>
                             </div>
                             <h3 class="text-3xl mb-4">Cycle</h3>
                             <p class="opacity-50 max-w-lg">An E-Commerce website that sells quality brand bicycles.</p>
@@ -291,9 +322,9 @@
                     <div class="space-y-6">
                         <div class="pl-4 mb-6">
                             <div class="flex items-center gap-4 text-sm mb-4">
-                                <span class="opacity-50">UI/UX</span>
-                                <span class="opacity-50">•</span>
-                                <span class="opacity-50">2022</span>
+                                <span>UI/UX</span>
+                                <span>•</span>
+                                <span>2022</span>
                             </div>
                             <h3 class="text-3xl mb-4">KITTY.</h3>
                             <p class="opacity-50 max-w-lg">An online store for everything that your lovely pets may need.</p>
@@ -305,9 +336,9 @@
                     <div class="space-y-6">
                         <div class="pl-4 mb-6">
                             <div class="flex items-center gap-4 text-sm mb-4">
-                                <span class="opacity-50">UI/UX</span>
-                                <span class="opacity-50">•</span>
-                                <span class="opacity-50">2021</span>
+                                <span>UI/UX</span>
+                                <span>•</span>
+                                <span>2021</span>
                             </div>
                             <h3 class="text-3xl mb-4">Rave</h3>
                             <p class="opacity-50 max-w-lg">Rave is an innovative music platform designed to connect people with personalized listening without boundaries. Play music & anywhere.</p>
@@ -327,7 +358,7 @@
                         <div class="sm:top-32">
                             <div class="flex gap-4 items-start text-xs sm:text-sm relative after:content-[''] after:hidden sm:after:block after:absolute after:right-[-35px] after:top-[-97px] after:w-[1px] after:h-[3350%] after:bg-white/5">
                                 <span class="text-neon">03</span>
-                                <span class="opacity-50">Skills</span>
+                                <span>Skills</span>
                             </div>
                             
                             <div class="mt-24 hidden sm:block">
@@ -455,7 +486,7 @@
                             </div>
 
                             <!-- Overall Projects Counter -->
-                            <div class="bg-transparent flex flex-col justify-center items-center">
+                            <div class="bg-transparent flex flex-col justify-center items-center mt-6 sm:mt-0 pt-8 sm:pt-0">
                                 <div class="text-5xl font-medium">22+</div>
                                 <div class="text-sm opacity-70">Overall Projects</div>
                             </div>
