@@ -175,6 +175,97 @@
             max-width: 100%;
             height: auto;
         }
+
+        /* Skill item neon effect */
+        .skill-item {
+            position: relative;
+            height: 70px; /* Fixed height for all skill items */
+            margin-bottom: 0; /* Remove margin */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0; /* Remove all padding */
+        }
+        
+        .skill-item:first-child {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skill-name, .skill-desc {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            width: 100%;
+            padding: 0; /* Remove any padding */
+            margin: 0; /* Remove any margin */
+            line-height: 1; /* Ensure consistent line height */
+        }
+        
+        @media (min-width: 640px) {
+            .skill-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: auto;
+                padding: 1rem 0; /* Equal padding top and bottom */
+            }
+            
+            .skill-name, .skill-desc {
+                position: relative;
+                transform: none;
+                top: auto;
+                left: auto;
+                width: auto;
+            }
+        }
+        
+        .skill-name {
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill-desc {
+            visibility: hidden;
+            opacity: 0;
+            text-align: left;
+            padding-right: 20px;
+        }
+        
+        @media (max-width: 639px) {
+            .skill-desc {
+                color: #C4FF0F; /* Neon color for mobile view */
+                font-weight: 500; /* Slightly bolder to enhance visibility */
+            }
+        }
+        
+        @media (min-width: 640px) {
+            .skill-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: auto;
+                padding-bottom: 1rem;
+            }
+            
+            .skill-name, .skill-desc {
+                position: relative;
+                transform: none;
+                top: auto;
+                left: auto;
+                width: auto;
+            }
+            
+            .skill-name {
+                flex: 0 0 auto;
+            }
+            
+            .skill-desc {
+                visibility: visible !important; /* Force visibility on desktop */
+                opacity: 1 !important; /* Force opacity on desktop */
+                text-align: right;
+                max-width: 280px;
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen bg-[#181B1D] text-white font-neue overflow-x-hidden [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
@@ -241,7 +332,7 @@
             <div class="flex flex-col sm:flex-row gap-8 sm:gap-16">
                 <div class="sm:w-[95px] flex-shrink-0" style="height: auto">
                     <div class="sm:sticky sm:top-32">
-                        <div class="flex gap-4 items-start text-xs sm:text-sm relative after:content-[''] after:hidden sm:after:block after:absolute after:right-[-35px] after:top-[-128px] after:w-[1px] after:h-[31500%] after:bg-white/5">
+                        <div class="flex gap-4 items-start text-xs sm:text-sm relative after:content-[''] after:hidden sm:after:block after:absolute after:right-[-35px] after:top-[-128px] after:w-[1px] after:h-[43200%] after:bg-white/5">
                             <span class="text-neon">02</span>
                             <span>Works</span>
                         </div>
@@ -363,7 +454,7 @@
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="skills-section min-h-screen bg-[#181B1D] py-20 sm:py-32">
+        <section id="skills" class="skills-section sm:min-h-screen bg-[#181B1D] py-12 sm:py-32">
             <div class="container mx-auto px-4">
                 <div class="flex flex-col sm:flex-row gap-8 sm:gap-16">
                     <div class="sm:w-[95px] flex-shrink-0" style="height: auto">
@@ -374,116 +465,50 @@
                             </div>
                             
                             <div class="mt-8 sm:mt-24 flex sm:block items-center gap-4 sm:gap-0">
-                                <div class="text-xs sm:text-sm opacity-50">(Up to date)</div>
-                                <div class="flex sm:block items-baseline gap-2 sm:gap-0">
-                                    <div class="text-[8vw] sm:text-6xl font-medium sm:mt-2">2K</div>
-                                    <div class="text-[8vw] sm:text-6xl font-medium">25</div>
+                                <div class="text-xs sm:text-sm text-white sm:opacity-50">
+                                    <span class="sm:hidden">(Tap for more)</span>
+                                    <span class="hidden sm:inline">(Up to date)</span>
+                                </div>
+                                <div class="hidden sm:block">
+                                    <div class="text-6xl font-medium mt-2">2K</div>
+                                    <div class="text-6xl font-medium">25</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
                     <div class="flex-1">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <!-- Skill Card 1: UI & UX -->
-                            <div class="bg-[#1E2325] rounded-lg p-8 flex flex-col justify-between border-[2.5px] border-[#252A2D]">
-                                <div class="mb-8">
-                                    <div class="flex items-center gap-2 mb-4">
-                                        <img src="img/uiux.png" alt="UI & UX" class="w-6 h-6">
-                                        <span class="text-lg">UI & UX</span>
-                                    </div>
-                                    <div class="text-sm opacity-70">8 Projects</div>
-                                </div>
-                                <div class="flex justify-end">
-                                    <a href="#" class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-full hover:bg-neon hover:text-black transition-all">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="rotate(-40)">
-                                            <path d="M5 12h14"></path>
-                                            <path d="m12 5 7 7-7 7"></path>
-                                        </svg>
-                                    </a>
-                                </div>
+                        <div class="skills-list space-y-0">
+                            <!-- UI/UX -->
+                            <div class="skill-item">
+                                <div class="skill-name text-4xl lg:text-6xl font-medium cursor-pointer sm:cursor-default">UI/UX</div>
+                                <div class="skill-desc text-sm text-white">Specializing in UI and UX design with 3 years of crafting experience using Figma</div>
                             </div>
-
-                            <!-- Skill Card 2: Logo -->
-                            <div class="bg-[#1F2325] rounded-lg p-8 flex flex-col justify-between border-[2.5px] border-[#252A2D]">
-                                <div class="mb-8">
-                                    <div class="flex items-center gap-2 mb-4">
-                                        <img src="img/logo2.png" alt="Logo" class="w-6 h-6">
-                                        <span class="text-lg">Logo</span>
-                                    </div>
-                                    <div class="text-sm opacity-70">8 Projects</div>
-                                </div>
-                                <div class="flex justify-end">
-                                    <a href="#" class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-full hover:bg-neon hover:text-black transition-all">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="rotate(-40)">
-                                            <path d="M5 12h14"></path>
-                                            <path d="m12 5 7 7-7 7"></path>
-                                        </svg>
-                                    </a>
-                                </div>
+                            
+                            <!-- LOGO -->
+                            <div class="skill-item">
+                                <div class="skill-name text-4xl lg:text-6xl font-medium cursor-pointer sm:cursor-default">LOGO</div>
+                                <div class="skill-desc text-sm text-white">Modern, minimalistic type of logo approach is my typical go to</div>
                             </div>
-
-                            <!-- Skill Card 3: Illustration -->
-                            <div class="bg-[#1E2325] rounded-lg p-8 flex flex-col justify-between border-[2.5px] border-[#252A2D]">
-                                <div class="mb-8">
-                                    <div class="flex items-center gap-2 mb-4">
-                                        <img src="img/illustration.png" alt="Illustration" class="w-6 h-6">
-                                        <span class="text-lg">Illustration</span>
-                                    </div>
-                                    <div class="text-sm opacity-70">8 Projects</div>
-                                </div>
-                                <div class="flex justify-end">
-                                    <a href="#" class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-full hover:bg-neon hover:text-black transition-all">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="rotate(-40)">
-                                            <path d="M5 12h14"></path>
-                                            <path d="m12 5 7 7-7 7"></path>
-                                        </svg>
-                                    </a>
-                                </div>
+                            
+                            <!-- ILLUSTRATION -->
+                            <div class="skill-item">
+                                <div class="skill-name text-4xl lg:text-6xl font-medium cursor-pointer sm:cursor-default">ILLUSTRATION</div>
+                                <div class="skill-desc text-sm text-white">Creating basic illustrations for 2 years.</div>
                             </div>
-
-                            <!-- Skill Card 4: Graphic design -->
-                            <div class="bg-[#1E2325] rounded-lg p-8 flex flex-col justify-between border-[2.5px] border-[#252A2D]">
-                                <div class="mb-8">
-                                    <div class="flex items-center gap-2 mb-4">
-                                        <img src="img/graphic.png" alt="Graphic Design" class="w-6 h-6">
-                                        <span class="text-lg">Graphic design</span>
-                                    </div>
-                                    <div class="text-sm opacity-70">8 Projects</div>
-                                </div>
-                                <div class="flex justify-end">
-                                    <a href="#" class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-full hover:bg-neon hover:text-black transition-all">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="rotate(-40)">
-                                            <path d="M5 12h14"></path>
-                                            <path d="m12 5 7 7-7 7"></path>
-                                        </svg>
-                                    </a>
-                                </div>
+                            
+                            <!-- GRAPHIC DESIGN -->
+                            <div class="skill-item">
+                                <div class="skill-name text-4xl lg:text-6xl font-medium cursor-pointer sm:cursor-default">GRAPHIC DESIGN</div>
+                                <div class="skill-desc text-sm text-white">Social media posters, profile cards, and other personal projects</div>
                             </div>
-
-                            <!-- Skill Card 5: Character design -->
-                            <div class="bg-[#1E2325] rounded-lg p-8 flex flex-col justify-between border-[2.5px] border-[#252A2D]">
-                                <div class="mb-8">
-                                    <div class="flex items-center gap-2 mb-4">
-                                        <img src="img/character.png" alt="Character Design" class="w-6 h-6">
-                                        <span class="text-lg">Character design</span>
-                                    </div>
-                                    <div class="text-sm opacity-70">8 Projects</div>
+                            
+                            <!-- CHARACTER DESIGN -->
+                            <div class="skill-item">
+                                <div class="skill-name text-4xl lg:text-6xl font-medium cursor-pointer sm:cursor-default">
+                                    CHARACTER <span class="hidden sm:inline">DESIGN</span>
                                 </div>
-                                <div class="flex justify-end">
-                                    <a href="#" class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-full hover:bg-neon hover:text-black transition-all">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="rotate(-40)">
-                                            <path d="M5 12h14"></path>
-                                            <path d="m12 5 7 7-7 7"></path>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <!-- Overall Projects Counter -->
-                            <div class="bg-transparent flex flex-col justify-center items-center mt-14 sm:mt-6 mb-6">
-                                <div class="text-5xl font-medium">22+</div>
-                                <div class="text-sm opacity-70">Overall Projects</div>
+                                <div class="skill-desc text-sm text-white">Advanced beginner level illustrator, being able to understand basic postures and proportions</div>
                             </div>
                         </div>
                     </div>
@@ -636,89 +661,203 @@
                 mainContent.classList.add('show');
                 contentSections.forEach(section => section.classList.add('show'));
             }
-        });
-
-        // Text reveal animation
-        const revealTexts = document.querySelectorAll('.reveal-text');
-        let lastScrollY = window.scrollY;
-        let scrollDirection = 'none';
-        let scrollTimeout;
-        
-        // Split text into words
-        revealTexts.forEach(text => {
-            const words = text.textContent.trim().split(/\s+/);
-            text.textContent = '';
-            words.forEach(word => {
-                const span = document.createElement('span');
-                span.textContent = word;
-                span.className = 'word';
-                text.appendChild(span);
-            });
-        });
-
-        // Check if word is in middle of viewport with offset
-        function getWordPosition(element) {
-            const rect = element.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-            const revealPoint = windowHeight * 0.90; // Changed from 0.85 to 0.90 (further down)
-            return {
-                distance: Math.abs(rect.top + rect.height / 2 - revealPoint),
-                isAboveMiddle: rect.top + rect.height / 2 < revealPoint
-            };
-        }
-
-        // Update words based on scroll position and proximity
-        function updateWords() {
-            const currentScrollY = window.scrollY;
-            const newDirection = currentScrollY > lastScrollY ? 'down' : 'up';
-            const viewportRevealPoint = window.innerHeight * 0.90; // Changed from 0.85 to 0.90 (further down)
-            const triggerRange = 100; // Distance from middle where words start to reveal
-
-            revealTexts.forEach(text => {
-                const words = Array.from(text.querySelectorAll('.word'));
-                const visibleWords = words.filter(word => {
-                    const rect = word.getBoundingClientRect();
-                    const wordMiddle = rect.top + (rect.height / 2);
-                    const distanceFromRevealPoint = Math.abs(wordMiddle - viewportRevealPoint);
-                    return distanceFromRevealPoint < triggerRange;
+            
+            // Initialize skill item click handlers
+            const skillNames = document.querySelectorAll('.skill-name');
+            
+            // Function to handle skill item clicks
+            function handleSkillClick(element) {
+                const skillItem = element.closest('.skill-item');
+                const skillName = skillItem.querySelector('.skill-name');
+                const skillDesc = skillItem.querySelector('.skill-desc');
+                
+                // Check if this item is already active (description is visible)
+                const isActive = skillDesc.style.visibility === 'visible';
+                
+                // First, hide all descriptions and show all names
+                document.querySelectorAll('.skill-item').forEach(item => {
+                    const name = item.querySelector('.skill-name');
+                    const desc = item.querySelector('.skill-desc');
+                    
+                    name.style.visibility = 'visible';
+                    name.style.opacity = '1';
+                    
+                    desc.style.visibility = 'hidden';
+                    desc.style.opacity = '0';
                 });
-
-                if (newDirection === 'down') {
-                    visibleWords.forEach((word, index) => {
-                        const rect = word.getBoundingClientRect();
-                        const wordMiddle = rect.top + (rect.height / 2);
-                        if (wordMiddle <= viewportRevealPoint) {
-                            setTimeout(() => word.classList.add('revealed'), index * 100);
-                        }
+                
+                // If this item was already active, we're done (it's now reset)
+                // If not, toggle this item to show its description
+                if (!isActive) {
+                    skillName.style.visibility = 'hidden';
+                    skillName.style.opacity = '0';
+                    
+                    skillDesc.style.visibility = 'visible';
+                    skillDesc.style.opacity = '1';
+                    // The color is set in CSS via media query, no need to set it here
+                }
+            }
+            
+            // Add click handlers to all skill names and descriptions on mobile
+            if (window.innerWidth < 640) {
+                // Add click handlers to skill names
+                skillNames.forEach(skillName => {
+                    skillName.addEventListener('click', function() {
+                        handleSkillClick(this);
+                    });
+                });
+                
+                // Add click handlers to skill descriptions
+                const skillDescs = document.querySelectorAll('.skill-desc');
+                skillDescs.forEach(skillDesc => {
+                    skillDesc.addEventListener('click', function() {
+                        handleSkillClick(this);
+                    });
+                });
+            }
+            
+            // Re-initialize skill item click handlers on resize
+            window.addEventListener('resize', () => {
+                const skillNames = document.querySelectorAll('.skill-name');
+                const skillDescs = document.querySelectorAll('.skill-desc');
+                
+                // Remove existing click handlers by cloning
+                skillNames.forEach(skillName => {
+                    skillName.replaceWith(skillName.cloneNode(true));
+                });
+                
+                skillDescs.forEach(skillDesc => {
+                    skillDesc.replaceWith(skillDesc.cloneNode(true));
+                });
+                
+                // Reset styles for desktop view
+                if (window.innerWidth >= 640) {
+                    // Desktop view - make sure all elements are visible
+                    skillNames.forEach(name => {
+                        name.style.visibility = 'visible';
+                        name.style.opacity = '1';
+                    });
+                    
+                    skillDescs.forEach(desc => {
+                        desc.style.visibility = 'visible';
+                        desc.style.opacity = '1';
+                        desc.style.fontSize = '';
                     });
                 } else {
-                    [...visibleWords].reverse().forEach((word, index) => {
-                        const rect = word.getBoundingClientRect();
-                        const wordMiddle = rect.top + (rect.height / 2);
-                        if (wordMiddle > viewportRevealPoint) {
-                            setTimeout(() => word.classList.remove('revealed'), index * 100);
-                        }
+                    // Mobile view - add click handlers
+                    document.querySelectorAll('.skill-name').forEach(skillName => {
+                        skillName.addEventListener('click', function() {
+                            handleSkillClick(this);
+                        });
+                    });
+                    
+                    document.querySelectorAll('.skill-desc').forEach(skillDesc => {
+                        skillDesc.addEventListener('click', function() {
+                            handleSkillClick(this);
+                        });
+                    });
+                    
+                    // Initially hide all descriptions on mobile
+                    skillDescs.forEach(desc => {
+                        desc.style.visibility = 'hidden';
+                        desc.style.opacity = '0';
                     });
                 }
             });
 
-            lastScrollY = currentScrollY;
-        }
-
-        // Scroll event handler with debounce
-        window.addEventListener('scroll', () => {
-            clearTimeout(scrollTimeout);
-            updateWords();
+            window.addEventListener('resize', updateWords);
             
-            scrollTimeout = setTimeout(() => {
-                scrollDirection = 'none';
-            }, 150);
-        });
+            // Initial setup - ensure descriptions are visible on desktop
+            if (window.innerWidth >= 640) {
+                const skillDescs = document.querySelectorAll('.skill-desc');
+                skillDescs.forEach(desc => {
+                    desc.style.visibility = 'visible';
+                    desc.style.opacity = '1';
+                });
+            }
+            
+            // Text reveal animation
+            const revealTexts = document.querySelectorAll('.reveal-text');
+            let lastScrollY = window.scrollY;
+            let scrollDirection = 'none';
+            let scrollTimeout;
+            
+            // Split text into words
+            revealTexts.forEach(text => {
+                const words = text.textContent.trim().split(/\s+/);
+                text.textContent = '';
+                words.forEach(word => {
+                    const span = document.createElement('span');
+                    span.textContent = word;
+                    span.className = 'word';
+                    text.appendChild(span);
+                });
+            });
 
-        window.addEventListener('resize', updateWords);
-        
-        // Initial check
-        updateWords();
-    </script>
+            // Check if word is in middle of viewport with offset
+            function getWordPosition(element) {
+                const rect = element.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                const revealPoint = windowHeight * 0.90; // Changed from 0.85 to 0.90 (further down)
+                return {
+                    distance: Math.abs(rect.top + rect.height / 2 - revealPoint),
+                    isAboveMiddle: rect.top + rect.height / 2 < revealPoint
+                };
+            }
+
+            // Update words based on scroll position and proximity
+            function updateWords() {
+                const currentScrollY = window.scrollY;
+                const newDirection = currentScrollY > lastScrollY ? 'down' : 'up';
+                const viewportRevealPoint = window.innerHeight * 0.90; // Changed from 0.85 to 0.90 (further down)
+                const triggerRange = 100; // Distance from middle where words start to reveal
+
+                revealTexts.forEach(text => {
+                    const words = Array.from(text.querySelectorAll('.word'));
+                    const visibleWords = words.filter(word => {
+                        const rect = word.getBoundingClientRect();
+                        const wordMiddle = rect.top + (rect.height / 2);
+                        const distanceFromRevealPoint = Math.abs(wordMiddle - viewportRevealPoint);
+                        return distanceFromRevealPoint < triggerRange;
+                    });
+
+                    if (newDirection === 'down') {
+                        visibleWords.forEach((word, index) => {
+                            const rect = word.getBoundingClientRect();
+                            const wordMiddle = rect.top + (rect.height / 2);
+                            if (wordMiddle <= viewportRevealPoint) {
+                                setTimeout(() => word.classList.add('revealed'), index * 100);
+                            }
+                        });
+                    } else {
+                        [...visibleWords].reverse().forEach((word, index) => {
+                            const rect = word.getBoundingClientRect();
+                            const wordMiddle = rect.top + (rect.height / 2);
+                            if (wordMiddle > viewportRevealPoint) {
+                                setTimeout(() => word.classList.remove('revealed'), index * 100);
+                            }
+                        });
+                    }
+                });
+
+                lastScrollY = currentScrollY;
+            }
+
+            // Scroll event handler with debounce
+            window.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                updateWords();
+                
+                scrollTimeout = setTimeout(() => {
+                    scrollDirection = 'none';
+                }, 150);
+            });
+
+            window.addEventListener('resize', updateWords);
+            
+            // Initial check
+            updateWords();
+        });
+        </script>
 </body>
 </html>
