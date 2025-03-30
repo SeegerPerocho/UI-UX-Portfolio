@@ -21,6 +21,7 @@
             }
         }
     </script>
+    <script src="https://unpkg.com/lenis@1.2.3/dist/lenis.min.js"></script> 
     <style>
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
@@ -179,10 +180,9 @@
         /* Skill item neon effect */
         .skill-item {
             position: relative;
-            height: 70px; /* Fixed height for all skill items */
-            margin-bottom: 0; /* Remove margin */
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 0; /* Remove all padding */
+            padding: 1.5rem 0;
+            cursor: pointer;
         }
         
         .skill-item:first-child {
@@ -232,9 +232,33 @@
         }
         
         @media (max-width: 639px) {
+            .skill-item {
+                position: relative;
+                min-height: 80px;
+            }
+
+            .skill-name, .skill-desc {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                transition: opacity 0.3s ease, visibility 0.3s ease;
+                width: 100%;
+                cursor: pointer;
+            }
+
             .skill-desc {
-                color: #C4FF0F; /* Neon color for mobile view */
-                font-weight: 500; /* Slightly bolder to enhance visibility */
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            .skill-item.active .skill-name {
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            .skill-item.active .skill-desc {
+                opacity: 1;
+                visibility: visible;
             }
         }
         
@@ -260,11 +284,33 @@
             }
             
             .skill-desc {
+                display: block;
+                opacity: 1;
                 visibility: visible !important; /* Force visibility on desktop */
-                opacity: 1 !important; /* Force opacity on desktop */
                 text-align: right;
                 max-width: 280px;
             }
+        }
+        
+        /* Lenis smooth scrolling styles */
+        html.lenis {
+            height: auto;
+        }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto;
+        }
+
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+
+        .lenis.lenis-scrolling iframe {
+            pointer-events: none;
         }
     </style>
 </head>
@@ -272,7 +318,6 @@
     <div class="loading-screen">
         <img src="img/logowhite.png" alt="Logo">
     </div>
-
 
     <div class="main-content">
         <div class="circular-text">
@@ -295,9 +340,9 @@
         </div>
 
         <div class="content-section min-h-screen md:min-h-0 flex items-center md:block bg-cover bg-center bg-no-repeat" style="background-image: url('img/backgroundmain.png')">
-            <div class="container mx-auto px-4 md:pt-60 md:pb-32">
-                <div class="relative flex flex-col justify-center md:block">
-                    <h1 class="text-[18vw] md:text-[12vw] z-98 leading-[0.9] tracking-tight mb-8 md:mb-0">
+            <div class="container mx-auto px-4 md:pt-32 md:pb-32"> <!-- Changed pt-60 to pt-32 -->
+                <div class="relative flex flex-col justify-start md:block"> <!-- Changed justify-center to justify-start -->
+                    <h1 class="text-[18vw] md:text-[12vw] z-98 leading-[0.9] tracking-tight mb-8 md:mb-0 mt-16"> <!-- Added mt-16 for top margin -->
                         DESIGN WITH<br>
                         <span class="text-neon italic font-medium">FOCUS.</span>
                     </h1>
@@ -310,19 +355,17 @@
             </div>
         </div>
 
-        <main id="about" class="content-section min-h-screen md:min-h-0 flex items-center md:block container mx-auto px-4 md:py-32">
+        <main id="about" class="content-section min-h-screen md:min-h-0 flex items-start md:block container mx-auto px-4 md:py-32">
             <div class="flex flex-col md:flex-row gap-8 md:gap-16 relative">
-                <div class="flex gap-4 items-start text-sm md:text-md relative after:content-[''] after:hidden md:after:block after:absolute after:right-[-47px] after:top-0 after:w-[1px] after:h-[200%] after:bg-white/5">
+                <!-- Left side with section number -->
+                <div class="flex gap-4 items-start text-sm md:text-md relative mt-20 md:mt-0 after:content-[''] after:hidden md:after:block after:absolute after:right-[-47px] after:top-0 after:w-[1px] after:h-[200%] after:bg-white/5">
                     <span class="text-neon">01</span>
                     <span>About me</span>
                 </div>
-                <div class="ml-8 space-y-6 sm:space-y-8 flex-1">
-                    <div class="text-[8vw] sm:text-[4vw] leading-tight max-w-4xl reveal-text">
-                        I'm a UI/UX Designer crafting beautiful and clean designs that can get those numbers pumping in your website.
-                    </div>
-                    <div class="text-[8vw] sm:text-[4vw] leading-tight max-w-4xl reveal-text">
-                        Whether you're a startup looking for an impactful website or an established brand seeking to elevate your digital presence, I'm the guy that can turn your vision to reality.
-                    </div>
+                <!-- Right side with text content -->
+                <div class="space-y-12 sm:space-y-16 flex-1 mb-8 px-5 md:px-8"> <!-- Added padding -->
+                    <div class="text-[8vw] sm:text-[4vw] leading-tight max-w-4xl reveal-text">I'm a UI/UX Designer crafting beautiful and clean designs that can get those numbers pumping in your website.</div>
+                    <div class="text-[8vw] sm:text-[4vw] leading-tight max-w-4xl reveal-text">Whether you're a startup looking for an impactful website or an established brand seeking to elevate your digital presence, I'm the guy that can turn your vision to reality.</div>
                 </div>
             </div>
         </main>
@@ -458,7 +501,7 @@
             <div class="container mx-auto px-4">
                 <div class="flex flex-col sm:flex-row gap-8 sm:gap-16">
                     <div class="sm:w-[95px] flex-shrink-0" style="height: auto">
-                        <div class="sm:top-32">
+                        <div class="relative">
                             <div class="flex gap-4 items-start text-xs sm:text-sm relative after:content-[''] after:hidden sm:after:block after:absolute after:right-[-35px] after:top-[-97px] after:w-[1px] after:h-[3350%] after:bg-white/5">
                                 <span class="text-neon">03</span>
                                 <span>Skills</span>
@@ -508,7 +551,7 @@
                                 <div class="skill-name text-4xl lg:text-6xl font-medium cursor-pointer sm:cursor-default">
                                     CHARACTER <span class="hidden sm:inline">DESIGN</span>
                                 </div>
-                                <div class="skill-desc text-sm text-white">Advanced beginner level artist, being able to understand basic postures and proportions</div>
+                                <div class="skill-desc text-sm text-white">Advanced beginner level illustrator, being able to understand basic postures and proportions</div>
                             </div>
                         </div>
                     </div>
@@ -629,219 +672,143 @@
         </footer>
 
         <script>
-        document.addEventListener('mousemove', (e) => {
-            if (window.innerWidth > 768) {
-                const circularText = document.querySelector('.circular-text');
-                circularText.style.left = e.clientX + 'px';
-                circularText.style.top = e.clientY + 'px';
-            }
-        });
+        // Global variables
+        let scrollDirection = 'none';
+        let scrollTimeout;
+        let updateWordsFunction;
 
-        // Loading screen and content animations
-        window.addEventListener('load', () => {
-            const loadingScreen = document.querySelector('.loading-screen');
-            const mainContent = document.querySelector('.main-content');
+        document.addEventListener('DOMContentLoaded', () => {
+            // Loading screen animation
+            setTimeout(() => {
+                document.querySelector('.loading-screen').classList.add('hide');
+                document.querySelector('.main-content').classList.add('show');
+            }, 1000);
+
+            // Circular text following mouse
+            document.addEventListener('mousemove', (e) => {
+                if (window.innerWidth > 768) {
+                    const circularText = document.querySelector('.circular-text');
+                    circularText.style.left = e.clientX + 'px';
+                    circularText.style.top = e.clientY + 'px';
+                }
+            });
+
+            // Animate content sections on scroll
             const contentSections = document.querySelectorAll('.content-section');
-            
-            if (performance.navigation.type === 1 || !localStorage.getItem('hasVisited')) {
-                setTimeout(() => {
-                    loadingScreen.classList.add('hide');
-                    mainContent.classList.add('show');
-                    setTimeout(() => {
-                        contentSections.forEach((section, index) => {
-                            setTimeout(() => {
-                                section.classList.add('show');
-                            }, index * 200);
-                        });
-                    }, 1000);
-                    localStorage.setItem('hasVisited', 'true');
-                }, 4000);
-            } else {
-                loadingScreen.style.display = 'none';
-                mainContent.classList.add('show');
-                contentSections.forEach(section => section.classList.add('show'));
-            }
-            
-            // Initialize skill item click handlers
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            contentSections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Skill item interaction
+            const skillItems = document.querySelectorAll('.skill-item');
             const skillNames = document.querySelectorAll('.skill-name');
-            
+            const skillDescs = document.querySelectorAll('.skill-desc');
+
             // Function to handle skill item clicks
             function handleSkillClick(element) {
-                const skillItem = element.closest('.skill-item');
-                const skillName = skillItem.querySelector('.skill-name');
-                const skillDesc = skillItem.querySelector('.skill-desc');
-                
-                // Check if this item is already active (description is visible)
-                const isActive = skillDesc.style.visibility === 'visible';
-                
-                // First, hide all descriptions and show all names
-                document.querySelectorAll('.skill-item').forEach(item => {
-                    const name = item.querySelector('.skill-name');
-                    const desc = item.querySelector('.skill-desc');
-                    
-                    name.style.visibility = 'visible';
-                    name.style.opacity = '1';
-                    
-                    desc.style.visibility = 'hidden';
-                    desc.style.opacity = '0';
+                // Reset all skill items
+                skillItems.forEach(item => {
+                    item.classList.remove('active');
                 });
                 
-                // If this item was already active, we're done (it's now reset)
-                // If not, toggle this item to show its description
-                if (!isActive) {
-                    skillName.style.visibility = 'hidden';
-                    skillName.style.opacity = '0';
-                    
-                    skillDesc.style.visibility = 'visible';
-                    skillDesc.style.opacity = '1';
-                    // The color is set in CSS via media query, no need to set it here
+                // Toggle active state
+                if (element.classList.contains('skill-item')) {
+                    element.classList.add('active');
+                } else {
+                    // If clicking on child element, find parent skill-item
+                    const parentItem = element.closest('.skill-item');
+                    if (parentItem) {
+                        parentItem.classList.add('active');
+                    }
                 }
             }
             
             // Add click handlers to all skill names and descriptions on mobile
             if (window.innerWidth < 640) {
-                // Add click handlers to skill names
-                skillNames.forEach(skillName => {
-                    skillName.addEventListener('click', function() {
-                        handleSkillClick(this);
-                    });
-                });
-                
-                // Add click handlers to skill descriptions
-                const skillDescs = document.querySelectorAll('.skill-desc');
-                skillDescs.forEach(skillDesc => {
-                    skillDesc.addEventListener('click', function() {
-                        handleSkillClick(this);
-                    });
-                });
-            }
-            
-            // Re-initialize skill item click handlers on resize
-            window.addEventListener('resize', () => {
-                const skillNames = document.querySelectorAll('.skill-name');
-                const skillDescs = document.querySelectorAll('.skill-desc');
-                
-                // Remove existing click handlers by cloning
-                skillNames.forEach(skillName => {
-                    skillName.replaceWith(skillName.cloneNode(true));
-                });
-                
-                skillDescs.forEach(skillDesc => {
-                    skillDesc.replaceWith(skillDesc.cloneNode(true));
-                });
-                
-                // Reset styles for desktop view
-                if (window.innerWidth >= 640) {
-                    // Desktop view - make sure all elements are visible
-                    skillNames.forEach(name => {
-                        name.style.visibility = 'visible';
-                        name.style.opacity = '1';
-                    });
+                skillItems.forEach(item => {
+                    const skillName = item.querySelector('.skill-name');
+                    const skillDesc = item.querySelector('.skill-desc');
                     
-                    skillDescs.forEach(desc => {
-                        desc.style.visibility = 'visible';
-                        desc.style.opacity = '1';
-                        desc.style.fontSize = '';
-                    });
-                } else {
-                    // Mobile view - add click handlers
-                    document.querySelectorAll('.skill-name').forEach(skillName => {
-                        skillName.addEventListener('click', function() {
-                            handleSkillClick(this);
+                    // Add click handler to skill name
+                    skillName.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        
+                        // Remove active class from all other items
+                        skillItems.forEach(otherItem => {
+                            if (otherItem !== item) {
+                                otherItem.classList.remove('active');
+                            }
                         });
+                        
+                        // Toggle active class on clicked item
+                        item.classList.toggle('active');
                     });
-                    
-                    document.querySelectorAll('.skill-desc').forEach(skillDesc => {
-                        skillDesc.addEventListener('click', function() {
-                            handleSkillClick(this);
-                        });
-                    });
-                    
-                    // Initially hide all descriptions on mobile
-                    skillDescs.forEach(desc => {
-                        desc.style.visibility = 'hidden';
-                        desc.style.opacity = '0';
-                    });
-                }
-            });
 
-            window.addEventListener('resize', updateWords);
-            
-            // Initial setup - ensure descriptions are visible on desktop
-            if (window.innerWidth >= 640) {
-                const skillDescs = document.querySelectorAll('.skill-desc');
-                skillDescs.forEach(desc => {
-                    desc.style.visibility = 'visible';
-                    desc.style.opacity = '1';
+                    // Add click handler to skill description
+                    skillDesc.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        item.classList.remove('active'); // Remove active class to show skill name
+                    });
                 });
             }
-            
+
             // Text reveal animation
             const revealTexts = document.querySelectorAll('.reveal-text');
-            let lastScrollY = window.scrollY;
-            let scrollDirection = 'none';
-            let scrollTimeout;
+            let allWords = [];
             
-            // Split text into words
-            revealTexts.forEach(text => {
-                const words = text.textContent.trim().split(/\s+/);
-                text.textContent = '';
+            revealTexts.forEach(revealText => {
+                const text = revealText.textContent;
+                revealText.textContent = '';
+                
+                const words = text.split(' ');
                 words.forEach(word => {
                     const span = document.createElement('span');
                     span.textContent = word;
-                    span.className = 'word';
-                    text.appendChild(span);
+                    span.classList.add('word');
+                    revealText.appendChild(span);
+                    allWords.push(span);
                 });
             });
-
+            
             // Check if word is in middle of viewport with offset
             function getWordPosition(element) {
                 const rect = element.getBoundingClientRect();
                 const windowHeight = window.innerHeight;
-                const revealPoint = windowHeight * 0.90; // Changed from 0.85 to 0.90 (further down)
-                return {
-                    distance: Math.abs(rect.top + rect.height / 2 - revealPoint),
-                    isAboveMiddle: rect.top + rect.height / 2 < revealPoint
-                };
+                const threshold = windowHeight * 0.8; // Increased to 80% of viewport height
+                
+                // Reveal text when it enters the top 20% or bottom 20% of viewport
+                return (rect.top < threshold && rect.bottom > windowHeight * 0.2);
             }
-
+            
             // Update words based on scroll position and proximity
             function updateWords() {
-                const currentScrollY = window.scrollY;
-                const newDirection = currentScrollY > lastScrollY ? 'down' : 'up';
-                const viewportRevealPoint = window.innerHeight * 0.90; // Changed from 0.85 to 0.90 (further down)
-                const triggerRange = 100; // Distance from middle where words start to reveal
-
-                revealTexts.forEach(text => {
-                    const words = Array.from(text.querySelectorAll('.word'));
-                    const visibleWords = words.filter(word => {
-                        const rect = word.getBoundingClientRect();
-                        const wordMiddle = rect.top + (rect.height / 2);
-                        const distanceFromRevealPoint = Math.abs(wordMiddle - viewportRevealPoint);
-                        return distanceFromRevealPoint < triggerRange;
-                    });
-
-                    if (newDirection === 'down') {
-                        visibleWords.forEach((word, index) => {
-                            const rect = word.getBoundingClientRect();
-                            const wordMiddle = rect.top + (rect.height / 2);
-                            if (wordMiddle <= viewportRevealPoint) {
-                                setTimeout(() => word.classList.add('revealed'), index * 100);
-                            }
-                        });
+                allWords.forEach(word => {
+                    if (getWordPosition(word)) {
+                        word.classList.add('revealed');
                     } else {
-                        [...visibleWords].reverse().forEach((word, index) => {
-                            const rect = word.getBoundingClientRect();
-                            const wordMiddle = rect.top + (rect.height / 2);
-                            if (wordMiddle > viewportRevealPoint) {
-                                setTimeout(() => word.classList.remove('revealed'), index * 100);
-                            }
-                        });
+                        word.classList.remove('revealed');
                     }
                 });
-
-                lastScrollY = currentScrollY;
+                
+                // Update the content sections reveal threshold
+                contentSections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top < window.innerHeight * 0.9 && rect.bottom > 0) {
+                        section.classList.add('show');
+                    }
+                });
             }
+            
+            // Store updateWords function in global scope for Lenis to use
+            updateWordsFunction = updateWords;
 
             // Scroll event handler with debounce
             window.addEventListener('scroll', () => {
@@ -857,6 +824,62 @@
             
             // Initial check
             updateWords();
+
+            // Initialize Lenis for smooth scrolling
+            const lenis = new Lenis({
+                duration: 1.5,
+                easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)), // Exponential easing out - similar to charlieosborne.co
+                orientation: 'vertical',
+                gestureOrientation: 'vertical',
+                smoothWheel: true,
+                smoothTouch: false,
+                touchMultiplier: 1.5,
+                infinite: false,
+                wheelMultiplier: 1.0,
+                lerp: 0.1, // Linear interpolation for smoother start/stop
+            });
+
+            // Get scroll direction for potential use
+            lenis.on('scroll', ({ scroll, limit, velocity, direction, progress }) => {
+                scrollDirection = direction === 1 ? 'down' : 'up';
+                updateWords();
+                
+                // Add a scroll progress class to body for potential animations
+                const scrollProgress = scroll / limit;
+                document.body.style.setProperty('--scroll-progress', scrollProgress);
+            });
+
+            // RAF loop for smooth animation
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+            
+            // Start the animation loop
+            requestAnimationFrame(raf);
+            
+            // Handle anchor links with smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        lenis.scrollTo(targetElement, {
+                            offset: 0,
+                            duration: 1.5,
+                            easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t))
+                        });
+                    }
+                });
+            });
+            
+            // Stop scrolling when user interacts with certain elements
+            document.querySelectorAll('[data-lenis-prevent]').forEach(element => {
+                element.setAttribute('data-lenis-prevent', '');
+            });
         });
         </script>
 </body>
