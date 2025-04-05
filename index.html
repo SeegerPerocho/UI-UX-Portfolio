@@ -312,6 +312,85 @@
         .lenis.lenis-scrolling iframe {
             pointer-events: none;
         }
+
+        /* Add these styles to your existing <style> section */
+        .work-item {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .view-more-btn {
+            position: absolute;
+            background-color: #C4FF0F;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            pointer-events: auto;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.062);
+        }
+
+        .view-more-btn::after {
+            content: '';
+            width: 16px;
+            height: 16px;
+            background-image: url('img/arrow.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        /* Mobile styles */
+        @media (max-width: 639px) {
+            .view-more-btn {
+                top: 20px; /* Position from top */
+                right: 20px; /* Position from right */
+                left: auto; /* Remove left positioning */
+                bottom: auto; /* Remove bottom positioning */
+                transform: none; /* Remove transform */
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+                opacity: 1;
+            }
+
+            .view-more-btn::after {
+                width: 10px;
+                height: 10px;
+            }
+        }
+
+        /* Desktop styles */
+        @media (min-width: 640px) {
+            .view-more-btn {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(0.9);
+                opacity: 0;
+            }
+
+            .work-item:hover .view-more-btn {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .view-more-btn:hover {
+            background-color: white;
+        }
+
+        .work-item img {
+            transition: filter 0.3s ease;
+        }
+
+        .work-item:hover img {
+            filter: brightness(0.5);
+        }
     </style>
 </head>
 <body class="min-h-screen bg-[#181B1D] text-white font-neue overflow-x-hidden [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
@@ -397,16 +476,19 @@
                 <div class="space-y-24 sm:space-y-32 flex-1">
                     <!-- StackedAI -->
                     <div class="space-y-6 sm:space-y-8">
-                        <div class="pl-4 sm:pl-6 mb-6 sm:mb-8">
-                            <div class="flex items-center gap-2 sm:gap-4 text-xs sm:text-sm mb-3 sm:mb-4">
+                        <div class="pl-4 mb-6">
+                            <div class="flex items-center gap-4 text-sm mb-4">
                                 <span>UI/UX</span>
                                 <span>•</span>
                                 <span>2025</span>
                             </div>
-                            <h3 class="text-2xl sm:text-3xl mb-3 sm:mb-4">StackedAI</h3>
-                            <p class="opacity-50 max-w-lg text-sm sm:text-base">A chatbot that uses natural language processing to create humanlike conversational dialogue.</p>
+                            <h3 class="text-3xl mb-4">StackedAI</h3>
+                            <p class="opacity-50 mb-20 max-w-lg">A chatbot that uses natural language processing to create humanlike conversational dialogue.</p>
                         </div>
-                        <img src="img/stackedAI2.png" alt="StackedAI Preview" class="w-full rounded-lg">
+                        <div class="work-item">
+                            <img src="img/stackedAI2.png" alt="StackedAI Preview" class="w-full rounded-lg">
+                            <div class="view-more-btn"></div>
+                        </div>
                     </div>
                     
                      <!-- BagoScout -->
@@ -422,7 +504,10 @@
 
                             </p>
                         </div>
-                        <img src="img/bagoscout2.png" alt="StackedAI Preview" class="w-full rounded-lg">
+                        <div class="work-item">
+                            <img src="img/bagoscout2.png" alt="StackedAI Preview" class="w-full rounded-lg">
+                            <div class="view-more-btn"></div>
+                        </div>
                     </div>
 
                     <!-- Keira -->
@@ -436,7 +521,10 @@
                             <h3 class="text-3xl mb-4">Keira</h3>
                             <p class="opacity-50 max-w-lg">A clean, modern, and elegant E-Commerce website for clothing and apparel.</p>
                         </div>
-                        <img src="img/keira.png" alt="Keira Preview" class="w-full rounded-lg">
+                        <div class="work-item">
+                            <img src="img/keira.png" alt="Keira Preview" class="w-full rounded-lg">
+                            <div class="view-more-btn"></div>
+                        </div>
                     </div>
 
                     <!-- Animeal -->
@@ -450,8 +538,13 @@
                             <h3 class="text-3xl mb-4">ANIMEAL</h3>
                             <p class="opacity-50 max-w-lg">A gaming news center focused to provide information. Discussion within the community of anime fanatics.</p>
                         </div>
-                        <img src="img/animealweb2.png" alt="Animeal Preview" class="w-full rounded-lg">
+                        <div class="work-item">
+                            <img src="img/animealweb2.png" alt="Animeal Preview" class="w-full rounded-lg">
+                            <div class="view-more-btn"></div>
+                        </div>
                     </div>
+
+                    <!-- Cycle -->
                     <div class="space-y-6">
                         <div class="pl-4 mb-6">
                             <div class="flex items-center gap-4 text-sm mb-4">
@@ -462,8 +555,12 @@
                             <h3 class="text-3xl mb-4">Cycle</h3>
                             <p class="opacity-50 max-w-lg">An E-Commerce website that sells quality brand bicycles.</p>
                         </div>
-                        <img src="img/cycle2.png" alt="StackedAI Preview" class="w-full rounded-lg">
+                        <div class="work-item">
+                            <img src="img/cycle2.png" alt="Cycle Preview" class="w-full rounded-lg">
+                            <div class="view-more-btn"></div>
+                        </div>
                     </div>
+
                     <!-- KITTY -->
                     <div class="space-y-6">
                         <div class="pl-4 mb-6">
@@ -475,7 +572,10 @@
                             <h3 class="text-3xl mb-4">KITTY.</h3>
                             <p class="opacity-50 max-w-lg">An online store for everything that your lovely pets may need.</p>
                         </div>
-                        <img src="img/kitty2.png" alt="KITTY Preview" class="w-full rounded-lg">
+                        <div class="work-item">
+                            <img src="img/kitty2.png" alt="KITTY Preview" class="w-full rounded-lg">
+                            <div class="view-more-btn"></div>
+                        </div>
                     </div>
 
                     <!-- Rave -->
@@ -489,7 +589,10 @@
                             <h3 class="text-3xl mb-4">Rave</h3>
                             <p class="opacity-50 max-w-lg">Rave is an innovative music platform designed to connect people with personalized listening without boundaries. Play music & anywhere.</p>
                         </div>
-                        <img src="img/rave.png" alt="Rave Preview" class="w-full rounded-lg">
+                        <div class="work-item">
+                            <img src="img/rave.png" alt="Rave Preview" class="w-full rounded-lg">
+                            <div class="view-more-btn"></div>
+                        </div>
                     </div>
                 </div>
                 </div>
