@@ -132,20 +132,12 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 1s ease;
-            background-size: 150% 150%;
-            animation: slideBackground 20s ease-in-out infinite alternate;
+            background-size: cover;  /* Changed from 150% 150% */
+            background-position: center;  /* Added for proper positioning */
         }
         .content-section.show {
             opacity: 1;
             transform: translateY(0);
-        }
-        @keyframes slideBackground {
-            from {
-                background-position: 0 0;
-            }
-            to {
-                background-position: 100% 100%;
-            }
         }
         .reveal-text .word {
             display: inline-block;
