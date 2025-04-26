@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StackedAI - Seeger Perocho</title>
+    <link rel="icon" href="img/logowhite.png" type="image/x-icon">
+    <link href="https://fonts.cdnfonts.com/css/neue-haas-grotesk-display-pro" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'neue': ['Neue Haas Grotesk Display Pro', 'sans-serif'],
+                    },
+                    colors: {
+                        'neon': '#C4FF0F',
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #181B1D;
+            color: white;
+            font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
+        }
+
+        .nav-container {
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 50px;
+            border: 1px solid #252A2D;
+            padding: 10px 12px;
+            display: inline-flex;
+            gap: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 11px;
+            padding: 8px 16px;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: #C4FF0F;
+        }
+
+        .contact-btn {
+            background: #C4FF0F;
+            color: black;
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background-color: white;
+            color: black;
+        }
+
+        @media (min-width: 768px) {
+            .nav-link {
+                font-size: 13px;
+            }
+        }
+
+        .section-title {
+            color: #666;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            position: relative;
+            padding-bottom: 16px;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 64px;
+            padding-bottom: 48px;
+            margin-bottom: 48px;
+        }
+
+        .info-grid > div {
+            width: 100%;
+        }
+
+        .case-study-image {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-top: 32px;
+        }
+
+        .project-title {
+            font-size: 64px;
+            font-weight: 500;
+            margin-bottom: 64px;
+            letter-spacing: -1px;
+        }
+
+        .case-study-title {
+            font-size: 14px;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 16px;
+            margin-bottom: 32px;
+            display: block;
+        }
+
+        .case-study-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Fade-in Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Delay the fade-in for different elements */
+        .project-title {
+            transition-delay: 0.2s;
+        }
+
+        .info-grid {
+            transition-delay: 0.4s;
+        }
+
+        .case-study-title {
+            transition-delay: 0.5s;
+        }
+
+        .case-study-content {
+            transition-delay: 0.6s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="fixed top-6 left-0 right-0 flex justify-center z-[999]">
+        <nav class="nav-container">
+            <a href="../index.html#about" class="nav-link">ABOUT</a>
+            <a href="../index.html#works" class="nav-link">WORKS</a>
+            <a href="../index.html#skills" class="nav-link">SKILLS</a>
+            <a href="../index.html#contact" class="nav-link contact-btn">CONTACT</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 max-w-6xl pt-32">
+        <h1 class="project-title fade-in">StackedAI</h1>
+
+        <!-- Project Info Grid -->
+        <div class="info-grid fade-in">
+            <div>
+                <h2 class="section-title">ROLE / SERVICES</h2>
+                <p>UI & UX Designer</p>
+            </div>
+            <div>
+                <h2 class="section-title">CREDITS</h2>
+                <p>---</p>
+                <p>---</p>
+            </div>
+            <div>
+                <h2 class="section-title">LOCATION & YEAR</h2>
+                <p>Philippines © 2024</p>
+            </div>
+        </div>
+
+        <!-- Case Study -->
+        <div>
+            <h2 class="case-study-title fade-in">CASE STUDY</h2>
+            <div class="case-study-content fade-in">
+                <img src="img/stackedAI2.png" alt="StackedAI Platform" class="case-study-image">
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Add scroll behavior for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Trigger fade-in animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add visible class to fade-in elements after a short delay
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(element => {
+                    element.classList.add('visible');
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>
