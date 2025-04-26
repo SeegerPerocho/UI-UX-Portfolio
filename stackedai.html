@@ -7,6 +7,7 @@
     <link rel="icon" href="img/logowhite.png" type="image/x-icon">
     <link href="https://fonts.cdnfonts.com/css/neue-haas-grotesk-display-pro" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lenis@1.2.3/dist/lenis.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -22,6 +23,28 @@
         }
     </script>
     <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 0;
+            background: transparent;
+        }
+
+        /* Fix for mobile extra width */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             background-color: #181B1D;
             color: white;
@@ -218,6 +241,47 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+            });
+        });
+
+        // Initialize Lenis for smooth scrolling
+        const lenis = new Lenis({
+            duration: 1.5,
+            easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
+            orientation: 'vertical',
+            gestureOrientation: 'vertical',
+            smoothWheel: true,
+            smoothTouch: false,
+            touchMultiplier: 1.5,
+            infinite: false,
+            wheelMultiplier: 1.0,
+            lerp: 0.1,
+        });
+
+        // RAF loop for smooth animation
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        
+        // Start the animation loop
+        requestAnimationFrame(raf);
+
+        // Handle anchor links with smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    lenis.scrollTo(targetElement, {
+                        offset: 0,
+                        duration: 1.5,
+                        easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t))
+                    });
+                }
             });
         });
 
