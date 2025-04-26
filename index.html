@@ -393,12 +393,41 @@
         .work-item:hover img {
             filter: brightness(0.5);
         }
+
+        /* Page Transition Effect */
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #181B1D;
+            z-index: 9999;
+            transform: translateX(100%);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .page-transition.active {
+            transform: translateX(0);
+        }
+
+        .page-transition.bounce {
+            animation: bounce 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-20px); }
+        }
     </style>
 </head>
 <body class="min-h-screen bg-[#181B1D] text-white font-neue overflow-x-hidden [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
     <div class="loading-screen">
         <img src="img/logowhite.png" alt="Logo">
     </div>
+
+    <!-- Add page transition overlay -->
+    <div class="page-transition"></div>
 
     <div class="main-content">
         <div class="circular-text">
@@ -489,7 +518,7 @@
                         </div>
                         <div class="work-item">
                             <img src="img/stackedAI2.png" alt="StackedAI Preview" class="w-full rounded-lg">
-                            <div class="view-more-btn"></div>
+                            <a href="stackedai.html"><div class="view-more-btn"></div></a>
                         </div>
                     </div>
                     
@@ -788,6 +817,30 @@
                 document.querySelector('.loading-screen').classList.add('hide');
                 document.querySelector('.main-content').classList.add('show');
             }, 1000);
+
+            // Handle page transitions
+            const pageTransition = document.querySelector('.page-transition');
+            const viewMoreButtons = document.querySelectorAll('.view-more-btn');
+
+            viewMoreButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const link = button.closest('a').getAttribute('href');
+                    
+                    // Activate transition
+                    pageTransition.classList.add('active');
+                    
+                    // Add bounce effect
+                    setTimeout(() => {
+                        pageTransition.classList.add('bounce');
+                    }, 300);
+                    
+                    // Navigate after animation
+                    setTimeout(() => {
+                        window.location.href = link;
+                    }, 800);
+                });
+            });
 
             // Circular text following mouse
             document.addEventListener('mousemove', (e) => {
