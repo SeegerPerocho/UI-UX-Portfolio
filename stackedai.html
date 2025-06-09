@@ -31,7 +31,7 @@
             transform: translate(-50%, -50%);
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(8px);
-            padding: 24px 32px;
+            padding: 32px;
             border-radius: 16px;
             box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
             z-index: 1000;
@@ -39,6 +39,10 @@
             visibility: hidden;
             transition: all 0.3s ease;
             border: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
         }
 
         .success-popup.show {
@@ -46,9 +50,15 @@
             visibility: visible;
         }
 
+        .success-popup video {
+            width: 64px;
+            height: 64px;
+        }
+
         .success-popup p {
             color: #1c1d20;
             font-size: 16px;
+            font-weight: 500;
             text-align: center;
             margin: 0;
         }
@@ -333,47 +343,15 @@
             border-color: #C4FF0F;
             transform: translateY(-2px);
         }
-
-        /* Add styles for success popup */
-        .success-popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
-            padding: 24px 32px;
-            border-radius: 16px;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid #e5e7eb;
-        }
-
-        .success-popup.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .success-popup p {
-            color: #1c1d20;
-            font-size: 16px;
-            text-align: center;
-            margin: 0;
-        }
     </style>
 </head>
 <body>
     <!-- Success Popup -->
     <div id="successPopup" class="success-popup">
-        <p>Your message has been received, we'll get to you soon.</p>
-    </div>
-
-    <!-- Success Popup -->
-    <div id="successPopup" class="success-popup">
-        <p>Your message has been received, we'll get to you soon.</p>
+        <video autoplay loop muted playsinline>
+            <source src="img/success.webm" type="video/webm">
+        </video>
+        <p>Mail sent</p>
     </div>
 
     <!-- Scroll to top button -->
