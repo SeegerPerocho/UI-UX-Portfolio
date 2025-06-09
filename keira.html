@@ -46,24 +46,24 @@
         }
 
         body {
-            background-color: #181B1D;
-            color: white;
+            background-color: #ffffff;
+            color: #1c1d20;
             font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
         }
 
         .nav-container {
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(8px);
             border-radius: 50px;
-            border: 1px solid #252A2D;
+            border: 1px solid #e5e7eb;
             padding: 10px 12px;
             display: inline-flex;
             gap: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
         .nav-link {
-            color: white;
+            color: #1c1d20;
             text-decoration: none;
             font-size: 11px;
             padding: 8px 16px;
@@ -98,7 +98,7 @@
         }
 
         .section-title {
-            color: #666;
+            color: #4b4c4f;
             font-size: 14px;
             font-weight: 500;
             margin-bottom: 8px;
@@ -114,7 +114,7 @@
             left: 0;
             width: 100%;
             height: 1px;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(28, 29, 32, 0.1);
         }
 
         .info-grid {
@@ -144,6 +144,7 @@
         }
 
         .case-study-title {
+            color: #1c1d20;
             font-size: 14px;
             font-weight: 500;
             position: relative;
@@ -159,7 +160,7 @@
             left: 0;
             width: 100%;
             height: 1px;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(28, 29, 32, 0.1);
         }
 
         /* Fade-in Animation */
@@ -195,10 +196,10 @@
 <body>
     <!-- Navigation -->
     <div class="fixed top-6 left-0 right-0 flex justify-center z-[999]">
-        <nav class="flex justify-center items-center bg-black/90 md:bg-black/85 backdrop-blur-sm shadow-lg rounded-full px-3 md:px-3 py-2.5 md:py-2 gap-2 md:gap-3 border-[1px] border-[#252A2D]">
-            <a href="../index.html#about" class="uppercase tracking-wider font-medium text-[11px] md:text-[13px] px-2 md:px-4 py-1.5 md:py-2 transition-colors hover:text-neon">ABOUT</a>
-            <a href="../index.html#works" class="uppercase tracking-wider font-medium text-[11px] md:text-[13px] px-2 md:px-4 py-1.5 md:py-2 transition-colors hover:text-neon">WORKS</a>
-            <a href="../index.html#skills" class="uppercase tracking-wider font-medium text-[11px] md:text-[13px] px-2 md:px-4 py-1.5 md:py-2 transition-colors hover:text-neon">SKILLS</a>
+        <nav class="flex justify-center items-center bg-white/90 md:bg-white/85 backdrop-blur-sm shadow-lg rounded-full px-3 md:px-3 py-2.5 md:py-2 gap-2 md:gap-3 border-[1px] border-[#e5e7eb]">
+            <a href="../index.html#about" class="uppercase tracking-wider font-medium text-[11px] md:text-[13px] px-2 md:px-4 py-1.5 md:py-2 transition-colors hover:text-neon text-[#1c1d20]">ABOUT</a>
+            <a href="../index.html#works" class="uppercase tracking-wider font-medium text-[11px] md:text-[13px] px-2 md:px-4 py-1.5 md:py-2 transition-colors hover:text-neon text-[#1c1d20]">WORKS</a>
+            <a href="../index.html#skills" class="uppercase tracking-wider font-medium text-[11px] md:text-[13px] px-2 md:px-4 py-1.5 md:py-2 transition-colors hover:text-neon text-[#1c1d20]">SKILLS</a>
             <a href="../index.html#contact" class="bg-neon text-black px-4 md:px-6 py-1.5 md:py-2 rounded-full font-medium uppercase tracking-wider text-[11px] md:text-[13px] hover:bg-white transition-colors">CONTACT</a>
         </nav>
     </div>
@@ -229,7 +230,7 @@
             <h2 class="case-study-title fade-in">PREVIEW</h2>
             <div class="case-study-content fade-in w-screen relative left-1/2 right-1/2 -mx-[50vw] mb-32">
                 <div class="relative">
-                    <video class="w-full pointer-events-none opacity-55" autoplay loop muted playsinline>
+                    <video class="w-full pointer-events-none" autoplay loop muted playsinline>
                         <source src="img/keiravid.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
@@ -290,21 +291,21 @@
         </div>
     </main>
  <!-- Footer Section -->
- <footer id="contact" class="bg-[#111415] py-16 border-t border-white/5 mt-0">
+ <footer id="contact" class="bg-[#f8f9fa] py-16 border-t border-[#e5e7eb] mt-0">
     <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
             <!-- Logo and Tagline -->
             <div class="max-w-xs">
                 <div class="flex items-center mb-4">
                     <img src="img/logowhite.png" alt="Perocho Logo" class="h-6 mr-2">
-                    <div class="text-2xl font-medium">Seeger Perocho</div>
+                    <div class="text-2xl font-medium text-[#1c1d20]">Seeger Perocho</div>
                 </div>
-                <p class="opacity-50 text-sm">Creating meaningful digital experiences through thoughtful design and creative solutions.</p>
+                <p class="text-[#4b4c4f] text-sm">Creating meaningful digital experiences through thoughtful design and creative solutions.</p>
             </div>
 
             <!-- Contact Form -->
             <div class="max-w-md w-full">
-                <h3 class="text-lg font-medium mb-4">Get in Touch</h3>
+                <h3 class="text-lg font-medium mb-4 text-[#1c1d20]">Get in Touch</h3>
                 <form action="https://formsubmit.co/seegerperocho2@gmail.com" method="POST" class="space-y-3">
                     <!-- Honeypot -->
                     <input type="text" name="_honey" style="display:none">
@@ -317,17 +318,17 @@
                     
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
-                            <input type="text" id="name" name="name" placeholder="Name" required class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-neon transition-colors">
+                            <input type="text" id="name" name="name" placeholder="Name" required class="w-full bg-white border border-[#e5e7eb] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-neon transition-colors text-[#1c1d20]">
                         </div>
                         <div>
-                            <input type="email" id="email" name="email" placeholder="Email" required class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-neon transition-colors">
+                            <input type="email" id="email" name="email" placeholder="Email" required class="w-full bg-white border border-[#e5e7eb] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-neon transition-colors text-[#1c1d20]">
                         </div>
                     </div>
                     <div>
-                        <input type="text" id="subject" name="subject" placeholder="Subject" required class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-neon transition-colors">
+                        <input type="text" id="subject" name="subject" placeholder="Subject" required class="w-full bg-white border border-[#e5e7eb] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-neon transition-colors text-[#1c1d20]">
                     </div>
                     <div>
-                        <textarea id="message" name="message" rows="3" placeholder="Message" required class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-neon transition-colors"></textarea>
+                        <textarea id="message" name="message" rows="3" placeholder="Message" required class="w-full bg-white border border-[#e5e7eb] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-neon transition-colors text-[#1c1d20]"></textarea>
                     </div>
                     <div class="flex items-center justify-end">
                         <button type="submit" class="bg-neon text-black font-medium px-4 py-2 text-sm rounded-lg hover:bg-[#d8ff5a] transition-colors">Send Message</button>
@@ -336,48 +337,48 @@
             </div>
         </div>
 
-        <div class="mt-16 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center">
+        <div class="mt-16 pt-8 border-t border-[#e5e7eb] flex flex-col sm:flex-row justify-between items-center">
             <!-- Quick Links -->
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-8">
                 <div>
-                    <h4 class="text-lg mb-4">Navigation</h4>
-                    <ul class="space-y-2 opacity-70">
+                    <h4 class="text-lg mb-4 text-[#1c1d20]">Navigation</h4>
+                    <ul class="space-y-2 text-[#4b4c4f]">
                         <li><a href="#about" class="hover:text-neon transition-colors">About</a></li>
                         <li><a href="#works" class="hover:text-neon transition-colors">Works</a></li>
                         <li><a href="#skills" class="hover:text-neon transition-colors">Skills</a></li>
                     </ul>
                 </div>
                 <div class="pr-4">
-                    <h4 class="text-lg mb-4">Contact</h4>
-                    <ul class="space-y-2 opacity-70">
+                    <h4 class="text-lg mb-4 text-[#1c1d20]">Contact</h4>
+                    <ul class="space-y-2 text-[#4b4c4f]">
                         <li><a href="mailto:seegerperocho2@gmail.com" class="hover:text-neon transition-colors text-sm sm:text-base break-words">seegerperocho2@gmail.com</a></li>
                         <li><a href="tel:+639272770032" class="hover:text-neon transition-colors">+639 272 770 032</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-lg mb-4">Social</h4>
+                    <h4 class="text-lg mb-4 text-[#1c1d20]">Social</h4>
                     <div class="flex gap-4">
-                        <!-- Facebook -->
-                        <a href="https://facebook.com/" class="w-10 h-10 flex items-center justify-center bg-white/5 rounded-full hover:bg-neon hover:text-black transition-all">
+                        <!-- Social icons with updated background -->
+                        <a href="https://facebook.com/" class="w-10 h-10 flex items-center justify-center bg-[#f1f2f4] text-[#1c1d20] rounded-full hover:bg-neon hover:text-black transition-all">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                             </svg>
                         </a>
                         <!-- Twitter -->
-                        <a href="https://twitter.com/" class="w-10 h-10 flex items-center justify-center bg-white/5 rounded-full hover:bg-neon hover:text-black transition-all">
+                        <a href="https://twitter.com/" class="w-10 h-10 flex items-center justify-center bg-[#f1f2f4] text-[#1c1d20] rounded-full hover:bg-neon hover:text-black transition-all">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M6 4l12 16M6 20L18 4"/>
                             </svg>
                         </a>
                         <!-- Dribbble -->
-                        <a href="https://dribbble.com/" class="w-10 h-10 flex items-center justify-center bg-white/5 rounded-full hover:bg-neon hover:text-black transition-all">
+                        <a href="https://dribbble.com/" class="w-10 h-10 flex items-center justify-center bg-[#f1f2f4] text-[#1c1d20] rounded-full hover:bg-neon hover:text-black transition-all">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"></path>
                             </svg>
                         </a>
                         <!-- Instagram -->
-                        <a href="https://instagram.com/" class="w-10 h-10 flex items-center justify-center bg-white/5 rounded-full hover:bg-neon hover:text-black transition-all">
+                        <a href="https://instagram.com/" class="w-10 h-10 flex items-center justify-center bg-[#f1f2f4] text-[#1c1d20] rounded-full hover:bg-neon hover:text-black transition-all">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -390,12 +391,12 @@
         </div>
 
         <!-- Copyright -->
-        <div class="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center">
-            <div class="text-sm opacity-50">&copy; 2025 Seeger Perocho. All rights reserved.</div>
+        <div class="mt-12 pt-8 border-t border-[#e5e7eb] flex flex-col sm:flex-row justify-between items-center">
+            <div class="text-sm text-[#4b4c4f]">&copy; 2025 Seeger Perocho. All rights reserved.</div>
             <div class="text-sm mt-4 sm:mt-0">
-                <a href="#" class="opacity-50 hover:opacity-100 hover:text-neon transition-all">Privacy Policy</a>
-                <span class="mx-2 opacity-50">|</span>
-                <a href="#" class="opacity-50 hover:opacity-100 hover:text-neon transition-all">Terms of Service</a>
+                <a href="#" class="text-[#4b4c4f] hover:text-neon transition-all">Privacy Policy</a>
+                <span class="mx-2 text-[#4b4c4f]">|</span>
+                <a href="#" class="text-[#4b4c4f] hover:text-neon transition-all">Terms of Service</a>
             </div>
         </div>
     </div>
