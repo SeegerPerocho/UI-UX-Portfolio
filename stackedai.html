@@ -23,6 +23,36 @@
         }
     </script>
     <style>
+        /* Success Popup */
+        .success-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 24px 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+
+        .success-popup.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .success-popup p {
+            color: #1c1d20;
+            font-size: 16px;
+            text-align: center;
+            margin: 0;
+        }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 0;
@@ -303,9 +333,49 @@
             border-color: #C4FF0F;
             transform: translateY(-2px);
         }
+
+        /* Add styles for success popup */
+        .success-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 24px 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+
+        .success-popup.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .success-popup p {
+            color: #1c1d20;
+            font-size: 16px;
+            text-align: center;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
+    <!-- Success Popup -->
+    <div id="successPopup" class="success-popup">
+        <p>Your message has been received, we'll get to you soon.</p>
+    </div>
+
+    <!-- Success Popup -->
+    <div id="successPopup" class="success-popup">
+        <p>Your message has been received, we'll get to you soon.</p>
+    </div>
+
     <!-- Scroll to top button -->
     <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -426,7 +496,7 @@
             <!-- Contact Form -->
             <div class="max-w-md w-full">
                 <h3 class="text-lg font-medium mb-4 text-[#1c1d20]">Get in Touch</h3>
-                <form action="https://formsubmit.co/seegerperocho2@gmail.com" method="POST" class="space-y-3">
+                <form id="contactForm" action="https://formsubmit.co/seegerperocho2@gmail.com" method="POST" class="space-y-3">
                     <!-- Honeypot -->
                     <input type="text" name="_honey" style="display:none">
                     
@@ -523,6 +593,32 @@
 </footer>
 
     <script>
+        // Handle form submission with success message
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get the return URL from the form
+            const returnUrl = this.querySelector('input[name="_next"]').value;
+            
+            // Submit the form data
+            fetch(this.action, {
+                method: 'POST',
+                body: new FormData(this)
+            }).then(() => {
+                // Show success popup
+                const popup = document.getElementById('successPopup');
+                popup.classList.add('show');
+                
+                // Reset form
+                this.reset();
+                
+                // Wait 3 seconds then redirect
+                setTimeout(() => {
+                    window.location.href = returnUrl;
+                }, 3000);
+            });
+        });
+
         // Add scroll behavior for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -602,6 +698,32 @@
                 duration: 1.5,
                 easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t))
             });
+        });
+
+        // Handle form submission
+        const contactForm = document.getElementById('contactForm');
+        const successPopup = document.getElementById('successPopup');
+        const returnUrl = contactForm.querySelector('input[name="_next"]').value;
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Submit the form data
+            await fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm)
+            });
+
+            // Show success popup
+            successPopup.classList.add('show');
+            
+            // Reset form
+            contactForm.reset();
+
+            // Wait 3 seconds then redirect
+            setTimeout(() => {
+                window.location.href = returnUrl;
+            }, 3000);
         });
     </script>
 </body>
