@@ -303,15 +303,63 @@
             border-color: #C4FF0F;
             transform: translateY(-2px);
         }
+
+        /* Success Popup */
+        .success-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .success-popup.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .success-popup video {
+            width: 64px;
+            height: 64px;
+        }
+
+        .success-popup p {
+            color: #1c1d20;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
-        <!-- Scroll to top button -->
-        <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 19V5M5 12l7-7 7 7"/>
-            </svg>
-        </button>
+    <!-- Success Popup -->
+    <div id="successPopup" class="success-popup">
+        <video autoplay muted playsinline>
+            <source src="img/success.webm" type="video/webm">
+        </video>
+        <p>Mail sent</p>
+    </div>
+
+    <!-- Scroll to top button -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+    </button>
     
     <!-- Navigation -->
     <div class="fixed top-6 left-0 right-0 flex justify-center z-[999]">
@@ -523,6 +571,32 @@
 </footer>
 
     <script>
+        // Handle form submission with success message
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get the return URL from the form
+            const returnUrl = this.querySelector('input[name="_next"]').value;
+            
+            // Submit the form data
+            fetch(this.action, {
+                method: 'POST',
+                body: new FormData(this)
+            }).then(() => {
+                // Show success popup
+                const popup = document.getElementById('successPopup');
+                popup.classList.add('show');
+                
+                // Reset form
+                this.reset();
+                
+                // Wait 3 seconds then redirect
+                setTimeout(() => {
+                    window.location.href = returnUrl;
+                }, 3000);
+            });
+        });
+
         // Add scroll behavior for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
