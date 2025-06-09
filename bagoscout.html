@@ -272,12 +272,50 @@
             font-size: 11px;
             padding: 6px 12px;
         }
+        
+        /* Add styles for scroll-to-top button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            border: 1px solid #e5e7eb;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            z-index: 999;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-to-top:hover {
+            background: #C4FF0F;
+            border-color: #C4FF0F;
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
+        <!-- Scroll to top button -->
+        <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 19V5M5 12l7-7 7 7"/>
+            </svg>
+        </button>
+    
     <!-- Navigation -->
     <div class="fixed top-6 left-0 right-0 flex justify-center z-[999]">
-        <nav class="nav-slide-down flex justify-center items-center bg-white/90 backdrop-blur-sm shadow-lg rounded-full px-3 py-2.5 border-[1px] border-[#e5e7eb]">
+        <nav class="nav-slide-down flex justify-center items-center bg-white/90 backdrop-blur-sm shadow-sm rounded-full px-3 py-2.5 border-[1px] border-[#e5e7eb]">
             <div class="nav-spread">
                 <a href="../index.html#about" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#111214] text-[#1c1d20]">ABOUT</a>
                 <a href="../index.html#works" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#111214] text-[#1c1d20]">WORKS</a>
@@ -313,7 +351,7 @@
             <h2 class="case-study-title fade-in">PREVIEW</h2>
             <div class="case-study-content fade-in w-screen relative left-1/2 right-1/2 -mx-[50vw] mb-32">
                 <div class="relative">
-                    <video class="w-full pointer-events-none brightness-[0.80]" autoplay loop muted playsinline>
+                    <video class="w-full pointer-events-none brightness-[0.85]" autoplay loop muted playsinline>
                         <source src="img/bagoscoutvid.mp4" type="video/mp4">
                     </video>
                     <div class="absolute inset-0 bg-black/30"></div>
@@ -334,14 +372,14 @@
         <div class="flex flex-row gap-8 mb-32 sm:mb-32 mb-24 justify-center px-8 md:px-16 lg:px-24">
             <div class="relative w-[40%] max-w-xs sm:w-[45%] w-[50%]">
                 <img src="img/stackedAImobileempty.png" alt="StackedAI Platform" class="w-full">
-                <video class="absolute inset-0 w-[83%] h-[82.5%] m-auto top-0 bottom-0 left-0 right-0 object-cover rounded-[9%]" autoplay loop muted playsinline>
+                <video class="absolute inset-0 w-[83%] h-[83%] m-auto top-0 bottom-0 left-0 right-0 object-cover rounded-[9%]" autoplay loop muted playsinline>
                     <source src="img/bagoscoutmobilevid.mp4" type="video/mp4">
                 </video>
             </div>
             
             <div class="relative w-[40%] max-w-xs sm:w-[45%] w-[50%]">
                 <img src="img/stackedAImobileempty2.png" alt="StackedAI Platform" class="w-full">
-                <video class="absolute inset-0 w-[83%] h-[82.5%] m-auto top-0 bottom-0 left-0 right-0 object-cover rounded-[9%]" autoplay loop muted playsinline>
+                <video class="absolute inset-0 w-[83%] h-[83%] m-auto top-0 bottom-0 left-0 right-0 object-cover rounded-[9%]" autoplay loop muted playsinline>
                     <source src="img/bagoscoutmobilevid2.mp4" type="video/mp4">
                 </video>
             </div>
@@ -544,6 +582,26 @@
                     element.classList.add('visible');
                 });
             }, 100);
+        });
+        
+        // Add scroll to top functionality
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        // Show/hide button based on scroll position
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        // Scroll to top when button is clicked
+        scrollToTopBtn.addEventListener('click', () => {
+            lenis.scrollTo(0, {
+                duration: 1.5,
+                easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t))
+            });
         });
     </script>
 </body>
