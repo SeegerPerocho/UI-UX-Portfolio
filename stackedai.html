@@ -348,9 +348,14 @@
 <body>
     <!-- Success Popup -->
     <div id="successPopup" class="success-popup">
-        <video autoplay loop muted playsinline>
-            <source src="img/success.webm" type="video/webm">
-        </video>
+        <dotlottie-player
+        src="https://lottie.host/7a9de315-0eef-4d18-b2ac-1140c7774e56/M8xG7jCnGI.lottie"
+        background="transparent"
+        speed="1"
+        style="width: 300px; height: 300px"
+        loop
+        autoplay
+      ></dotlottie-player>
         <p>Mail sent</p>
     </div>
 
@@ -571,6 +576,9 @@
 </footer>
 
     <script>
+        
+  src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+  type="module">
         // Handle form submission with success message
         document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
