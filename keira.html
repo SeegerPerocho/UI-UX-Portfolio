@@ -98,7 +98,7 @@
         }
 
         .section-title {
-            color: #4b4c4f;
+            color: #4b4c4f86;
             font-size: 14px;
             font-weight: 500;
             margin-bottom: 8px;
@@ -191,16 +191,99 @@
         .case-study-content {
             transition-delay: 0.6s;
         }
+
+        /* Update the animation styles */
+        @keyframes slideDown {
+            0% {
+                transform: translateY(-100%);
+                width: 55px;
+            }
+            60% {
+                transform: translateY(0);
+                width: 55px;
+            }
+            100% {
+                transform: translateY(0);
+                width: 340px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            @keyframes slideDown {
+                0% {
+                    transform: translateY(-100%);
+                    width: 55px;
+                }
+                60% {
+                    transform: translateY(0);
+                    width: 55px;
+                }
+                100% {
+                    transform: translateY(0);
+                    width: 90vw;
+                }
+            }
+
+            .nav-slide-down {
+                width: 90vw;
+            }
+
+            .nav-spread {
+                gap: 0px;
+            }
+        }
+
+        @media (max-width: 350px) {
+            .nav-spread {
+                gap: -5px;
+            }
+        }
+
+        .nav-slide-down {
+            animation: slideDown 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            overflow: hidden;
+            width: 360px;
+            margin: 0 auto;
+        }
+
+        .nav-spread {
+            animation: spreadLinks 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 1s;
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        @keyframes spreadLinks {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Navigation link styles */
+        .nav-link {
+            font-size: 11px;
+            padding: 6px 12px;
+        }
     </style>
 </head>
 <body>
     <!-- Navigation -->
     <div class="fixed top-6 left-0 right-0 flex justify-center z-[999]">
-        <nav class="flex justify-center items-center bg-white/90 md:bg-white/85 backdrop-blur-sm shadow-lg rounded-full px-3 md:px-3 py-2.5 md:py-2 gap-2 md:gap-3 border-[1px] border-[#e5e7eb]">
-            <a href="../index.html#about" class="uppercase tracking-wider font-medium text-[11px] md:text-[13px] px-2 md:px-4 py-1.5 md:py-2 transition-colors hover:text-neon text-[#1c1d20]">ABOUT</a>
-            <a href="../index.html#works" class="uppercase tracking-wider font-medium text-[11px] md:text-[13px] px-2 md:px-4 py-1.5 md:py-2 transition-colors hover:text-neon text-[#1c1d20]">WORKS</a>
-            <a href="../index.html#skills" class="uppercase tracking-wider font-medium text-[11px] md:text-[13px] px-2 md:px-4 py-1.5 md:py-2 transition-colors hover:text-neon text-[#1c1d20]">SKILLS</a>
-            <a href="../index.html#contact" class="bg-neon text-black px-4 md:px-6 py-1.5 md:py-2 rounded-full font-medium uppercase tracking-wider text-[11px] md:text-[13px] hover:bg-white transition-colors">CONTACT</a>
+        <nav class="nav-slide-down flex justify-center items-center bg-white/90 backdrop-blur-sm shadow-lg rounded-full px-3 py-2.5 border-[1px] border-[#e5e7eb]">
+            <div class="nav-spread">
+                <a href="../index.html#about" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#111214] text-[#1c1d20]">ABOUT</a>
+                <a href="../index.html#works" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#111214] text-[#1c1d20]">WORKS</a>
+                <a href="../index.html#skills" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#111214] text-[#1c1d20]">SKILLS</a>
+                <a href="../index.html#contact" class="bg-neon text-black px-4 py-1.5 rounded-full font-medium uppercase tracking-wider text-[11px] hover:bg-[#d8ff5a] transition-colors">CONTACT</a>
+            </div>
         </nav>
     </div>
 
@@ -230,10 +313,10 @@
             <h2 class="case-study-title fade-in">PREVIEW</h2>
             <div class="case-study-content fade-in w-screen relative left-1/2 right-1/2 -mx-[50vw] mb-32">
                 <div class="relative">
-                    <video class="w-full pointer-events-none" autoplay loop muted playsinline>
+                    <video class="w-full pointer-events-none brightness-[0.80]" autoplay loop muted playsinline>
                         <source src="img/keiravid.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
                     </video>
+                    <div class="absolute inset-0 bg-black/30"></div>
                     <div class="absolute inset-0 flex items-center justify-center">
                         <img src="img/keiralogo.png" alt="StackedAI Logo" class="w-1/4 md:w-1/5 lg:w-1/6 xl:w-1/7">
                     </div>
@@ -241,10 +324,9 @@
             </div>
             <div class="case-study-content fade-in">
                 <div class="relative">
-                    <img src="img/bagoscout2.png" alt="StackedAI Platform" class="case-study-image mb-32">
+                    <img src="img/stackedAI2empty.png" alt="StackedAI Platform" class="case-study-image mb-32">
                     <video class="absolute inset-0 w-[79%] sm:w-[78.8%] md:w-[78.8%] lg:w-[78.8%] h-[72%] sm:h-[72%] md:h-[72%] lg:h-[72%] m-auto top-[-3%] sm:top-[-3%] md:top-[-3%] lg:top-[-3%] left-[1.25%] sm:left-3 md:left-3 lg:left-3 right-0 object-cover rounded-md" autoplay loop muted playsinline>
-                        <source src="img/bagoscoutvid2.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
+                        <source src="img/stackedAIvid2.mp4" type="video/mp4">
                     </video>
                 </div>
             </div>
@@ -253,18 +335,18 @@
             <div class="relative w-[40%] max-w-xs sm:w-[45%] w-[50%]">
                 <img src="img/stackedAImobileempty.png" alt="StackedAI Platform" class="w-full">
                 <video class="absolute inset-0 w-[83%] h-[82.5%] m-auto top-0 bottom-0 left-0 right-0 object-cover rounded-[9%]" autoplay loop muted playsinline>
-                    <source src="img/bagoscoutmobilevid.mp4" type="video/mp4">
+                    <source src="img/stackedAImobilevid.mp4" type="video/mp4">
                 </video>
             </div>
             
             <div class="relative w-[40%] max-w-xs sm:w-[45%] w-[50%]">
                 <img src="img/stackedAImobileempty2.png" alt="StackedAI Platform" class="w-full">
                 <video class="absolute inset-0 w-[83%] h-[82.5%] m-auto top-0 bottom-0 left-0 right-0 object-cover rounded-[9%]" autoplay loop muted playsinline>
-                    <source src="img/bagoscoutmobilevid2.mp4" type="video/mp4">
+                    <source src="img/stackedAImobilevid2.mp4" type="video/mp4">
                 </video>
             </div>
         </div>
-        <img src="img/bagoscoutfull.png" alt="StackedAI Platform" class="case-study-image">
+        <img src="img/stackedAI.png" alt="StackedAI Platform" class="case-study-image">
 
 
         <!-- Navigation Buttons -->
@@ -277,9 +359,9 @@
             </a>
 
             <div class="flex gap-2">
-                <div class="w-2 h-2 rounded-full bg-white/20"></div>
-                <div class="w-2 h-2 rounded-full neon"></div>
-                <div class="w-2 h-2 rounded-full bg-white/20"></div>
+                <div class="w-2 h-2 rounded-full bg-[#e5e7eb]"></div>
+                <div class="w-2 h-2 rounded-full bg-[#e5e7eb]"></div>
+                <div class="w-2 h-2 rounded-full bg-[#1c1d20]"></div>
             </div>
 
             <a href="./animeal.html" class="flex items-center gap-2 group">
@@ -297,7 +379,7 @@
             <!-- Logo and Tagline -->
             <div class="max-w-xs">
                 <div class="flex items-center mb-4">
-                    <img src="img/logowhite.png" alt="Perocho Logo" class="h-6 mr-2">
+                    <img src="img/logoblack.png" alt="Perocho Logo" class="h-6 mr-2">
                     <div class="text-2xl font-medium text-[#1c1d20]">Seeger Perocho</div>
                 </div>
                 <p class="text-[#4b4c4f] text-sm">Creating meaningful digital experiences through thoughtful design and creative solutions.</p>
@@ -314,7 +396,7 @@
                     <input type="hidden" name="_captcha" value="false">
                     
                     <!-- Return to your website instead of FormSubmit thank you page -->
-                    <input type="hidden" name="_next" value="https://seegerportfolio.vercel.app/bagoscout.html">
+                    <input type="hidden" name="_next" value="https://seegerportfolio.vercel.app/keira.html">
                     
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
@@ -331,7 +413,7 @@
                         <textarea id="message" name="message" rows="3" placeholder="Message" required class="w-full bg-white border border-[#e5e7eb] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-neon transition-colors text-[#1c1d20]"></textarea>
                     </div>
                     <div class="flex items-center justify-end">
-                        <button type="submit" class="bg-neon text-black font-medium px-4 py-2 text-sm rounded-lg hover:bg-[#d8ff5a] transition-colors">Send Message</button>
+                        <button type="submit" class="bg-neon text-black font-medium px-4 py-2 text-sm rounded-lg hover:bg-[#d8ff5a] transition-colors">Send</button>
                     </div>
                 </form>
             </div>
