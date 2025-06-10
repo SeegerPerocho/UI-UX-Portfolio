@@ -129,17 +129,6 @@
             visibility: visible;
             transition: opacity 1s ease 0.8s;
         }
-        .content-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 1s ease;
-            background-size: cover;
-            background-position: center;
-        }
-        .content-section.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
         .reveal-text .word {
             display: inline-block;
             color: #ffffff;
@@ -640,7 +629,7 @@
 
     </style>
 </head>
-<body class="min-h-screen bg-[#ffffff] text-white font-neue overflow-x-hidden [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
+<body class="min-h-screen text-white font-neue overflow-x-hidden [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
     <div class="loading-screen">
         <img src="img/logowhite.png" alt="Logo">
     </div>
@@ -681,68 +670,55 @@
             </nav>
         </div>
 
-        <div class="content-section min-h-screen flex items-start pt-44 justify-center bg-cover bg-center bg-no-repeat h-screen" style="background-image: url('img/backgroundmain.png'); background-size: 100% 110vh 100vw;">
-            <div class="container mx-auto px-4 flex items-start">
-                <div class="relative flex flex-col items-start text-left w-full max-w-5xl">
-                    <div class="flex gap-4 items-center text-xs md:text-sm mb-10">
-                        <span class="text-neon font-medium">00</span>
-                        <span class="text-white font-medium">UI/UX Designer</span>
-                    </div>
-                    
-                    <h1 class="text-[16vw] sm:text-[16vw] md:text-[10vw] z-98 leading-[0.9] tracking-tighter mb-8 text-white text-left">
+        <div id="hero-section" class="content-section min-h-screen flex items-center justify-center bg-center bg-no-repeat h-screen relative overflow-hidden">
+            <video 
+                autoplay 
+                muted 
+                loop 
+                playsinline 
+                class="absolute top-0 left-0 w-full h-full object-cover -z-20"
+                id="bgVideo"
+                poster="img/backgroundmain.png">
+                <source src="img/backgroundmainvid.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+            <div class="absolute inset-0 bg-[#111415] opacity-60 -z-10"></div>
+            <div class="container mx-auto px-4 flex items-center justify-center">
+                <div class="relative flex flex-col items-center text-center w-full max-w-5xl">
+                    <h1 class="text-[18vw] sm:text-[18vw] md:text-[10vw] z-98 leading-[0.9] tracking-tighter mb-8 text-white">
                         Design with<br>
-                        <div class="flex items-center justify-between">
+                        <div class="flex items-center justify-center">
                             <span class="text-neon font-[Kugile] font-medium tracking-tighter mt-5">Focus.</span>
-                            <div class="logo-marquee-container relative hidden md:block w-[120px] lg:w-[200px] h-[20px] lg:h-[60px] ml-8 overflow-hidden">
-                                <div class="logo-track">
-                                    <div class="logo-slide">
-                                        <img src="img/stackedailogo.png" alt="StackedAI Logo" class="w-full h-[60px] lg:h-[100px] object-contain">
-                                    </div>
-                                    <div class="logo-slide">
-                                        <img src="img/bagoscoutlogo.png" alt="Bagoscout Logo" class="w-full h-[60px] lg:h-[100px] object-contain">
-                                    </div>
-                                    <div class="logo-slide">
-                                        <img src="img/keiralogo.png" alt="Keira Logo" class="w-full h-[60px] lg:h-[100px] object-contain">
-                                    </div>
-                                    <!-- Duplicate slides for seamless loop -->
-                                    <div class="logo-slide">
-                                        <img src="img/stackedailogo.png" alt="StackedAI Logo" class="w-full h-[60px] lg:h-[100px] object-contain">
-                                    </div>
-                                    <div class="logo-slide">
-                                        <img src="img/bagoscoutlogo.png" alt="Bagoscout Logo" class="w-full h-[60px] lg:h-[100px] object-contain">
-                                    </div>
-                                    <div class="logo-slide">
-                                        <img src="img/keiralogo.png" alt="Keira Logo" class="w-full h-[60px] lg:h-[100px] object-contain">
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </h1>
-                    <div class="flex justify-start mt-4 mb-6 md:mt-0">
-                        <p class="text-sm sm:text-base text-white leading-relaxed text-white max-w-[260px] sm:max-w-[480px] md:max-w-[400px] text-left">
-                            Seeger Perocho is a UI/UX Designer from the Philippines, producing quality designs to provide design solutions.
+                    <div class="flex justify-center mt-4 mb-6 md:mt-0">
+                        <p class="text-sm sm:text-base text-white leading-relaxed text-white max-w-[260px] sm:max-w-[480px] md:max-w-[400px] text-center">
+                            Seeger Perocho is a UI/UX Designer from the Philippines, focused on producing high-quality digital products .
                         </p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <main id="about" class="content-section min-h-screen md:min-h-0 flex items-start md:block container mx-auto px-4 md:py-32">
-            <div class="flex flex-col md:flex-row gap-8 md:gap-16 relative">
-                <!-- Left side with section number -->
-                <div class="flex gap-4 items-start text-sm md:text-md relative mt-20 md:mt-0 after:content-[''] after:hidden md:after:block after:absolute after:right-[-47px] after:top-0 after:w-[1px] after:h-[200%] after:bg-black/5">
-                    <span class="text-neon font-medium">01</span>
-                    <span class="text-[#1c1d20] font-medium">About me</span>
+        <div class="w-full bg-[#1c1d20] relative overflow-hidden">
+            <div class="absolute inset-0 bg-[#ffffff]"></div>
+            <section id="about" class="content-section min-h-screen md:min-h-0 flex items-start md:block container mx-auto px-4 md:py-32 relative">
+                <div class="flex flex-col md:flex-row gap-8 md:gap-16 relative">
+                    <!-- Left side with section number -->
+                    <div class="flex gap-4 items-start text-sm md:text-md relative mt-20 md:mt-0 after:content-[''] after:hidden md:after:block after:absolute after:right-[-47px] after:top-0 after:w-[1px] after:h-[200%] after:bg-black/5">
+                        <span class="text-neon font-medium">01</span>
+                        <span class="text-[#1c1d20] font-medium">About me</span>
+                    </div>
+                    <!-- Right side with text content -->
+                    <div class="space-y-12 sm:space-y-16 flex-1  mb-8 px-5 md:px-8"> <!-- Added padding -->
+                        <div class="text-[8vw] sm:text-[4vw] leading-tight max-w-4xl reveal-text">I'm a UI/UX Designer crafting beautiful and clean designs that can get those numbers pumping in your website.</div>
+                        <div class="text-[8vw] sm:text-[4vw] leading-tight max-w-4xl reveal-text">Whether you're a startup looking for an impactful website or an established brand seeking to elevate your digital presence, I'm the guy that can turn your vision to reality.</div>
+                    </div>
                 </div>
-                <!-- Right side with text content -->
-                <div class="space-y-12 sm:space-y-16 flex-1 mb-8 px-5 md:px-8"> <!-- Added padding -->
-                    <div class="text-[8vw] sm:text-[4vw] leading-tight max-w-4xl reveal-text">I'm a UI/UX Designer crafting beautiful and clean designs that can get those numbers pumping in your website.</div>
-                    <div class="text-[8vw] sm:text-[4vw] leading-tight max-w-4xl reveal-text">Whether you're a startup looking for an impactful website or an established brand seeking to elevate your digital presence, I'm the guy that can turn your vision to reality.</div>
-                </div>
-            </div>
-        </main>
+            </section>
+        </div>
 
-        <section id="works" class="content-section min-h-screen bg-[#111415] py-20 sm:py-32">
+        <section id="works" class="content-section min-h-screen bg-[#1c1d20] py-20 sm:py-32">
             <div class="container mx-auto px-4">
             <div class="flex flex-col sm:flex-row gap-8 sm:gap-16">
                 <div class="sm:w-[95px] flex-shrink-0" style="height: auto">
@@ -1074,11 +1050,73 @@
         let updateWordsFunction;
 
         document.addEventListener('DOMContentLoaded', () => {
+            // Video debug
+            const video = document.getElementById('bgVideo');
+            
+            video.addEventListener('loadeddata', () => {
+                console.log('Video loaded successfully');
+                video.play().catch(e => console.log('Error playing video:', e));
+            });
+            
+            video.addEventListener('error', (e) => {
+                console.log('Error loading video:', e);
+            });
+
             // Loading screen animation
             setTimeout(() => {
                 document.querySelector('.loading-screen').classList.add('hide');
                 document.querySelector('.main-content').classList.add('show');
             }, 1000);
+
+            // Add border radius scroll animation for hero section
+            const heroSection = document.getElementById('hero-section');
+            let heroMaxScroll = 150; // Adjust this value to control when the effect completes
+            
+            function updateHeroBorderRadius() {
+                const scrollY = window.scrollY;
+                const progress = Math.min(scrollY / heroMaxScroll, 1);
+                const maxRadius = window.innerWidth <= 600 ? 50 : 100; // 50px for mobile, 100px for larger screens
+                const borderRadius = progress * maxRadius;
+                
+                // Update border radius for hero section
+                heroSection.style.borderBottomLeftRadius = `${borderRadius}px`;
+                heroSection.style.borderBottomRightRadius = `${borderRadius}px`;
+            }
+
+            // Add border radius scroll animation for about section
+            const aboutSection = document.querySelector('#about').parentElement.querySelector('.absolute');
+            let aboutMaxScroll = 300; // Different scroll threshold for about section
+            
+            function updateAboutBorderRadius() {
+                const scrollY = window.scrollY;
+                const progress = Math.min(scrollY / aboutMaxScroll, 1);
+                const maxRadius = window.innerWidth <= 600 ? 50 : 100; // 50px for mobile, 100px for larger screens
+                const borderRadius = progress * maxRadius;
+                
+                // Update border radius for about section
+                if (aboutSection) {
+                    aboutSection.style.borderBottomLeftRadius = `${borderRadius}px`;
+                    aboutSection.style.borderBottomRightRadius = `${borderRadius}px`;
+                }
+            }
+
+            // Add scroll event listeners
+            window.addEventListener('scroll', () => {
+                requestAnimationFrame(() => {
+                    updateHeroBorderRadius();
+                    updateAboutBorderRadius();
+                });
+            });
+            
+            // Add resize listeners
+            window.addEventListener('resize', () => {
+                updateHeroBorderRadius();
+                updateAboutBorderRadius();
+            });
+            
+            // Initial calls to set initial state
+            updateHeroBorderRadius();
+            updateAboutBorderRadius();
 
             // Handle page transitions
             const pageTransition = document.querySelector('.page-transition');
