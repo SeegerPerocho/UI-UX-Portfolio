@@ -141,13 +141,13 @@
         }
         .reveal-text .word {
             display: inline-block;
-            color: #666;
+            color: #ffffff;
             transition: all 0.8s ease;
             margin-right: 0.3em;
             opacity: 0.3;
         }
         .reveal-text .word.revealed {
-            color: white;
+            color: #1c1d20;
             opacity: 1;
         }
         /* Fix for mobile extra width */
@@ -521,9 +521,90 @@
                 box-shadow: 0 0 0 0 rgba(196, 255, 15, 0);
             }
         }
+          /* Update the animation styles */
+          @keyframes slideDown {
+            0% {
+                transform: translateY(-100%);
+                width: 55px;
+            }
+            60% {
+                transform: translateY(0);
+                width: 55px;
+            }
+            100% {
+                transform: translateY(0);
+                width: 340px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            @keyframes slideDown {
+                0% {
+                    transform: translateY(-100%);
+                    width: 55px;
+                }
+                60% {
+                    transform: translateY(0);
+                    width: 55px;
+                }
+                100% {
+                    transform: translateY(0);
+                    width: 90vw;
+                }
+            }
+
+            .nav-slide-down {
+                width: 90vw;
+            }
+
+            .nav-spread {
+                gap: 0px;
+            }
+        }
+
+        @media (max-width: 350px) {
+            .nav-spread {
+                gap: -5px;
+            }
+        }
+
+        .nav-slide-down {
+            animation: slideDown 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            overflow: hidden;
+            width: 360px;
+            margin: 0 auto;
+        }
+
+        .nav-spread {
+            animation: spreadLinks 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 1s;
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        @keyframes spreadLinks {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Navigation link styles */
+        .nav-link {
+            font-size: 11px;
+            padding: 6px 12px;
+        }
+
     </style>
 </head>
-<body class="min-h-screen bg-[#181B1D] text-white font-neue overflow-x-hidden [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
+<body class="min-h-screen bg-[#ffffff] text-white font-neue overflow-x-hidden [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
     <div class="loading-screen">
         <img src="img/logowhite.png" alt="Logo">
     </div>
@@ -554,18 +635,20 @@
         <img src="img/logowhite.png" alt="Logo" class="fixed-logo">
 
         <div class="fixed top-6 left-0 right-0 flex justify-center z-[999]">
-            <nav class="flex justify-center items-center bg-black/90 md:bg-black/85 backdrop-blur-sm shadow-lg rounded-full px-3 md:px-3 py-2.5 md:py-2 gap-2 md:gap-3 border-[1px] border-[#252A2D]">
-                <a href="#about" class="uppercase tracking-wider font-medium text-[11px] md:text-[13px] px-2 md:px-4 py-1.5 md:py-2 transition-colors hover:text-neon">ABOUT</a>
-                <a href="#works" class="uppercase tracking-wider font-medium text-[11px] md:text-[13px] px-2 md:px-4 py-1.5 md:py-2 transition-colors hover:text-neon">WORKS</a>
-                <a href="#skills" class="uppercase tracking-wider font-medium text-[11px] md:text-[13px] px-2 md:px-4 py-1.5 md:py-2 transition-colors hover:text-neon">SKILLS</a>
-                <a href="#contact" class="bg-neon text-black px-4 md:px-6 py-1.5 md:py-2 rounded-full font-medium uppercase tracking-wider text-[11px] md:text-[13px] hover:bg-white transition-colors">CONTACT</a>
+            <nav class="nav-slide-down flex justify-center items-center bg-white/90 backdrop-blur-sm shadow-sm rounded-full px-3 py-2.5 border-[1px] border-[#e5e7eb]">
+                <div class="nav-spread">
+                    <a href="../index.html#about" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#111214] text-[#1c1d20]">ABOUT</a>
+                    <a href="../index.html#works" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#111214] text-[#1c1d20]">WORKS</a>
+                    <a href="../index.html#skills" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#111214] text-[#1c1d20]">SKILLS</a>
+                    <a href="../index.html#contact" class="bg-neon text-black px-4 py-1.5 rounded-full font-medium uppercase tracking-wider text-[11px] hover:bg-[#d8ff5a] transition-colors">CONTACT</a>
+                </div>
             </nav>
         </div>
 
-        <div class="content-section min-h-screen md:min-h-0 flex items-center md:block bg-cover bg-center bg-no-repeat animate-background" style="background-image: url('img/backgroundmain.png');">
-            <div class="container mx-auto px-4 md:pt-32 md:pb-32"> <!-- Changed pt-60 to pt-32 -->
-                <div class="relative flex flex-col justify-start md:block"> <!-- Changed justify-center to justify-start -->
-                    <h1 class="text-[18vw] md:text-[12vw] z-98 leading-[0.9] tracking-tight mb-8 md:mb-0 mt-16"> <!-- Added mt-16 for top margin -->
+        <div class="content-section min-h-screen flex items-center bg-cover bg-center bg-no-repeat h-screen" style="background-image: url('img/backgroundmain.png'); background-size: 100% 110vh;">
+            <div class="container mx-auto px-4 h-screen flex items-center">
+                <div class="relative flex flex-col justify-start w-full">
+                    <h1 class="text-[18vw] md:text-[12vw] z-98 leading-[0.9] tracking-tight mb-8">
                         DESIGN WITH<br>
                         <span class="text-neon italic font-medium">FOCUS.</span>
                     </h1>
@@ -581,9 +664,9 @@
         <main id="about" class="content-section min-h-screen md:min-h-0 flex items-start md:block container mx-auto px-4 md:py-32">
             <div class="flex flex-col md:flex-row gap-8 md:gap-16 relative">
                 <!-- Left side with section number -->
-                <div class="flex gap-4 items-start text-sm md:text-md relative mt-20 md:mt-0 after:content-[''] after:hidden md:after:block after:absolute after:right-[-47px] after:top-0 after:w-[1px] after:h-[200%] after:bg-white/5">
-                    <span class="text-neon">01</span>
-                    <span>About me</span>
+                <div class="flex gap-4 items-start text-sm md:text-md relative mt-20 md:mt-0 after:content-[''] after:hidden md:after:block after:absolute after:right-[-47px] after:top-0 after:w-[1px] after:h-[200%] after:bg-black/5">
+                    <span class="text-[#1c1d20]">01</span>
+                    <span class="text-[#1c1d20]">About me</span>
                 </div>
                 <!-- Right side with text content -->
                 <div class="space-y-12 sm:space-y-16 flex-1 mb-8 px-5 md:px-8"> <!-- Added padding -->
@@ -744,7 +827,7 @@
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="skills-section sm:min-h-screen bg-[#181B1D] py-12 sm:py-32">
+        <section id="skills" class="skills-section sm:min-h-screen bg-[#ffffff] py-12 sm:py-32">
             <div class="container mx-auto px-4">
                 <div class="flex flex-col sm:flex-row gap-8 sm:gap-16">
                     <div class="sm:w-[95px] flex-shrink-0" style="height: auto">
