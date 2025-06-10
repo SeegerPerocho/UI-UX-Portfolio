@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seeger Perocho - UI/UX Designer</title>
     <link rel="icon" href="img/logowhite.png" type="image/x-icon">
+    <link href="https://db.onlinewebfonts.com/c/47ae039b7c9d2205f7732048396d86c4?family=Kugile" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/neue-haas-grotesk-display-pro" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -602,6 +603,41 @@
             padding: 6px 12px;
         }
 
+        /* Logo Marquee Styles */
+        .logo-marquee-container {
+            position: relative;
+        }
+        
+        .logo-track {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            animation: marquee 26s linear infinite;
+        }
+        
+        .logo-slide {
+            flex-shrink: 0;
+            width: 100%;
+            padding: 10px;
+        }
+        
+        @keyframes marquee {
+            0% {
+                transform: translateY(0%);
+            }
+            100% {
+                transform: translateY(-300%);
+            }
+        }
+
+        /* Pause animation on hover */
+        .logo-marquee-container:hover .logo-track {
+            animation-play-state: paused;
+        }
+
     </style>
 </head>
 <body class="min-h-screen bg-[#ffffff] text-white font-neue overflow-x-hidden [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
@@ -645,15 +681,45 @@
             </nav>
         </div>
 
-        <div class="content-section min-h-screen flex items-center bg-cover bg-center bg-no-repeat h-screen" style="background-image: url('img/backgroundmain.png'); background-size: 100% 110vh;">
-            <div class="container mx-auto px-4 h-screen flex items-center">
-                <div class="relative flex flex-col justify-start w-full">
-                    <h1 class="text-[18vw] md:text-[12vw] z-98 leading-[0.9] tracking-tight mb-8">
-                        DESIGN WITH<br>
-                        <span class="text-neon italic font-medium">FOCUS.</span>
+        <div class="content-section min-h-screen flex items-start pt-56 justify-center bg-cover bg-center bg-no-repeat h-screen" style="background-image: url('img/backgroundmain.png'); background-size: 100% 110vh 100vw;">
+            <div class="container mx-auto px-4 flex items-start">
+                <div class="relative flex flex-col items-start text-left w-full max-w-5xl">
+                    <div class="flex gap-4 items-center text-xs md:text-sm mb-12">
+                        <span class="text-neon font-medium">00</span>
+                        <span class="text-white font-medium">UI/UX Designer</span>
+                    </div>
+                    
+                    <h1 class="text-[14vw] sm:text-[12vw] md:text-[8vw] z-98 leading-[0.9] tracking-tighter mb-8 text-white text-left">
+                        Design with<br>
+                        <div class="flex items-center justify-between">
+                            <span class="text-neon font-[Kugile] font-medium tracking-tighter mt-5">Focus.</span>
+                            <div class="logo-marquee-container relative hidden md:block w-[120px] lg:w-[200px] h-[20px] lg:h-[60px] ml-8 overflow-hidden">
+                                <div class="logo-track">
+                                    <div class="logo-slide">
+                                        <img src="img/stackedailogo.png" alt="StackedAI Logo" class="w-full h-[60px] lg:h-[100px] object-contain">
+                                    </div>
+                                    <div class="logo-slide">
+                                        <img src="img/bagoscoutlogo.png" alt="Bagoscout Logo" class="w-full h-[60px] lg:h-[100px] object-contain">
+                                    </div>
+                                    <div class="logo-slide">
+                                        <img src="img/keiralogo.png" alt="Keira Logo" class="w-full h-[60px] lg:h-[100px] object-contain">
+                                    </div>
+                                    <!-- Duplicate slides for seamless loop -->
+                                    <div class="logo-slide">
+                                        <img src="img/stackedailogo.png" alt="StackedAI Logo" class="w-full h-[60px] lg:h-[100px] object-contain">
+                                    </div>
+                                    <div class="logo-slide">
+                                        <img src="img/bagoscoutlogo.png" alt="Bagoscout Logo" class="w-full h-[60px] lg:h-[100px] object-contain">
+                                    </div>
+                                    <div class="logo-slide">
+                                        <img src="img/keiralogo.png" alt="Keira Logo" class="w-full h-[60px] lg:h-[100px] object-contain">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </h1>
-                    <div class="flex items-start max-w-sm md:absolute md:bottom-[1vw] md:right-0 mt-4 mb-6 md:mt-0">
-                        <p class="text-base md:text-md text-white leading-relaxed text-white max-w-[280px]">
+                    <div class="flex justify-start mt-4 mb-6 md:mt-0">
+                        <p class="text-sm sm:text-base text-white leading-relaxed text-white max-w-[260px] sm:max-w-[480px] md:max-w-[400px] text-left">
                             Seeger Perocho is a UI/UX Designer from the Philippines, producing quality designs to provide design solutions
                         </p>
                     </div>
@@ -665,8 +731,8 @@
             <div class="flex flex-col md:flex-row gap-8 md:gap-16 relative">
                 <!-- Left side with section number -->
                 <div class="flex gap-4 items-start text-sm md:text-md relative mt-20 md:mt-0 after:content-[''] after:hidden md:after:block after:absolute after:right-[-47px] after:top-0 after:w-[1px] after:h-[200%] after:bg-black/5">
-                    <span class="text-[#1c1d20]">01</span>
-                    <span class="text-[#1c1d20]">About me</span>
+                    <span class="text-neon font-medium">01</span>
+                    <span class="text-[#1c1d20] font-medium">About me</span>
                 </div>
                 <!-- Right side with text content -->
                 <div class="space-y-12 sm:space-y-16 flex-1 mb-8 px-5 md:px-8"> <!-- Added padding -->
