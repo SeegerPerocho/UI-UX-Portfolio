@@ -684,6 +684,46 @@
             50%, 95% { content: 'GRAPHIC'; }
         }
 
+        /* Mobile circle button styles */
+        @media (max-width: 1023px) {
+            .work-item {
+                position: relative;
+            }
+
+            .mobile-circle-btn {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 60px;
+                height: 60px;
+                background-color: #C4FF0F;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: transform 0.3s ease;
+                z-index: 10;
+            }
+
+            .mobile-circle-btn:hover {
+                transform: translate(-50%, -50%) scale(1.1);
+                background-color: #ffffff;
+            }
+
+            .mobile-circle-btn img {
+                width: 12px;
+                height: 12px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-circle-btn {
+                display: none;
+            }
+        }
+
     </style>
 </head>
 <body class="min-h-screen text-white font-neue overflow-x-hidden [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
@@ -810,7 +850,10 @@
                             <p class="opacity-50 mb-20 max-w-lg">A chatbot that uses natural language processing to create humanlike conversational dialogue.</p>
                         </div>
                         <div class="work-item">
-                            <a href="stackedai.html"><img src="img/stackedAI2.png" alt="StackedAI Preview" class="w-full rounded-lg"></a>
+                            <img src="img/stackedAI2.png" alt="StackedAI Preview" class="w-full rounded-lg">
+                            <a href="stackedai.html" class="mobile-circle-btn">
+                                <img src="img/arrow.png" alt="View Project">
+                            </a>
                         </div>
                     </div>
                     
@@ -828,7 +871,10 @@
                             </p>
                         </div>
                         <div class="work-item">
-                            <a href="bagoscout.html"><img src="img/bagoscout.png" alt="BagoScout Preview" class="w-full rounded-lg"></a>
+                            <img src="img/bagoscout.png" alt="BagoScout Preview" class="w-full rounded-lg">
+                            <a href="bagoscout.html" class="mobile-circle-btn">
+                                <img src="img/arrow.png" alt="View Project">
+                            </a>
                         </div>
                     </div>
 
@@ -844,7 +890,10 @@
                             <p class="opacity-50 max-w-lg">A clean, modern, and elegant E-Commerce website for clothing and apparel.</p>
                         </div>
                         <div class="work-item">
-                            <a href="keira.html"><img src="img/keira.png" alt="Keira Preview" class="w-full rounded-lg"></a>
+                            <img src="img/keira.png" alt="Keira Preview" class="w-full rounded-lg">
+                            <a href="keira.html" class="mobile-circle-btn">
+                                <img src="img/arrow.png" alt="View Project">
+                            </a>
                         </div>
                     </div>
 
@@ -861,7 +910,9 @@
                         </div>
                         <div class="work-item">
                             <img src="img/animealweb2.png" alt="Animeal Preview" class="w-full rounded-lg">
-                           
+                            <a href="#" class="mobile-circle-btn">
+                                <img src="img/arrow.png" alt="View Project">
+                            </a>
                         </div>
                     </div>
 
@@ -878,7 +929,9 @@
                         </div>
                         <div class="work-item">
                             <img src="img/cycle2.png" alt="Cycle Preview" class="w-full rounded-lg">
-                            
+                            <a href="#" class="mobile-circle-btn">
+                                <img src="img/arrow.png" alt="View Project">
+                            </a>
                         </div>
                     </div>
 
@@ -895,7 +948,9 @@
                         </div>
                         <div class="work-item">
                             <img src="img/kitty2.png" alt="KITTY Preview" class="w-full rounded-lg">
-                           
+                            <a href="#" class="mobile-circle-btn">
+                                <img src="img/arrow.png" alt="View Project">
+                            </a>
                         </div>
                     </div>
 
@@ -912,7 +967,9 @@
                         </div>
                         <div class="work-item">
                             <img src="img/rave.png" alt="Rave Preview" class="w-full rounded-lg">
-                            
+                            <a href="#" class="mobile-circle-btn">
+                                <img src="img/arrow.png" alt="View Project">
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1102,25 +1159,25 @@
 
         <!-- Floating video previews -->
         <div id="floating-video" style="display:none;pointer-events:none;position:fixed;z-index:99999;width:380px;height:220px;top:0;left:0;">
-            <video src="img/stackedAIvid2.mp4" loop muted autoplay style="box-shadow:0 0 24px rgba(0,0,0,0.10); border-radius: 5px;"></video>
+            <video src="img/stackedaivid2.mp4" loop muted autoplay style="box-shadow:0 0 24px rgba(0,0,0,0.10); border-radius: 5px;"></video>
         </div>
         <div id="floating-video-bagoscout" style="display:none;pointer-events:none;position:fixed;z-index:99999;width:380px;height:220px;top:0;left:0;">
             <video src="img/bagoscoutvid2.mp4" loop muted autoplay style="box-shadow:0 0 12px rgba(0,0,0,0.10); border-radius: 5px;"></video>
         </div>
         <div id="floating-video-keira" style="display:none;pointer-events:none;position:fixed;z-index:99999;width:380px;height:220px;top:0;left:0;">
-            <video src="img/stackedAIvid2.mp4" loop muted autoplay style="box-shadow:0 0 24px rgba(0,0,0,0.10); border-radius: 5px;"></video>
+            <video src="img/stackedaivid2.mp4" loop muted autoplay style="box-shadow:0 0 24px rgba(0,0,0,0.10); border-radius: 5px;"></video>
         </div>
         <div id="floating-video-animeal" style="display:none;pointer-events:none;position:fixed;z-index:99999;width:380px;height:220px;top:0;left:0;">
-            <video src="img/stackedAIvid2.mp4" loop muted autoplay style="box-shadow:0 0 24px rgba(0,0,0,0.10); border-radius: 5px;"></video>
+            <video src="img/stackedaivid2.mp4" loop muted autoplay style="box-shadow:0 0 24px rgba(0,0,0,0.10); border-radius: 5px;"></video>
         </div>
         <div id="floating-video-cycle" style="display:none;pointer-events:none;position:fixed;z-index:99999;width:380px;height:220px;top:0;left:0;">
-            <video src="img/stackedAIvid2.mp4" loop muted autoplay style="box-shadow:0 0 24px rgba(0,0,0,0.10); border-radius: 5px;"></video>
+            <video src="img/stackedaivid2.mp4" loop muted autoplay style="box-shadow:0 0 24px rgba(0,0,0,0.10); border-radius: 5px;"></video>
         </div>
         <div id="floating-video-kitty" style="display:none;pointer-events:none;position:fixed;z-index:99999;width:380px;height:220px;top:0;left:0;">
-            <video src="img/stackedAIvid2.mp4" loop muted autoplay style="box-shadow:0 0 24px rgba(0,0,0,0.10); border-radius: 5px;"></video>
+            <video src="img/stackedaivid2.mp4" loop muted autoplay style="box-shadow:0 0 24px rgba(0,0,0,0.10); border-radius: 5px;"></video>
         </div>
         <div id="floating-video-rave" style="display:none;pointer-events:none;position:fixed;z-index:99999;width:380px;height:220px;top:0;left:0;">
-            <video src="img/stackedAIvid2.mp4" loop muted autoplay style="box-shadow:0 0 24px rgba(0,0,0,0.10); border-radius: 5px;"></video>
+            <video src="img/stackedaivid2.mp4" loop muted autoplay style="box-shadow:0 0 24px rgba(0,0,0,0.10); border-radius: 5px;"></video>
         </div>
 
         <!-- Floating neon view circle -->
