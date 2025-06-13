@@ -41,32 +41,39 @@
             width: 100px;
             height: 100px;
             pointer-events: none;
-            z-index: 1;
+            z-index: 100;
+            transform: translate(-50%, -50%);
+            display: none;
             animation: spin 8s linear infinite;
             mix-blend-mode: difference;
             color: white;
             font-size: 12px;
             letter-spacing: 1px;
-            transform: translate(-50%, -50%);
         }
-        @media (max-width: 768px) {
+
+        @media (max-width: 767px) {
             .circular-text {
+                display: block;
                 left: 50% !important;
                 bottom: 5px;
                 top: auto !important;
             }
         }
+
         @keyframes spin {
             from { transform: translate(-50%, -50%) rotate(0deg); }
             to { transform: translate(-50%, -50%) rotate(360deg); }
         }
+
         .circular-text svg {
             width: 100%;
             height: 100%;
         }
+
         .circular-text path {
             fill: none;
         }
+
         .circular-text text {
             fill: currentColor;
             font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
@@ -85,10 +92,16 @@
             justify-content: center;
             align-items: center;
             z-index: 10000;
-            transition: transform 1s cubic-bezier(0.87, 0, 0.13, 1);
+            transition: opacity 0.8s cubic-bezier(0.87, 0, 0.13, 1), transform 1.2s cubic-bezier(0.87, 0, 0.13, 1);
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
         }
         .loading-screen.hide {
             transform: translateY(-100%);
+        }
+        .loading-screen.radius-large {
+            border-bottom-left-radius: 300px;
+            border-bottom-right-radius: 300px;
         }
         .loading-screen img {
             width: 60px;
@@ -121,13 +134,8 @@
             letter-spacing: 0.5px;
         }
         .main-content {
-            opacity: 0;
-            visibility: hidden;
-        }
-        .main-content.show {
-            opacity: 1;
+            opacity: 1 !important;
             visibility: visible;
-            transition: opacity 1s ease 0.8s;
         }
         .reveal-text .word {
             display: inline-block;
@@ -306,82 +314,23 @@
         }
 
         /* Add these styles to your existing <style> section */
-        .work-item {
-            position: relative;
-            overflow: hidden;
+       
+
+        .work-item:hover {
+            cursor: pointer !important;
         }
 
-        .view-more-btn {
-            position: absolute;
-            background-color: #C4FF0F;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            pointer-events: auto;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.062);
-        }
-
-        .view-more-btn::after {
-            content: '';
-            width: 16px;
-            height: 16px;
-            background-image: url('img/arrow.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
-        /* Mobile styles */
-        @media (max-width: 639px) {
-            .view-more-btn {
-                top: 20px; /* Position from top */
-                right: 20px; /* Position from right */
-                left: auto; /* Remove left positioning */
-                bottom: auto; /* Remove bottom positioning */
-                transform: none; /* Remove transform */
-                width: 45px;
-                height: 45px;
-                font-size: 20px;
-                opacity: 1;
+        @media (min-width: 1025px) {
+            #floating-video,
+            #floating-video-bagoscout,
+            #floating-video-keira,
+            #floating-video-animeal,
+            #floating-video-cycle,
+            #floating-video-kitty,
+            #floating-video-rave,
+            #floating-view-circle {
+                display: block;
             }
-
-            .view-more-btn::after {
-                width: 10px;
-                height: 10px;
-            }
-        }
-
-        /* Desktop styles */
-        @media (min-width: 640px) {
-            .view-more-btn {
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%) scale(0.9);
-                opacity: 0;
-            }
-
-            .work-item:hover .view-more-btn {
-                opacity: 1;
-                transform: translate(-50%, -50%) scale(1);
-            }
-        }
-
-        .view-more-btn:hover {
-            background-color: white;
-        }
-
-        .work-item img {
-            transition: filter 0.3s ease;
-        }
-
-        .work-item:hover img {
-            filter: brightness(0.5);
         }
 
         /* Page Transition Effect */
@@ -559,20 +508,34 @@
         }
 
         .nav-slide-down {
-            animation: slideDown 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            pointer-events: none;
             overflow: hidden;
             width: 360px;
             margin: 0 auto;
         }
+        .nav-slide-down.nav-animate {
+            opacity: 1;
+            pointer-events: auto;
+            animation: slideDown 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
 
         .nav-spread {
-            animation: spreadLinks 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0 !important;
+            pointer-events: none !important;
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            transform: translateY(10px)!important;
+            animation: spreadLinks 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
             animation-delay: 1s;
-            opacity: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
+        }
+        .nav-spread.nav-links-visible {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            transform: translateY(0) !important;
         }
 
         @keyframes spreadLinks {
@@ -627,10 +590,104 @@
             animation-play-state: paused;
         }
 
+        #floating-video,
+        #floating-video-bagoscout,
+        #floating-video-keira,
+        #floating-video-animeal,
+        #floating-video-cycle,
+        #floating-video-kitty,
+        #floating-video-rave,
+        #floating-view-circle {
+            display: none;
+        }
+
+        @media (min-width: 1025px) {
+            #floating-video,
+            #floating-video-bagoscout,
+            #floating-video-keira,
+            #floating-video-animeal,
+            #floating-video-cycle,
+            #floating-video-kitty,
+            #floating-video-rave,
+            #floating-view-circle {
+                display: block;
+            }
+        }
+
+        #floating-video video,
+        #floating-video-bagoscout video,
+        #floating-video-keira video,
+        #floating-video-animeal video,
+        #floating-video-cycle video,
+        #floating-video-kitty video,
+        #floating-video-rave video {
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: scale(0);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #floating-video.zoomed video,
+        #floating-video-bagoscout.zoomed video,
+        #floating-video-keira.zoomed video,
+        #floating-video-animeal.zoomed video,
+        #floating-video-cycle.zoomed video,
+        #floating-video-kitty.zoomed video,
+        #floating-video-rave.zoomed video {
+            transform: scale(1);
+        }
+
+        #floating-view-circle {
+            display: none;
+            position: fixed;
+            width: 70px;
+            height: 70px;
+            background-color: #C4FF0F;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            transform: scale(0);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        #floating-view-circle.zoomed {
+            transform: scale(1);
+        }
+
+        /* Typing animation styles */
+        .typing-text {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid #C4FF0F;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { border-color: #C4FF0F; }
+            50% { border-color: transparent; }
+        }
+
+        .typing-text::before {
+            content: 'UI/UX';
+            animation: changeText 4s infinite;
+        }
+
+        @keyframes changeText {
+            0%, 45% { content: 'UI/UX'; }
+            50%, 95% { content: 'GRAPHIC'; }
+        }
+
     </style>
 </head>
 <body class="min-h-screen text-white font-neue overflow-x-hidden [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
-    <div class="loading-screen">
+    <div class="loading-screen" id="loadingScreen">
         <img src="img/logowhite.png" alt="Logo">
     </div>
 
@@ -665,7 +722,7 @@
                     <a href="../index.html#about" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#111214] text-[#1c1d20]">ABOUT</a>
                     <a href="../index.html#works" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#111214] text-[#1c1d20]">WORKS</a>
                     <a href="../index.html#skills" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#111214] text-[#1c1d20]">SKILLS</a>
-                    <a href="../index.html#contact" class="bg-neon text-black px-4 py-1.5 rounded-full font-medium uppercase tracking-wider text-[11px] hover:bg-[#d8ff5a] transition-colors">CONTACT</a>
+                    <a href="../index.html#contact" class="bg-neon text-black px-4 py-1.5 rounded-full font-medium uppercase tracking-wider text-[11px] hover:bg-[#ffffff] transition-colors">CONTACT</a>
                 </div>
             </nav>
         </div>
@@ -680,22 +737,20 @@
                 id="bgVideo"
                 poster="img/backgroundmain.png">
                 <source src="img/backgroundmainvid.webm" type="video/webm">
-                Your browser does not support the video tag.
             </video>
             <div class="absolute inset-0 bg-[#111415] opacity-60 -z-10"></div>
             <div class="container mx-auto px-4 flex items-center justify-center">
-                <div class="relative flex flex-col items-center text-center w-full max-w-5xl">
-                    <h1 class="text-[18vw] sm:text-[18vw] md:text-[10vw] z-98 leading-[0.9] tracking-tighter mb-8 text-white">
-                        Design with<br>
-                        <div class="flex items-center justify-center">
-                            <span class="text-neon font-[Kugile] font-medium tracking-tighter mt-5">Focus.</span>
+                <div class="relative flex flex-col sm:flex-row items-start justify-between w-full max-w-5xl gap-8">
+                    <h1 class="text-[18vw] font-medium sm:text-[14vw] max-w-[450px] md:text-[8vw] z-98 leading-[0.9] tracking-tighter mb-8 text-white">
+                        <img src="img/profilebanner.png" alt="Seeger Perocho" class="w-full max-w-[210px] sm:max-w-[160px] md:max-w-[260px]">
+                        <div class="text-neon font-medium mt-2 flex flex-col">
+                            <div class="h-[1em]"><span id="typing-text" class="inline-block w-[80px]"></span></div>
+                            <span class="static-text text-[#ffffff]">DESIGNER</span>
                         </div>
                     </h1>
-                    <div class="flex justify-center mt-4 mb-6 md:mt-0">
-                        <p class="text-sm sm:text-base text-white leading-relaxed text-white max-w-[260px] sm:max-w-[480px] md:max-w-[400px] text-center">
-                            Seeger Perocho is a UI/UX Designer from the Philippines, focused on producing high-quality digital products .
-                        </p>
-                    </div>
+                    <p class="text-xs sm:text-base text-white leading-relaxed max-w-[160px] sm:max-w-[280px] md:max-w-[250px] mt-0 sm:mt-4">
+                        Designer based in the Philippines, creating meaningful digital experiences through design and creative solutions
+                    </p>
                 </div>
             </div>
         </div>
@@ -711,14 +766,14 @@
                     </div>
                     <!-- Right side with text content -->
                     <div class="space-y-12 sm:space-y-16 flex-1  mb-8 px-5 md:px-8"> <!-- Added padding -->
-                        <div class="text-[8vw] sm:text-[4vw] leading-tight max-w-4xl reveal-text">I'm a UI/UX Designer crafting beautiful and clean designs that can get those numbers pumping in your website.</div>
-                        <div class="text-[8vw] sm:text-[4vw] leading-tight max-w-4xl reveal-text">Whether you're a startup looking for an impactful website or an established brand seeking to elevate your digital presence, I'm the guy that can turn your vision to reality.</div>
+                        <div class="text-[8vw] sm:text-[4vw] leading-tight max-w-4xl reveal-text">I'm a UI/UX and Graphic Designer crafting beautiful and clean designs that can get those numbers pumping.</div>
+                        <div class="text-[8vw] sm:text-[4vw] leading-tight max-w-4xl reveal-text">Whether you're a startup looking for impactful designs or an established brand seeking to elevate your digital presence, I'm the guy that can turn your vision to reality.</div>
                     </div>
                 </div>
             </section>
         </div>
 
-        <section id="works" class="content-section min-h-screen bg-[#1c1d20] py-20 sm:py-32">
+        <section id="works" class="content-section min-h-screen bg-[#1c1d20] rounded-b-[75px] py-20 sm:py-32">
             <div class="container mx-auto px-4">
             <div class="flex flex-col sm:flex-row gap-8 sm:gap-16">
                 <div class="sm:w-[95px] flex-shrink-0" style="height: auto">
@@ -755,8 +810,7 @@
                             <p class="opacity-50 mb-20 max-w-lg">A chatbot that uses natural language processing to create humanlike conversational dialogue.</p>
                         </div>
                         <div class="work-item">
-                            <img src="img/stackedAI2.png" alt="StackedAI Preview" class="w-full rounded-lg">
-                            <a href="stackedai.html"><div class="view-more-btn"></div></a>
+                            <a href="stackedai.html"><img src="img/stackedAI2.png" alt="StackedAI Preview" class="w-full rounded-lg"></a>
                         </div>
                     </div>
                     
@@ -774,8 +828,7 @@
                             </p>
                         </div>
                         <div class="work-item">
-                            <img src="img/bagoscout.png" alt="StackedAI Preview" class="w-full rounded-lg">
-                            <a href="bagoscout.html"><div class="view-more-btn"></div></a>
+                            <a href="bagoscout.html"><img src="img/bagoscout.png" alt="BagoScout Preview" class="w-full rounded-lg"></a>
                         </div>
                     </div>
 
@@ -791,8 +844,7 @@
                             <p class="opacity-50 max-w-lg">A clean, modern, and elegant E-Commerce website for clothing and apparel.</p>
                         </div>
                         <div class="work-item">
-                            <img src="img/keira.png" alt="Keira Preview" class="w-full rounded-lg">
-                             <a href="keira.html"><div class="view-more-btn"></div></a>
+                            <a href="keira.html"><img src="img/keira.png" alt="Keira Preview" class="w-full rounded-lg"></a>
                         </div>
                     </div>
 
@@ -809,7 +861,7 @@
                         </div>
                         <div class="work-item">
                             <img src="img/animealweb2.png" alt="Animeal Preview" class="w-full rounded-lg">
-                            <div class="view-more-btn"></div>
+                           
                         </div>
                     </div>
 
@@ -826,7 +878,7 @@
                         </div>
                         <div class="work-item">
                             <img src="img/cycle2.png" alt="Cycle Preview" class="w-full rounded-lg">
-                            <div class="view-more-btn"></div>
+                            
                         </div>
                     </div>
 
@@ -843,7 +895,7 @@
                         </div>
                         <div class="work-item">
                             <img src="img/kitty2.png" alt="KITTY Preview" class="w-full rounded-lg">
-                            <div class="view-more-btn"></div>
+                           
                         </div>
                     </div>
 
@@ -860,7 +912,7 @@
                         </div>
                         <div class="work-item">
                             <img src="img/rave.png" alt="Rave Preview" class="w-full rounded-lg">
-                            <div class="view-more-btn"></div>
+                            
                         </div>
                     </div>
                 </div>
@@ -869,24 +921,24 @@
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="skills-section sm:min-h-screen bg-[#ffffff] py-12 sm:py-32">
+        <section id="skills" class="skills-section sm:min-h-screen rounded-b-[75px] bg-[#ffffff] py-12 sm:py-32">
             <div class="container mx-auto px-4">
                 <div class="flex flex-col sm:flex-row gap-8 sm:gap-16">
                     <div class="sm:w-[95px] flex-shrink-0" style="height: auto">
                         <div class="relative">
                             <div class="flex gap-4 items-start text-xs sm:text-sm relative after:content-[''] after:hidden sm:after:block after:absolute after:right-[-35px] after:top-[-97px] after:w-[1px] after:h-[3350%] after:bg-white/5">
                                 <span class="text-neon">03</span>
-                                <span>Skills</span>
+                                <span class="text-[#1c1d20]">Skills</span>
                             </div>
                             
                             <div class="mt-8 sm:mt-24 flex sm:block items-center gap-4 sm:gap-0">
-                                <div class="text-xs sm:text-sm text-white sm:opacity-50">
-                                    <span class="sm:hidden">(Tap for more)</span>
-                                    <span class="hidden sm:inline">(Up to date)</span>
+                                <div class="text-xs sm:text-sm text-[#1c1d20] sm:opacity-50">
+                                    <span class="sm:hidden text-[#1c1d20]">(Tap for more)</span>
+                                    <span class="hidden sm:inline text-[#1c1d20]">(Up to date)</span>
                                 </div>
                                 <div class="hidden sm:block">
-                                    <div class="text-6xl font-medium mt-2">2K</div>
-                                    <div class="text-6xl font-medium">25</div>
+                                    <div class="text-6xl font-medium mt-2 text-[#1c1d20]">2K</div>
+                                    <div class="text-6xl font-medium text-[#1c1d20]">25</div>
                                 </div>
                             </div>
                         </div>
@@ -896,34 +948,34 @@
                         <div class="skills-list space-y-0">
                             <!-- UI/UX -->
                             <div class="skill-item">
-                                <div class="skill-name text-4xl lg:text-6xl font-normal cursor-pointer sm:cursor-default">UI/UX</div>
-                                <div class="skill-desc text-sm text-white">Specializing in UI and UX design with 3 years of crafting experience using Figma</div>
+                                <div class="skill-name text-3xl lg:text-5xl text-[#1c1d20] font-normal cursor-pointer sm:cursor-default">UI/UX</div>
+                                <div class="skill-desc text-sm text-[#1c1d20]">Specializing in UI and UX design with 3 years of crafting experience using Figma</div>
                             </div>
                             
                             <!-- LOGO -->
                             <div class="skill-item">
-                                <div class="skill-name text-4xl lg:text-6xl font-normal cursor-pointer sm:cursor-default">LOGO</div>
-                                <div class="skill-desc text-sm text-white">Modern, minimalistic type of logo approach is my typical go to</div>
+                                <div class="skill-name text-3xl lg:text-5xl text-[#1c1d20] font-normal cursor-pointer sm:cursor-default">Logo</div>
+                                <div class="skill-desc text-sm text-[#1c1d20]">Modern, minimalistic type of logo approach is my typical go to</div>
                             </div>
                             
                             <!-- ILLUSTRATION -->
                             <div class="skill-item">
-                                <div class="skill-name text-4xl lg:text-6xl font-normal cursor-pointer sm:cursor-default">ILLUSTRATION</div>
-                                <div class="skill-desc text-sm text-white">Creating basic illustrations for 2 years.</div>
+                                <div class="skill-name text-3xl lg:text-5xl font-normal cursor-pointer sm:cursor-default text-[#1c1d20]">Illustration</div>
+                                <div class="skill-desc text-sm text-[#1c1d20]">Creating basic illustrations for 2 years.</div>
                             </div>
                             
                             <!-- GRAPHIC DESIGN -->
                             <div class="skill-item">
-                                <div class="skill-name text-4xl lg:text-6xl font-normal cursor-pointer sm:cursor-default">GRAPHIC DESIGN</div>
-                                <div class="skill-desc text-sm text-white">Social media posters, profile cards, and other personal projects</div>
+                                <div class="skill-name text-3xl lg:text-5xl text-[#1c1d20] font-normal cursor-pointer sm:cursor-default">Graphic Design</div>
+                                <div class="skill-desc text-sm text-[#1c1d20]">Social media posters, profile cards, and other personal projects</div>
                             </div>
                             
                             <!-- CHARACTER DESIGN -->
                             <div class="skill-item">
-                                <div class="skill-name text-4xl lg:text-6xl font-normal cursor-pointer sm:cursor-default">
-                                    CHARACTER <span class="hidden sm:inline">DESIGN</span>
+                                <div class="skill-name text-3xl lg:text-5xl font-normal text-[#1c1d20] cursor-pointer sm:cursor-default">
+                                    Character Design</span>
                                 </div>
-                                <div class="skill-desc text-sm text-white">Advanced beginner level illustrator, being able to understand basic postures and proportions</div>
+                                <div class="skill-desc text-sm text-[#1c1d20]">Advanced beginner level illustrator, being able to understand basic postures and proportions</div>
                             </div>
                         </div>
                     </div>
@@ -932,7 +984,12 @@
         </section>
 
         <!-- Footer Section -->
-        <footer id="contact" class="bg-[#111415] py-16 border-t border-white/5 mt-0">
+        <footer id="contact" class="py-16 border-t border-white/5 mt-0 relative overflow-hidden">
+            <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover -z-10" id="footerBgVideo">
+                <source src="img/backgroundmainvid.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+            <div class="absolute inset-0 bg-[#111415] opacity-70 -z-10"></div>
             <div class="container mx-auto px-4">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
                     <!-- Logo and Tagline -->
@@ -1043,312 +1100,616 @@
             </div>
         </footer>
 
-        <script>
-        // Global variables
-        let scrollDirection = 'none';
-        let scrollTimeout;
-        let updateWordsFunction;
+        <!-- Floating video previews -->
+        <div id="floating-video" style="display:none;pointer-events:none;position:fixed;z-index:99999;width:380px;height:220px;top:0;left:0;">
+            <video src="img/stackedaivid2.mp4" loop muted autoplay style="box-shadow:0 0 24px rgba(0,0,0,0.10); border-radius: 5px;"></video>
+        </div>
+        <div id="floating-video-bagoscout" style="display:none;pointer-events:none;position:fixed;z-index:99999;width:380px;height:220px;top:0;left:0;">
+            <video src="img/bagoscoutvid2.mp4" loop muted autoplay style="box-shadow:0 0 12px rgba(0,0,0,0.10); border-radius: 5px;"></video>
+        </div>
+        <div id="floating-video-keira" style="display:none;pointer-events:none;position:fixed;z-index:99999;width:380px;height:220px;top:0;left:0;">
+            <video src="img/stackedaivid2.mp4" loop muted autoplay style="box-shadow:0 0 24px rgba(0,0,0,0.10); border-radius: 5px;"></video>
+        </div>
+        <div id="floating-video-animeal" style="display:none;pointer-events:none;position:fixed;z-index:99999;width:380px;height:220px;top:0;left:0;">
+            <video src="img/stackedaivid2.mp4" loop muted autoplay style="box-shadow:0 0 24px rgba(0,0,0,0.10); border-radius: 5px;"></video>
+        </div>
+        <div id="floating-video-cycle" style="display:none;pointer-events:none;position:fixed;z-index:99999;width:380px;height:220px;top:0;left:0;">
+            <video src="img/stackedaivid2.mp4" loop muted autoplay style="box-shadow:0 0 24px rgba(0,0,0,0.10); border-radius: 5px;"></video>
+        </div>
+        <div id="floating-video-kitty" style="display:none;pointer-events:none;position:fixed;z-index:99999;width:380px;height:220px;top:0;left:0;">
+            <video src="img/stackedaivid2.mp4" loop muted autoplay style="box-shadow:0 0 24px rgba(0,0,0,0.10); border-radius: 5px;"></video>
+        </div>
+        <div id="floating-video-rave" style="display:none;pointer-events:none;position:fixed;z-index:99999;width:380px;height:220px;top:0;left:0;">
+            <video src="img/stackedaivid2.mp4" loop muted autoplay style="box-shadow:0 0 24px rgba(0,0,0,0.10); border-radius: 5px;"></video>
+        </div>
 
-        document.addEventListener('DOMContentLoaded', () => {
-            // Video debug
-            const video = document.getElementById('bgVideo');
-            
-            video.addEventListener('loadeddata', () => {
-                console.log('Video loaded successfully');
-                video.play().catch(e => console.log('Error playing video:', e));
-            });
-            
-            video.addEventListener('error', (e) => {
-                console.log('Error loading video:', e);
-            });
+        <!-- Floating neon view circle -->
+        <div id="floating-view-circle" style="display:none;pointer-events:none;position:fixed;z-index:99999;width:70px;height:70px;top:0;left:0;">
+            <div style="width:75px;height:75px;border-radius:100%;background:#C4FF0F;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(196,255,15,0.25);font-family:'Neue Haas Grotesk Display Pro',sans-serif;font-weight:500;font-size:1.1rem;color:#1c1d20;">view</div>
+        </div>
 
-            // Loading screen animation
-            setTimeout(() => {
-                document.querySelector('.loading-screen').classList.add('hide');
-                document.querySelector('.main-content').classList.add('show');
-            }, 1000);
-
-            // Add border radius scroll animation for hero section
-            const heroSection = document.getElementById('hero-section');
-            let heroMaxScroll = 150; // Adjust this value to control when the effect completes
-            
-            function updateHeroBorderRadius() {
-                const scrollY = window.scrollY;
-                const progress = Math.min(scrollY / heroMaxScroll, 1);
-                const maxRadius = window.innerWidth <= 600 ? 50 : 100; // 50px for mobile, 100px for larger screens
-                const borderRadius = progress * maxRadius;
-                
-                // Update border radius for hero section
-                heroSection.style.borderBottomLeftRadius = `${borderRadius}px`;
-                heroSection.style.borderBottomRightRadius = `${borderRadius}px`;
-            }
-
-            // Add border radius scroll animation for about section
-            const aboutSection = document.querySelector('#about').parentElement.querySelector('.absolute');
-            let aboutMaxScroll = 300; // Different scroll threshold for about section
-            
-            function updateAboutBorderRadius() {
-                const scrollY = window.scrollY;
-                const progress = Math.min(scrollY / aboutMaxScroll, 1);
-                const maxRadius = window.innerWidth <= 600 ? 50 : 100; // 50px for mobile, 100px for larger screens
-                const borderRadius = progress * maxRadius;
-                
-                // Update border radius for about section
-                if (aboutSection) {
-                    aboutSection.style.borderBottomLeftRadius = `${borderRadius}px`;
-                    aboutSection.style.borderBottomRightRadius = `${borderRadius}px`;
+        <style>
+            @media (min-width: 1025px) {
+                #floating-video,
+                #floating-video-bagoscout,
+                #floating-video-keira,
+                #floating-video-animeal,
+                #floating-video-cycle,
+                #floating-video-kitty,
+                #floating-video-rave,
+                #floating-view-circle {
+                    display: block;
                 }
             }
 
-            // Add scroll event listeners
-            window.addEventListener('scroll', () => {
-                requestAnimationFrame(() => {
+            #floating-video video,
+            #floating-video-bagoscout video,
+            #floating-video-keira video,
+            #floating-video-animeal video,
+            #floating-video-cycle video,
+            #floating-video-kitty video,
+            #floating-video-rave video {
+                transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+                transform: scale(0);
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            #floating-video.zoomed video,
+            #floating-video-bagoscout.zoomed video,
+            #floating-video-keira.zoomed video,
+            #floating-video-animeal.zoomed video,
+            #floating-video-cycle.zoomed video,
+            #floating-video-kitty.zoomed video,
+            #floating-video-rave.zoomed video {
+                transform: scale(1);
+            }
+
+            #floating-view-circle {
+                display: none;
+                position: fixed;
+                width: 70px;
+                height: 70px;
+                background-color: #C4FF0F;
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 600;
+                transform: scale(0);
+                transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            #floating-view-circle.zoomed {
+                transform: scale(1);
+            }
+        </style>
+
+        <script>
+            // Global variables
+            let scrollDirection = 'none';                   
+            let scrollTimeout;
+            let updateWordsFunction;
+
+            document.addEventListener('DOMContentLoaded', () => {
+                // Video debug
+                const video = document.getElementById('bgVideo');
+                
+                video.addEventListener('loadeddata', () => {
+                    console.log('Video loaded successfully');
+                    video.play().catch(e => console.log('Error playing video:', e));
+                });
+                
+                video.addEventListener('error', (e) => {
+                    console.log('Error loading video:', e);
+                });
+
+                // Loading screen animation
+                const loadingScreen = document.getElementById('loadingScreen');
+                const mainContent = document.querySelector('.main-content');
+                if (!loadingScreen) return;
+
+                // Animation settings
+                const staticDelay = 600; // ms the loading screen stays static
+                const duration = 600; // ms for the slide-up animation
+
+                setTimeout(() => {
+                    const start = performance.now();
+
+                    function animate(now) {
+                        const elapsed = now - start;
+                        const progress = Math.min(elapsed / duration, 1);
+
+                        // Slide up: from 0 (bottom) to -100% (top)
+                        loadingScreen.style.transform = `translateY(${-progress * 100}%)`;
+
+                        if (progress < 1) {
+                            requestAnimationFrame(animate);
+                        } else {
+                            mainContent.classList.add('show');
+                        }
+                    }
+
+                    requestAnimationFrame(animate);
+                }, staticDelay);
+
+                // Add border radius scroll animation for hero section
+                const heroSection = document.getElementById('hero-section');
+                let heroMaxScroll = 150; // Adjust this value to control when the effect completes
+                
+                function updateHeroBorderRadius() {
+                    const scrollY = window.scrollY;
+                    const progress = Math.min(scrollY / heroMaxScroll, 1);
+                    const maxRadius = window.innerWidth <= 600 ? 50 : 100; // 50px for mobile, 100px for larger screens
+                    const borderRadius = progress * maxRadius;
+                    
+                    // Update border radius for hero section
+                    heroSection.style.borderBottomLeftRadius = `${borderRadius}px`;
+                    heroSection.style.borderBottomRightRadius = `${borderRadius}px`;
+                }
+
+                // Add border radius scroll animation for about section
+                const aboutSection = document.querySelector('#about').parentElement.querySelector('.absolute');
+                let aboutMaxScroll = 300; // Different scroll threshold for about section
+                
+                function updateAboutBorderRadius() {
+                    const scrollY = window.scrollY;
+                    const progress = Math.min(scrollY / aboutMaxScroll, 1);
+                    const maxRadius = window.innerWidth <= 600 ? 50 : 100; // 50px for mobile, 100px for larger screens
+                    const borderRadius = progress * maxRadius;
+                    
+                    // Update border radius for about section
+                    if (aboutSection) {
+                        aboutSection.style.borderBottomLeftRadius = `${borderRadius}px`;
+                        aboutSection.style.borderBottomRightRadius = `${borderRadius}px`;
+                    }
+                }
+
+                // Add scroll event listeners
+                window.addEventListener('scroll', () => {
+                    requestAnimationFrame(() => {
+                        updateHeroBorderRadius();
+                        updateAboutBorderRadius();
+                    });
+                });
+                
+                // Add resize listeners
+                window.addEventListener('resize', () => {
                     updateHeroBorderRadius();
                     updateAboutBorderRadius();
                 });
-            });
-            
-            // Add resize listeners
-            window.addEventListener('resize', () => {
+                
+                // Initial calls to set initial state
                 updateHeroBorderRadius();
                 updateAboutBorderRadius();
-            });
-            
-            // Initial calls to set initial state
-            updateHeroBorderRadius();
-            updateAboutBorderRadius();
 
-            // Handle page transitions
-            const pageTransition = document.querySelector('.page-transition');
-            const stackedaiTransition = document.querySelector('.stackedai-transition');
-            const mainContent = document.querySelector('.main-content');
-            const viewMoreButtons = document.querySelectorAll('.view-more-btn');
+                // Handle page transitions
+                const pageTransition = document.querySelector('.page-transition');
+                const stackedaiTransition = document.querySelector('.stackedai-transition');
+                const viewMoreButtons = document.querySelectorAll('.view-more-btn');
 
-            viewMoreButtons.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const link = button.closest('a').getAttribute('href');
-                    
-                    // Show StackedAI transition if it's the StackedAI link
-                    if (link === 'stackedai.html') {
-                        // Hide main content
-                        mainContent.style.opacity = '0';
-                        mainContent.style.visibility = 'hidden';
-                        mainContent.style.transition = 'opacity 0.5s ease, visibility 0.5s ease';
+                viewMoreButtons.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const link = button.closest('a').getAttribute('href');
                         
-                        // Show transition overlay
-                        stackedaiTransition.classList.add('show');
-                        
-                        // Hide transition and redirect after 2.5 seconds
-                        setTimeout(() => {
-                            stackedaiTransition.classList.remove('show');
+                        // Show StackedAI transition if it's the StackedAI link
+                        if (link === 'stackedai.html') {
+                            // Hide main content
+                            mainContent.style.opacity = '0';
+                            mainContent.style.visibility = 'hidden';
+                            mainContent.style.transition = 'opacity 0.5s ease, visibility 0.5s ease';
+                            
+                            // Show transition overlay
+                            stackedaiTransition.classList.add('show');
+                            
+                            // Hide transition and redirect after 2.5 seconds
                             setTimeout(() => {
-                                window.location.href = link;
-                            }, 1500); // Wait for fade out before redirecting
-                        }, 2500);
-                    } else {
-                        window.location.href = link;
-                    }
-                });
-            });
-
-            // Circular text following mouse
-            document.addEventListener('mousemove', (e) => {
-                if (window.innerWidth > 768) {
-                    const circularText = document.querySelector('.circular-text');
-                    circularText.style.left = e.clientX + 'px';
-                    circularText.style.top = e.clientY + 'px';
-                }
-            });
-
-            // Animate content sections on scroll
-            const contentSections = document.querySelectorAll('.content-section');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('show');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            contentSections.forEach(section => {
-                observer.observe(section);
-            });
-
-            // Skill item interaction
-            const skillItems = document.querySelectorAll('.skill-item');
-            const skillNames = document.querySelectorAll('.skill-name');
-            const skillDescs = document.querySelectorAll('.skill-desc');
-
-            // Function to handle skill item clicks
-            function handleSkillClick(element) {
-                // Reset all skill items
-                skillItems.forEach(item => {
-                    item.classList.remove('active');
-                });
-                
-                // Toggle active state
-                if (element.classList.contains('skill-item')) {
-                    element.classList.add('active');
-                } else {
-                    // If clicking on child element, find parent skill-item
-                    const parentItem = element.closest('.skill-item');
-                    if (parentItem) {
-                        parentItem.classList.add('active');
-                    }
-                }
-            }
-            
-            // Add click handlers to all skill names and descriptions on mobile
-            if (window.innerWidth < 640) {
-                skillItems.forEach(item => {
-                    const skillName = item.querySelector('.skill-name');
-                    const skillDesc = item.querySelector('.skill-desc');
-                    
-                    // Add click handler to skill name
-                    skillName.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        
-                        // Remove active class from all other items
-                        skillItems.forEach(otherItem => {
-                            if (otherItem !== item) {
-                                otherItem.classList.remove('active');
-                            }
-                        });
-                        
-                        // Toggle active class on clicked item
-                        item.classList.toggle('active');
-                    });
-
-                    // Add click handler to skill description
-                    skillDesc.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        item.classList.remove('active'); // Remove active class to show skill name
+                                stackedaiTransition.classList.remove('show');
+                                setTimeout(() => {
+                                    window.location.href = link;
+                                }, 500); // Wait for fade out before redirecting
+                            }, 500);
+                        } else {
+                            window.location.href = link;
+                        }
                     });
                 });
-            }
 
-            // Text reveal animation
-            const revealTexts = document.querySelectorAll('.reveal-text');
-            let allWords = [];
-            
-            revealTexts.forEach(revealText => {
-                const text = revealText.textContent;
-                revealText.textContent = '';
-                
-                const words = text.split(' ');
-                words.forEach(word => {
-                    const span = document.createElement('span');
-                    span.textContent = word;
-                    span.classList.add('word');
-                    revealText.appendChild(span);
-                    allWords.push(span);
-                });
-            });
-            
-            // Check if word is in middle of viewport with offset
-            function getWordPosition(element) {
-                const rect = element.getBoundingClientRect();
-                const windowHeight = window.innerHeight;
-                const threshold = windowHeight * 0.8; // Increased to 80% of viewport height
-                
-                // Reveal text when it enters the top 20% or bottom 20% of viewport
-                return (rect.top < threshold && rect.bottom > windowHeight * 0.2);
-            }
-            
-            // Update words based on scroll position and proximity
-            function updateWords() {
-                allWords.forEach(word => {
-                    if (getWordPosition(word)) {
-                        word.classList.add('revealed');
-                    } else {
-                        word.classList.remove('revealed');
+                // Circular text following mouse
+                document.addEventListener('mousemove', (e) => {
+                    if (window.innerWidth > 768) {
+                        const circularText = document.querySelector('.circular-text');
+                        circularText.style.left = e.clientX + 'px';
+                        circularText.style.top = e.clientY + 'px';
                     }
                 });
-                
-                // Update the content sections reveal threshold
+
+                // Animate content sections on scroll
+                const contentSections = document.querySelectorAll('.content-section');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('show');
+                        }
+                    });
+                }, { threshold: 0.1 });
+
                 contentSections.forEach(section => {
-                    const rect = section.getBoundingClientRect();
-                    if (rect.top < window.innerHeight * 0.9 && rect.bottom > 0) {
-                        section.classList.add('show');
-                    }
+                    observer.observe(section);
                 });
-            }
-            
-            // Store updateWords function in global scope for Lenis to use
-            updateWordsFunction = updateWords;
 
-            // Scroll event handler with debounce
-            window.addEventListener('scroll', () => {
-                clearTimeout(scrollTimeout);
-                updateWords();
-                
-                scrollTimeout = setTimeout(() => {
-                    scrollDirection = 'none';
-                }, 150);
-            });
+                // Skill item interaction
+                const skillItems = document.querySelectorAll('.skill-item');
+                const skillNames = document.querySelectorAll('.skill-name');
+                const skillDescs = document.querySelectorAll('.skill-desc');
 
-            window.addEventListener('resize', updateWords);
-            
-            // Initial check
-            updateWords();
-
-            // Initialize Lenis for smooth scrolling
-            const lenis = new Lenis({
-                duration: 1.5,
-                easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)), // Exponential easing out - similar to charlieosborne.co
-                orientation: 'vertical',
-                gestureOrientation: 'vertical',
-                smoothWheel: true,
-                smoothTouch: false,
-                touchMultiplier: 1.5,
-                infinite: false,
-                wheelMultiplier: 1.0,
-                lerp: 0.1, // Linear interpolation for smoother start/stop
-            });
-
-            // Get scroll direction for potential use
-            lenis.on('scroll', ({ scroll, limit, velocity, direction, progress }) => {
-                scrollDirection = direction === 1 ? 'down' : 'up';
-                updateWords();
-                
-                // Add a scroll progress class to body for potential animations
-                const scrollProgress = scroll / limit;
-                document.body.style.setProperty('--scroll-progress', scrollProgress);
-            });
-
-            // RAF loop for smooth animation
-            function raf(time) {
-                lenis.raf(time);
-                requestAnimationFrame(raf);
-            }
-            
-            // Start the animation loop
-            requestAnimationFrame(raf);
-            
-            // Handle anchor links with smooth scrolling
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
+                // Function to handle skill item clicks
+                function handleSkillClick(element) {
+                    // Reset all skill items
+                    skillItems.forEach(item => {
+                        item.classList.remove('active');
+                    });
                     
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        lenis.scrollTo(targetElement, {
-                            offset: 0,
-                            duration: 1.5,
-                            easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t))
+                    // Toggle active state
+                    if (element.classList.contains('skill-item')) {
+                        element.classList.add('active');
+                    } else {
+                        // If clicking on child element, find parent skill-item
+                        const parentItem = element.closest('.skill-item');
+                        if (parentItem) {
+                            parentItem.classList.add('active');
+                        }
+                    }
+                }
+                
+                // Add click handlers to all skill names and descriptions on mobile
+                if (window.innerWidth < 640) {
+                    skillItems.forEach(item => {
+                        const skillName = item.querySelector('.skill-name');
+                        const skillDesc = item.querySelector('.skill-desc');
+                        
+                        // Add click handler to skill name
+                        skillName.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            
+                            // Remove active class from all other items
+                            skillItems.forEach(otherItem => {
+                                if (otherItem !== item) {
+                                    otherItem.classList.remove('active');
+                                }
+                            });
+                            
+                            // Toggle active class on clicked item
+                            item.classList.toggle('active');
+                        });
+
+                        // Add click handler to skill description
+                        skillDesc.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            item.classList.remove('active'); // Remove active class to show skill name
+                        });
+                    });
+                }
+
+                // Text reveal animation
+                const revealTexts = document.querySelectorAll('.reveal-text');
+                let allWords = [];
+                
+                revealTexts.forEach(revealText => {
+                    const text = revealText.textContent;
+                    revealText.textContent = '';
+                    
+                    const words = text.split(' ');
+                    words.forEach(word => {
+                        const span = document.createElement('span');
+                        span.textContent = word;
+                        span.classList.add('word');
+                        revealText.appendChild(span);
+                        allWords.push(span);
+                    });
+                });
+                
+                // Check if word is in middle of viewport with offset
+                function getWordPosition(element) {
+                    const rect = element.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+                    const threshold = windowHeight * 0.8; // Increased to 80% of viewport height
+                    
+                    // Reveal text when it enters the top 20% or bottom 20% of viewport
+                    return (rect.top < threshold && rect.bottom > windowHeight * 0.2);
+                }
+                
+                // Update words based on scroll position and proximity
+                function updateWords() {
+                    allWords.forEach(word => {
+                        if (getWordPosition(word)) {
+                            word.classList.add('revealed');
+                        } else {
+                            word.classList.remove('revealed');
+                        }
+                    });
+                    
+                    // Update the content sections reveal threshold
+                    contentSections.forEach(section => {
+                        const rect = section.getBoundingClientRect();
+                        if (rect.top < window.innerHeight * 0.9 && rect.bottom > 0) {
+                            section.classList.add('show');
+                        }
+                    });
+                }
+                
+                // Store updateWords function in global scope for Lenis to use
+                updateWordsFunction = updateWords;
+
+                // Scroll event handler with debounce
+                window.addEventListener('scroll', () => {
+                    clearTimeout(scrollTimeout);
+                    updateWords();
+                    
+                    scrollTimeout = setTimeout(() => {
+                        scrollDirection = 'none';
+                    }, 150);
+                });
+
+                window.addEventListener('resize', updateWords);
+                
+                // Initial check
+                updateWords();
+
+                // Initialize Lenis for smooth scrolling
+                const lenis = new Lenis({
+                    duration: 1.5,
+                    easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)), // Exponential easing out - similar to charlieosborne.co
+                    orientation: 'vertical',
+                    gestureOrientation: 'vertical',
+                    smoothWheel: true,
+                    smoothTouch: false,
+                    touchMultiplier: 1.5,
+                    infinite: false,
+                    wheelMultiplier: 1.0,
+                    lerp: 0.1, // Linear interpolation for smoother start/stop
+                });
+
+                // Get scroll direction for potential use
+                lenis.on('scroll', ({ scroll, limit, velocity, direction, progress }) => {
+                    scrollDirection = direction === 1 ? 'down' : 'up';
+                    updateWords();
+                    
+                    // Add a scroll progress class to body for potential animations
+                    const scrollProgress = scroll / limit;
+                    document.body.style.setProperty('--scroll-progress', scrollProgress);
+                });
+
+                // RAF loop for smooth animation
+                function raf(time) {
+                    lenis.raf(time);
+                    requestAnimationFrame(raf);
+                }
+                
+                // Start the animation loop
+                requestAnimationFrame(raf);
+                
+                // Handle anchor links with smooth scrolling
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        if (targetId === '#') return;
+                        
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            lenis.scrollTo(targetElement, {
+                                offset: 0,
+                                duration: 1.5,
+                                easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t))
+                            });
+                        }
+                    });
+                });
+                
+                // Stop scrolling when user interacts with certain elements
+                document.querySelectorAll('[data-lenis-prevent]').forEach(element => {
+                    element.setAttribute('data-lenis-prevent', '');
+                });
+
+                // Navigation animation delay
+                setTimeout(() => {
+                    document.querySelector('.nav-slide-down').classList.add('nav-animate');
+                    setTimeout(() => {
+                        document.querySelector('.nav-spread').classList.add('nav-links-visible');
+                    }, 1200);
+                }, 1900);
+
+                // Track mouse position globally
+                window.mouseX = 0;
+                window.mouseY = 0;
+                document.addEventListener('mousemove', (e) => {
+                    window.mouseX = e.clientX;
+                    window.mouseY = e.clientY;
+                });
+
+                // Floating video preview logic for all work items
+                const workItems = {
+                    'StackedAI Preview': 'floating-video',
+                    'BagoScout Preview': 'floating-video-bagoscout',
+                    'Keira Preview': 'floating-video-keira',
+                    'Animeal Preview': 'floating-video-animeal',
+                    'Cycle Preview': 'floating-video-cycle',
+                    'KITTY Preview': 'floating-video-kitty',
+                    'Rave Preview': 'floating-video-rave'
+                };
+
+                // Initialize all video elements
+                Object.entries(workItems).forEach(([alt, videoId]) => {
+                    const videoElement = document.getElementById(videoId);
+                    const workItem = document.querySelector(`.work-item img[alt="${alt}"]`)?.closest('.work-item');
+
+                    if (workItem && videoElement) {
+                        let targetX = 0, targetY = 0;
+                        let currentX = 0, currentY = 0;
+                        let isFollowing = false;
+
+                        function animateFollow() {
+                            if (!isFollowing) return;
+                            currentX += (targetX - currentX) * 0.06;
+                            currentY += (targetY - currentY) * 0.06;
+                            videoElement.style.left = currentX + 'px';
+                            videoElement.style.top = currentY + 'px';
+                            requestAnimationFrame(animateFollow);
+                        }
+
+                        workItem.addEventListener('mouseenter', (e) => {
+                            if (window.innerWidth <= 1024) return;
+                            
+                            const offsetX = 30;
+                            const offsetY = 30;
+                            currentX = targetX = e.clientX + offsetX;
+                            currentY = targetY = e.clientY + offsetY;
+                            videoElement.style.left = currentX + 'px';
+                            videoElement.style.top = currentY + 'px';
+                            videoElement.style.display = 'block';
+                            isFollowing = true;
+                            const onMove = (e) => {
+                                targetX = e.clientX + 30;
+                                targetY = e.clientY + 30;
+                            };
+                            workItem.addEventListener('mousemove', onMove);
+                            workItem.addEventListener('mouseleave', () => {
+                                videoElement.classList.remove('zoomed');
+                                setTimeout(() => {
+                                    videoElement.style.display = 'none';
+                                }, 350);
+                                isFollowing = false;
+                                workItem.removeEventListener('mousemove', onMove);
+                            }, { once: true });
+                            setTimeout(() => {
+                                videoElement.classList.add('zoomed');
+                            }, 50);
+                            requestAnimationFrame(animateFollow);
                         });
                     }
                 });
+
+                // Floating neon view circle logic
+                const floatingViewCircle = document.getElementById('floating-view-circle');
+                let circleTargetX = 0, circleTargetY = 0;
+                let circleCurrentX = 0, circleCurrentY = 0;
+                let isCircleFollowing = false;
+
+                function animateCircleFollow() {
+                    if (!isCircleFollowing) return;
+                    circleCurrentX += (circleTargetX - circleCurrentX) * 0.15; // Increased from 0.10 to 0.15 for faster response
+                    circleCurrentY += (circleTargetY - circleCurrentY) * 0.15; // Increased from 0.06 to 0.15 for faster response
+                    floatingViewCircle.style.left = (circleCurrentX - 35) + 'px';
+                    floatingViewCircle.style.top = (circleCurrentY - 35) + 'px';
+                    requestAnimationFrame(animateCircleFollow);
+                }
+
+                // Track mouse position globally for circle
+                document.addEventListener('mousemove', (e) => {
+                    if (isCircleFollowing) {
+                        circleTargetX = e.clientX;
+                        circleTargetY = e.clientY;
+                    }
+                });
+
+                document.querySelectorAll('.work-item').forEach(item => {
+                    item.addEventListener('mouseenter', (e) => {
+                        if (window.innerWidth <= 1024) return;
+                        
+                        circleCurrentX = circleTargetX = e.clientX;
+                        circleCurrentY = circleTargetY = e.clientY;
+                        floatingViewCircle.style.display = 'block';
+                        isCircleFollowing = true;
+                        requestAnimationFrame(animateCircleFollow);
+                        floatingViewCircle.classList.add('zoomed');
+                    });
+                    item.addEventListener('mouseleave', () => {
+                        if (window.innerWidth <= 1024) return;
+                        floatingViewCircle.classList.remove('zoomed');
+                        setTimeout(() => {
+                            if (!isCircleFollowing) {
+                                floatingViewCircle.style.display = 'none';
+                            }
+                        }, 350);
+                    });
+                });
+
+                // Add scroll event listener to maintain circle visibility during fast scrolling
+                window.addEventListener('scroll', () => {
+                    if (window.innerWidth <= 1024) return;
+                    
+                    const workItems = document.querySelectorAll('.work-item');
+                    let isOverWorkItem = false;
+                    
+                    workItems.forEach(item => {
+                        const rect = item.getBoundingClientRect();
+                        if (window.mouseX >= rect.left && window.mouseX <= rect.right && 
+                            window.mouseY >= rect.top && window.mouseY <= rect.bottom) {
+                            isOverWorkItem = true;
+                            if (!isCircleFollowing) {
+                                isCircleFollowing = true;
+                                circleCurrentX = circleTargetX = window.mouseX;
+                                circleCurrentY = circleTargetY = window.mouseY;
+                                floatingViewCircle.style.display = 'block';
+                                floatingViewCircle.classList.add('zoomed');
+                                requestAnimationFrame(animateCircleFollow);
+                            }
+                        }
+                    });
+
+                    if (!isOverWorkItem) {
+                        isCircleFollowing = false;
+                        floatingViewCircle.classList.remove('zoomed');
+                        setTimeout(() => {
+                            if (!isCircleFollowing) {
+                                floatingViewCircle.style.display = 'none';
+                            }
+                        }, 350);
+                    }
+                });
+
+                // Typing animation
+                const typingText = document.getElementById('typing-text');
+                const words = ['UI/UX', 'GRAPHIC'];
+                let wordIndex = 0;
+                let charIndex = 0;
+                let isDeleting = false;
+                let typingDelay = 100;
+
+                function type() {
+                    const currentWord = words[wordIndex];
+                    
+                    if (isDeleting) {
+                        typingText.textContent = currentWord.substring(0, charIndex - 1);
+                        charIndex--;
+                        typingDelay = 50;
+                    } else {
+                        typingText.textContent = currentWord.substring(0, charIndex + 1);
+                        charIndex++;
+                        typingDelay = 100;
+                    }
+
+                    if (!isDeleting && charIndex === currentWord.length) {
+                        isDeleting = true;
+                        typingDelay = 2000; // Pause at end
+                    } else if (isDeleting && charIndex === 0) {
+                        isDeleting = false;
+                        wordIndex = (wordIndex + 1) % words.length;
+                        typingDelay = 500; // Pause before next word
+                    }
+
+                    setTimeout(type, typingDelay);
+                }
+
+                // Start the typing animation
+                type();
             });
-            
-            // Stop scrolling when user interacts with certain elements
-            document.querySelectorAll('[data-lenis-prevent]').forEach(element => {
-                element.setAttribute('data-lenis-prevent', '');
-            });
-        });
         </script>
+    </div>
 </body>
 </html>
