@@ -643,7 +643,7 @@
             position: fixed;
             width: 70px;
             height: 70px;
-            background-color: #C4FF0F;
+            background-color: #876BDA;
             border-radius: 50%;
             pointer-events: none;
             z-index: 1;
@@ -681,7 +681,7 @@
 
         @keyframes changeText {
             0%, 45% { content: 'UI/UX'; }
-            50%, 95% { content: 'GRAPHIC'; }
+            50%, 95% { content: 'FREELANCE'; }
         }
 
         /* Mobile circle button styles */
@@ -731,6 +731,162 @@
             }
         }
 
+        /* Add these styles to your existing <style> section */
+        @media (max-width: 640px) {
+            .more-works-section {
+                margin-top: 4rem;
+                margin-bottom: 4rem;
+            }
+            .more-works-heading {
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
+            }
+            .more-works-subtext {
+                font-size: 1rem;
+                margin-top: 0.75rem;
+            }
+            .more-works-image {
+                width: 150%;
+            }
+            .more-works-spacing {
+                margin-top: 2rem;
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .more-works-section {
+                margin-top: 6rem;
+                margin-bottom: 6rem;
+            }
+            .more-works-heading {
+                font-size: 1.75rem;
+                margin-bottom: 3rem;
+            }
+            .more-works-subtext {
+                font-size: 1.125rem;
+                margin-top: 1rem;
+            }
+            .more-works-image {
+                width: 140%;
+            }
+            .more-works-spacing {
+                margin-top: 3rem;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .more-works-section {
+                margin-top: 8rem;
+                margin-bottom: 8rem;
+            }
+            .more-works-heading {
+                font-size: 2rem;
+                margin-bottom: 4rem;
+            }
+            .more-works-subtext {
+                font-size: 1.25rem;
+                margin-top: 1.25rem;
+            }
+            .more-works-image {
+                width: 130%;
+            }
+            .more-works-spacing {
+                margin-top: 2.5rem;
+            }
+        }
+
+        @media (max-width: 430px) {
+            #firstLineImage img,
+            #secondLineImage img {
+                width: 250%;
+                max-width: none;
+            }
+            .more-works-section {
+                margin-top: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+        @media (min-width: 431px) and (max-width: 640px) {
+            .more-works-section {
+                margin-top: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .more-works-section {
+                margin-top: 4rem;
+                margin-bottom: 4rem;
+            }
+        }
+        @media (min-width: 1025px) {
+            .more-works-section {
+                margin-top: 6rem;
+                margin-bottom: 6rem;
+            }
+        }
+
+        .neon-liquid-btn {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: color 0.3s cubic-bezier(0.16,1,0.3,1);
+        }
+        .neon-liquid-btn::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 100%;
+            width: 200%;
+            height: 200%;
+            background-color: #876BDA;
+            border-radius: 50%;
+            transform: translate(-50%, 0) scale(0.1);
+            transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), top 0.5s cubic-bezier(0.16,1,0.3,1);
+            z-index: 0;
+            pointer-events: none;
+        }
+        .neon-liquid-btn:hover,
+        .neon-liquid-btn:focus {
+            color: #ffffff !important;
+        }
+        .neon-liquid-btn:hover::before,
+        .neon-liquid-btn:focus::before {
+            transform: translate(-50%, -50%) scale(1);
+            top: 50%;
+        }
+
+        .magnetic-btn-inner {
+            transition: transform 0.25s cubic-bezier(0.16,1,0.3,1);
+            will-change: transform;
+        }
+       
+        .contact-liquid-btn {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: color 0.3s cubic-bezier(0.16,1,0.3,1);
+        }
+        .contact-liquid-btn::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 0%;
+            background-color: #876BDA;
+            border-radius: inherit;
+            z-index: 0;
+            transition: height 0.5s cubic-bezier(0.16,1,0.3,1);
+            pointer-events: none;
+        }
+        .contact-liquid-btn:hover,
+        .contact-liquid-btn:focus {
+            color: #fff !important;
+        }
+        .contact-liquid-btn:hover::before,
+        .contact-liquid-btn:focus::before {
+            height: 100%;
+        }
     </style>
 </head>
 <body class="min-h-screen text-white font-neue overflow-x-hidden [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
@@ -769,7 +925,7 @@
                     <a href="../index.html#about" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#0B0D0D] text-[#1c1d20]">ABOUT</a>
                     <a href="../index.html#works" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#0B0D0D] text-[#1c1d20]">WORKS</a>
                     <a href="../index.html#skills" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#0B0D0D] text-[#1c1d20]">SKILLS</a>
-                    <a href="../index.html#contact" class="bg-neon text-black px-4 py-1.5 rounded-full font-medium uppercase tracking-wider text-[11px] hover:bg-[#ffffff] transition-colors">CONTACT</a>
+                    <a href="../index.html#contact" class="contact-liquid-btn bg-[#1c1d20] text-[#ffffff] px-4 py-1.5 rounded-full font-medium uppercase tracking-wider text-[11px] transition-colors relative z-10">CONTACT</a>
                 </div>
             </nav>
         </div>
@@ -790,7 +946,7 @@
                 <div class="relative flex flex-col sm:flex-row items-start justify-between w-full max-w-5xl gap-8">
                     <h1 class="text-[18vw] font-medium sm:text-[14vw] max-w-[450px] md:text-[8vw] z-98 leading-[0.9] tracking-tighter mb-8 text-white">
                         <img src="img/profilebanner.png" alt="Seeger Perocho" class="w-full max-w-[210px] sm:max-w-[160px] md:max-w-[260px]">
-                        <div class="text-neon font-medium mt-2 flex flex-col">
+                        <div class="text-[#876BDA] font-medium mt-2 flex flex-col">
                             <div class="h-[1em]"><span id="typing-text" class="inline-block w-[80px]"></span></div>
                             <span class="static-text text-[#ffffff]">DESIGNER</span>
                         </div>
@@ -808,7 +964,7 @@
                 <div class="flex flex-col md:flex-row gap-8 md:gap-16 relative">
                     <!-- Left side with section number -->
                     <div class="flex gap-4 items-start text-sm md:text-md relative mt-20 md:mt-0 after:content-[''] after:hidden md:after:block after:absolute after:right-[-47px] after:top-0 after:w-[1px] after:h-[200%] after:bg-black/5">
-                        <span class="text-neon font-medium">01</span>
+                        <span class="text-[#876BDA] font-medium">01</span>
                         <span class="text-[#1c1d20] font-medium">About me</span>
                     </div>
                     <!-- Right side with text content -->
@@ -826,7 +982,7 @@
                 <div class="sm:w-[95px] flex-shrink-0" style="height: auto">
                     <div class="sm:sticky sm:top-32">
                         <div class="flex gap-4 items-start text-xs sm:text-sm relative after:content-[''] after:hidden sm:after:block after:absolute after:right-[-35px] after:top-[-128px] after:w-[1px] after:h-[39950%] after:bg-white/5">
-                            <span class="text-neon">02</span>
+                            <span class="text-[#876BDA]">02</span>
                             <span>Works</span>
                         </div>
                         <div class="mt-8 sm:mt-20">
@@ -984,74 +1140,38 @@
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="skills-section sm:min-h-screen rounded-b-[75px] bg-[#ffffff] py-12 sm:py-32">
+        <section class="w-full mt-32 mb-32 overflow-hidden more-works-section">
+            <!-- Heading -->
             <div class="container mx-auto px-4">
-                <div class="flex flex-col sm:flex-row gap-8 sm:gap-16">
-                    <div class="sm:w-[95px] flex-shrink-0" style="height: auto">
-                        <div class="relative">
-                            <div class="flex gap-4 items-start text-xs sm:text-sm relative after:content-[''] after:hidden sm:after:block after:absolute after:right-[-35px] after:top-[-97px] after:w-[1px] after:h-[3350%] after:bg-white/5">
-                                <span class="text-neon">03</span>
-                                <span class="text-[#1c1d20]">Skills</span>
-                            </div>
-                            
-                            <div class="mt-8 sm:mt-24 flex sm:block items-center gap-4 sm:gap-0">
-                                <div class="text-xs sm:text-sm text-[#1c1d20] sm:opacity-50">
-                                    <span class="sm:hidden text-[#1c1d20]">(Tap for more)</span>
-                                    <span class="hidden sm:inline text-[#1c1d20]">(Up to date)</span>
-                                </div>
-                                <div class="hidden sm:block">
-                                    <div class="text-6xl font-medium mt-2 text-[#1c1d20]">2K</div>
-                                    <div class="text-6xl font-medium text-[#1c1d20]">25</div>
-                                </div>
-                            </div>
+                <div class="text-center mb-32 more-works-heading">
+                    <div class="flex justify-center gap-4">
+                        <div class="relative inline-block">
+                            <button id="magnetic-btn" class="neon-liquid-btn relative text-[#1c1d20] border-[0.1em] border-[#D7D7D8] px-10 py-5 rounded-full transition-all duration-300 text-[0.5em] font-medium overflow-hidden">
+                                <span class="magnetic-btn-inner relative z-10">All work</span>
+                                <span class="absolute top-[1em] font-medium right-[2.2em] translate-x-1/2 text-[#959595] text-sm font-bold rounded-full px-2 py-0.5">7</span>
+                            </button>
                         </div>
                     </div>
-                    
-                    <div class="flex-1">
-                        <div class="skills-list space-y-0">
-                            <!-- UI/UX -->
-                            <div class="skill-item">
-                                <div class="skill-name text-3xl lg:text-5xl text-[#1c1d20] font-normal cursor-pointer sm:cursor-default">UI/UX</div>
-                                <div class="skill-desc text-sm text-[#1c1d20]">Specializing in UI and UX design with 3 years of crafting experience using Figma</div>
-                            </div>
-                            
-                            <!-- LOGO -->
-                            <div class="skill-item">
-                                <div class="skill-name text-3xl lg:text-5xl text-[#1c1d20] font-normal cursor-pointer sm:cursor-default">Logo</div>
-                                <div class="skill-desc text-sm text-[#1c1d20]">Modern, minimalistic type of logo approach is my typical go to</div>
-                            </div>
-                            
-                            <!-- ILLUSTRATION -->
-                            <div class="skill-item">
-                                <div class="skill-name text-3xl lg:text-5xl font-normal cursor-pointer sm:cursor-default text-[#1c1d20]">Illustration</div>
-                                <div class="skill-desc text-sm text-[#1c1d20]">Creating basic illustrations for 2 years.</div>
-                            </div>
-                            
-                            <!-- GRAPHIC DESIGN -->
-                            <div class="skill-item">
-                                <div class="skill-name text-3xl lg:text-5xl text-[#1c1d20] font-normal cursor-pointer sm:cursor-default">Graphic Design</div>
-                                <div class="skill-desc text-sm text-[#1c1d20]">Social media posters, profile cards, and other personal projects</div>
-                            </div>
-                            
-                            <!-- CHARACTER DESIGN -->
-                            <div class="skill-item">
-                                <div class="skill-name text-3xl lg:text-5xl font-normal text-[#1c1d20] cursor-pointer sm:cursor-default">
-                                    Character Design</span>
-                                </div>
-                                <div class="skill-desc text-sm text-[#1c1d20]">Advanced beginner level illustrator, being able to understand basic postures and proportions</div>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+            </div>
+            <!-- First Line Images -->
+            <div class="flex justify-center -mx-4 sm:-mx-8 md:-mx-16 lg:-mx-24 more-works-spacing">
+                <div class="w-[130%] more-works-image" id="firstLineImage">
+                    <img src="img/firstlineimg.png" alt="First Line Image" class="w-full">
+                </div>
+            </div>
+            <!-- Second Line Images -->
+            <div class="flex justify-center -mx-4 sm:-mx-8 md:-mx-16 lg:-mx-24 more-works-spacing">
+                <div class="w-[130%] more-works-image" id="secondLineImage">
+                    <img src="img/secondlineimg.png" alt="Second Line Image" class="w-full">
                 </div>
             </div>
         </section>
 
         <!-- Footer Section -->
-        <footer id="contact" class="py-16 border-t border-white/5 mt-0 relative overflow-hidden">
+        <footer id="contact" class="py-16 border-t border-white/5 relative overflow-hidden">
             <video autoplay muted loop playsinline class="absolute top-0 inset-0 bg-[#1C1D20] left-0 w-full h-full object-cover -z-10" id="footerBgVideo">
                 <source src="img/backgroundmainvid.webm" type="video/webm">
-                Your browser does not support the video tag.
             </video>
             <div class="absolute inset-0 bg-[#111415] opacity-70 -z-10"></div>
             <div class="container mx-auto px-4">
@@ -1059,15 +1179,13 @@
                     <!-- Logo and Tagline -->
                     <div class="max-w-xs">
                         <div class="flex items-center mb-4">
-                            <img src="img/logowhite.png" alt="Perocho Logo" class="h-6 mr-2">
-                            <div class="text-2xl font-medium">Seeger Perocho</div>
+                            <img src="img/letswork.png" alt="Perocho Logo" class="h-6 mr-2 w-[200%] h-[200%]">
                         </div>
-                        <p class="opacity-50 text-sm">Creating meaningful digital experiences through thoughtful design and creative solutions.</p>
+                        
                     </div>
 
                     <!-- Contact Form -->
                     <div class="max-w-md w-full">
-                        <h3 class="text-lg font-medium mb-4">Get in Touch</h3>
                         <form action="https://formsubmit.co/seegerperocho2@gmail.com" method="POST" class="space-y-3">
                             <!-- Honeypot -->
                             <input type="text" name="_honey" style="display:none">
@@ -1093,7 +1211,7 @@
                                 <textarea id="message" name="message" rows="3" placeholder="Message" required class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-neon transition-colors"></textarea>
                             </div>
                             <div class="flex items-center justify-end">
-                                <button type="submit" class="bg-neon text-black font-medium px-4 py-2 text-sm rounded-lg hover:bg-[#d8ff5a] transition-colors">Send</button>
+                                <button type="submit" class="bg-[#876BDA] text-white font-medium px-4 py-2 text-sm rounded-lg hover:bg-[#876BDA] transition-colors">Send</button>
                             </div>
                         </form>
                     </div>
@@ -1151,15 +1269,15 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Copyright -->
-                <div class="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center">
-                    <div class="text-sm opacity-50">&copy; 2025 Seeger Perocho. All rights reserved.</div>
-                    <div class="text-sm mt-4 sm:mt-0">
-                        <a href="#" class="opacity-50 hover:opacity-100 hover:text-neon transition-all">Privacy Policy</a>
-                        <span class="mx-2 opacity-50">|</span>
-                        <a href="#" class="opacity-50 hover:opacity-100 hover:text-neon transition-all">Terms of Service</a>
-                    </div>
+            <!-- Copyright -->
+            <div class="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center">
+                <div class="text-sm opacity-50">&copy; 2025 Seeger Perocho. All rights reserved.</div>
+                <div class="text-sm mt-4 sm:mt-0">
+                    <a href="#" class="opacity-50 hover:opacity-100 hover:text-neon transition-all">Privacy Policy</a>
+                    <span class="mx-2 opacity-50">|</span>
+                    <a href="#" class="opacity-50 hover:opacity-100 hover:text-neon transition-all">Terms of Service</a>
                 </div>
             </div>
         </footer>
@@ -1189,7 +1307,7 @@
 
         <!-- Floating neon view circle -->
         <div id="floating-view-circle" style="display:none;pointer-events:none;position:fixed;z-index:99999;width:70px;height:70px;top:0;left:0;">
-            <div style="width:75px;height:75px;border-radius:100%;background:#C4FF0F;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(196,255,15,0.25);font-family:'Neue Haas Grotesk Display Pro',sans-serif;font-weight:500;font-size:1.1rem;color:#1c1d20;">view</div>
+            <div style="width:75px;height:75px;border-radius:100%;background:#876BDA;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(135,107,218,0.25);font-family:'Neue Haas Grotesk Display Pro',sans-serif;font-weight:500;font-size:1.1rem;color:#ffffff;">view</div>
         </div>
 
         <style>
@@ -1235,7 +1353,7 @@
                 position: fixed;
                 width: 70px;
                 height: 70px;
-                background-color: #C4FF0F;
+                background-color: #876BDA;
                 border-radius: 50%;
                 pointer-events: none;
                 z-index: 1;
@@ -1772,6 +1890,138 @@
 
                 // Start the typing animation
                 type();
+
+                // Preload images
+                function preloadImages() {
+                    const firstImage = new Image();
+                    const secondImage = new Image();
+                    firstImage.src = 'img/firstlineimg.png';
+                    secondImage.src = 'img/secondlineimg.png';
+                    
+                    return Promise.all([
+                        new Promise(resolve => {
+                            if (firstImage.complete) resolve();
+                            else firstImage.onload = resolve;
+                        }),
+                        new Promise(resolve => {
+                            if (secondImage.complete) resolve();
+                            else secondImage.onload = resolve;
+                        })
+                    ]);
+                }
+
+                // Flawless, lerped scroll animation for firstLineImage and secondLineImage (inspired by dennissnellenberg.com)
+                const firstLineImage = document.getElementById('firstLineImage');
+                const secondLineImage = document.getElementById('secondLineImage');
+                const section = firstLineImage.closest('section'); // Adjust if needed
+
+                // Animation parameters
+                const maxTranslateX = -200; // px, left for first line (increase this negative value for more distance)
+                const maxTranslateX2 = 200; // px, right for second line (increase this positive value for more distance)
+
+                // For lerp smoothing
+                let currentX1 = 0, targetX1 = 0;
+                let currentX2 = 0, targetX2 = 0;
+                const lerp = (a, b, n) => a + (b - a) * n;
+
+                function animate() {
+                    // Get section's position relative to viewport
+                    const rect = section.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+
+                    // Progress: 0 when section just enters viewport, 1 when it leaves
+                    let progress = 1 - (rect.bottom / (rect.height + windowHeight));
+                    progress = Math.max(0, Math.min(1, progress)); // Clamp between 0 and 1
+
+                    // Set target positions
+                    targetX1 = maxTranslateX * progress;
+                    targetX2 = maxTranslateX2 * progress;
+
+                    // Lerp for smoothness
+                    currentX1 = lerp(currentX1, targetX1, 0.12);
+                    currentX2 = lerp(currentX2, targetX2, 0.12);
+
+                    // Apply transforms
+                    firstLineImage.style.transform = `translateX(${currentX1}px)`;
+                    secondLineImage.style.transform = `translateX(${currentX2}px)`;
+
+                    requestAnimationFrame(animate);
+                }
+
+                // Start animation loop after images are loaded
+                preloadImages().then(() => {
+                    const firstLineImage = document.getElementById('firstLineImage');
+                    const secondLineImage = document.getElementById('secondLineImage');
+                    const section = firstLineImage.closest('section'); // Adjust if needed
+
+                    // Animation parameters
+                    const maxTranslateX = -120; // px, left for first line (increase this negative value for more distance)
+                    const maxTranslateX2 = 120; // px, right for second line (increase this positive value for more distance)
+
+                    // For lerp smoothing
+                    let currentX1 = 0, targetX1 = 0;
+                    let currentX2 = 0, targetX2 = 0;
+                    const lerp = (a, b, n) => a + (b - a) * n;
+
+                    function animate() {
+                        // Get section's position relative to viewport
+                        const rect = section.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+
+                        // Progress: 0 when section just enters viewport, 1 when it leaves
+                        let progress = 1 - (rect.bottom / (rect.height + windowHeight));
+                        progress = Math.max(0, Math.min(1, progress)); // Clamp between 0 and 1
+
+                        // Set target positions
+                        targetX1 = maxTranslateX * progress;
+                        targetX2 = maxTranslateX2 * progress;
+
+                        // Lerp for smoothness
+                        currentX1 = lerp(currentX1, targetX1, 0.12);
+                        currentX2 = lerp(currentX2, targetX2, 0.12);
+
+                        // Apply transforms
+                        firstLineImage.style.transform = `translateX(${currentX1}px)`;
+                        secondLineImage.style.transform = `translateX(${currentX2}px)`;
+
+                        requestAnimationFrame(animate);
+                    }
+
+                    firstLineImage.style.transform = 'translateX(0)';
+                    secondLineImage.style.transform = 'translateX(0)';
+                    requestAnimationFrame(animate);
+                });
+
+                // Magnetic button effect with lerp for smoothness
+                const btn = document.getElementById('magnetic-btn');
+                if (btn) {
+                    const inner = btn.querySelector('.magnetic-btn-inner');
+                    const strength = 24; // Lower = less distance, smoother feel
+                    let targetX = 0, targetY = 0;
+                    let currentX = 0, currentY = 0;
+                    const lerp = (a, b, n) => a + (b - a) * n;
+
+                    btn.addEventListener('mousemove', (e) => {
+                        const rect = btn.getBoundingClientRect();
+                        const x = e.clientX - rect.left - rect.width / 2;
+                        const y = e.clientY - rect.top - rect.height / 2;
+                        targetX = (x / rect.width) * strength;
+                        targetY = (y / rect.height) * strength;
+                    });
+
+                    btn.addEventListener('mouseleave', () => {
+                        targetX = 0;
+                        targetY = 0;
+                    });
+
+                    function animateMagnetic() {
+                        currentX = lerp(currentX, targetX, 0.08); // Lower = slower, smoother
+                        currentY = lerp(currentY, targetY, 0.08);
+                        inner.style.transform = `translate(${currentX}px, ${currentY}px)`;
+                        requestAnimationFrame(animateMagnetic);
+                    }
+                    animateMagnetic();
+                }
             });
         </script>
     </div>
