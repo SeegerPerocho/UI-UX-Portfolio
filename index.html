@@ -16,7 +16,7 @@
                         'neue': ['Neue Haas Grotesk Display Pro', 'sans-serif'],
                     },
                     colors: {
-                        'neon': '#C4FF0F',
+                        'neon': '#876BDA',
                     },
                 }
             }
@@ -709,7 +709,7 @@
 
             .mobile-circle-btn:hover {
                 transform: translate(-50%, -50%) scale(1.1);
-                background-color: #ffffff;
+                background-color: #5c4994;
             }
 
             .mobile-circle-btn img {
@@ -866,6 +866,10 @@
             z-index: 1;
             transition: color 0.3s cubic-bezier(0.16,1,0.3,1);
         }
+        .contact-liquid-btn span {
+            position: relative;
+            z-index: 10;
+        }
         .contact-liquid-btn::before {
             content: '';
             position: absolute;
@@ -925,7 +929,7 @@
                     <a href="../index.html#about" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#0B0D0D] text-[#1c1d20]">ABOUT</a>
                     <a href="../index.html#works" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#0B0D0D] text-[#1c1d20]">WORKS</a>
                     <a href="../index.html#skills" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#0B0D0D] text-[#1c1d20]">SKILLS</a>
-                    <a href="../index.html#contact" class="contact-liquid-btn bg-[#1c1d20] text-[#ffffff] px-4 py-1.5 rounded-full font-medium uppercase tracking-wider text-[11px] transition-colors relative z-10">CONTACT</a>
+                    <button type="button" class="contact-liquid-btn bg-[#1c1d20] text-[#ffffff] px-4 py-1.5 rounded-full font-medium uppercase tracking-wider text-[11px] transition-colors relative z-10" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });"><span>CONTACT</span></button>
                 </div>
             </nav>
         </div>
@@ -1013,7 +1017,7 @@
                             <p class="opacity-50 mb-20 max-w-lg">A chatbot that uses natural language processing to create humanlike conversational dialogue.</p>
                         </div>
                         <div class="work-item">
-                            <img src="img/stackedAI2.png" alt="StackedAI Preview" class="w-full rounded-lg">
+                            <a href="stackedai.html"><img src="img/stackedAI2.png" alt="StackedAI Preview" class="w-full rounded-lg"></a>
                             <a href="stackedai.html" class="mobile-circle-btn">
                                 <img src="img/arrowwhite.png" alt="View Project">
                             </a>
@@ -1034,7 +1038,7 @@
                             </p>
                         </div>
                         <div class="work-item">
-                            <img src="img/bagoscout.png" alt="BagoScout Preview" class="w-full rounded-lg">
+                            <a href="bagoscout.html"><img src="img/bagoscout.png" alt="BagoScout Preview" class="w-full rounded-lg"></a>
                             <a href="bagoscout.html" class="mobile-circle-btn">
                                 <img src="img/arrowwhite.png" alt="View Project">
                             </a>
@@ -1053,7 +1057,7 @@
                             <p class="opacity-50 max-w-lg">A clean, modern, and elegant E-Commerce website for clothing and apparel.</p>
                         </div>
                         <div class="work-item">
-                            <img src="img/keira.png" alt="Keira Preview" class="w-full rounded-lg">
+                            <a href="keira.html"><img src="img/keira.png" alt="Keira Preview" class="w-full rounded-lg"></a>
                             <a href="keira.html" class="mobile-circle-btn">
                                 <img src="img/arrowwhite.png" alt="View Project">
                             </a>
@@ -1072,7 +1076,7 @@
                             <p class="opacity-50 max-w-lg">A gaming news center focused to provide information. Discussion within the community of anime fanatics.</p>
                         </div>
                         <div class="work-item">
-                            <img src="img/animealweb2.png" alt="Animeal Preview" class="w-full rounded-lg">
+                            <a href="animeal.html"><img src="img/animealweb2.png" alt="Animeal Preview" class="w-full rounded-lg"></a>
                             <a href="#" class="mobile-circle-btn">
                                 <img src="img/arrowwhite.png" alt="View Project">
                             </a>
@@ -1091,7 +1095,7 @@
                             <p class="opacity-50 max-w-lg">An E-Commerce website that sells quality brand bicycles.</p>
                         </div>
                         <div class="work-item">
-                            <img src="img/cycle2.png" alt="Cycle Preview" class="w-full rounded-lg">
+                            <a href="cycle.html"><img src="img/cycle2.png" alt="Cycle Preview" class="w-full rounded-lg"></a>
                             <a href="#" class="mobile-circle-btn">
                                 <img src="img/arrowwhite.png" alt="View Project">
                             </a>
@@ -1110,8 +1114,8 @@
                             <p class="opacity-50 max-w-lg">An online store for everything that your lovely pets may need.</p>
                         </div>
                         <div class="work-item">
-                            <img src="img/kitty2.png" alt="KITTY Preview" class="w-full rounded-lg">
-                            <a href="#" class="mobile-circle-btn">
+                            <a href="kitty.html"><img src="img/kitty2.png" alt="KITTY Preview" class="w-full rounded-lg"></a>
+                            <a href="kitty.html" class="mobile-circle-btn">
                                 <img src="img/arrowwhite.png" alt="View Project">
                             </a>
                         </div>
@@ -1129,8 +1133,8 @@
                             <p class="opacity-50 max-w-lg">Rave is an innovative music platform designed to connect people with personalized listening without boundaries. Play music & anywhere.</p>
                         </div>
                         <div class="work-item">
-                            <img src="img/rave.png" alt="Rave Preview" class="w-full rounded-lg">
-                            <a href="#" class="mobile-circle-btn">
+                            <a href="rave.html"><img src="img/rave.png" alt="Rave Preview" class="w-full rounded-lg"></a>
+                            <a href="rave.html" class="mobile-circle-btn">
                                 <img src="img/arrowwhite.png" alt="View Project">
                             </a>
                         </div>
@@ -1146,9 +1150,9 @@
                 <div class="text-center mb-32 more-works-heading">
                     <div class="flex justify-center gap-4">
                         <div class="relative inline-block">
-                            <button id="magnetic-btn" class="neon-liquid-btn relative text-[#1c1d20] border-[0.1em] border-[#D7D7D8] px-10 py-5 rounded-full transition-all duration-300 text-[0.5em] font-medium overflow-hidden">
-                                <span class="magnetic-btn-inner relative z-10">All work</span>
-                                <span class="absolute top-[1em] font-medium right-[2.2em] translate-x-1/2 text-[#959595] text-sm font-bold rounded-full px-2 py-0.5">7</span>
+                            <button id="contact-btn" class="contact-liquid-btn relative text-[#1c1d20] border-[0.1em] border-[#D7D7D8] px-10 py-5 rounded-full transition-all duration-300 text-[0.5em] font-medium overflow-hidden">
+                                <span class="contact-btn-inner relative z-10">All work</span>
+                                <span class="absolute top-[-1em] font-medium right-[0.1em] text-[#959595] text-sm font-bold">7</span>
                             </button>
                         </div>
                     </div>
@@ -1211,7 +1215,7 @@
                                 <textarea id="message" name="message" rows="3" placeholder="Message" required class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-neon transition-colors"></textarea>
                             </div>
                             <div class="flex items-center justify-end">
-                                <button type="submit" class="bg-[#876BDA] text-white font-medium px-4 py-2 text-sm rounded-lg hover:bg-[#876BDA] transition-colors">Send</button>
+                                <button type="submit" class="contact-liquid-btn bg-[#2a2a2a] text-white font-medium px-10 py-3 text-sm rounded-lg transition-colors"><span>Send</span></button>
                             </div>
                         </form>
                     </div>
@@ -1220,14 +1224,6 @@
                 <div class="mt-16 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center">
                     <!-- Quick Links -->
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-8">
-                        <div>
-                            <h4 class="text-lg mb-4">Navigation</h4>
-                            <ul class="space-y-2 opacity-70">
-                                <li><a href="#about" class="hover:text-neon transition-colors">About</a></li>
-                                <li><a href="#works" class="hover:text-neon transition-colors">Works</a></li>
-                                <li><a href="#skills" class="hover:text-neon transition-colors">Skills</a></li>
-                            </ul>
-                        </div>
                         <div class="pr-4">
                             <h4 class="text-lg mb-4">Contact</h4>
                             <ul class="space-y-2 opacity-70">
@@ -1239,26 +1235,26 @@
                             <h4 class="text-lg mb-4">Social</h4>
                             <div class="flex gap-4">
                                 <!-- Facebook -->
-                                <a href="https://facebook.com/" class="w-10 h-10 flex items-center justify-center bg-white/5 rounded-full hover:bg-neon hover:text-black transition-all">
+                                <a href="https://facebook.com/" class="w-10 h-10 flex items-center justify-center bg-white/5 rounded-full hover:bg-neon hover:text-white transition-all">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                                     </svg>
                                 </a>
                                 <!-- Twitter -->
-                                <a href="https://twitter.com/" class="w-10 h-10 flex items-center justify-center bg-white/5 rounded-full hover:bg-neon hover:text-black transition-all">
+                                <a href="https://twitter.com/" class="w-10 h-10 flex items-center justify-center bg-white/5 rounded-full hover:bg-neon hover:text-white transition-all">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M6 4l12 16M6 20L18 4"/>
                                     </svg>
                                 </a>
                                 <!-- Dribbble -->
-                                <a href="https://dribbble.com/" class="w-10 h-10 flex items-center justify-center bg-white/5 rounded-full hover:bg-neon hover:text-black transition-all">
+                                <a href="https://dribbble.com/" class="w-10 h-10 flex items-center justify-center bg-white/5 rounded-full hover:bg-neon hover:text-white transition-all">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <circle cx="12" cy="12" r="10"></circle>
                                         <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"></path>
                                     </svg>
                                 </a>
                                 <!-- Instagram -->
-                                <a href="https://instagram.com/" class="w-10 h-10 flex items-center justify-center bg-white/5 rounded-full hover:bg-neon hover:text-black transition-all">
+                                <a href="https://instagram.com/" class="w-10 h-10 flex items-center justify-center bg-white/5 rounded-full hover:bg-neon hover:text-white transition-all">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                                         <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -1272,13 +1268,15 @@
             </div>
 
             <!-- Copyright -->
-            <div class="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center">
+            <div class="container mx-auto max-w-7xl px-4">
+              <div class="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center">
                 <div class="text-sm opacity-50">&copy; 2025 Seeger Perocho. All rights reserved.</div>
                 <div class="text-sm mt-4 sm:mt-0">
-                    <a href="#" class="opacity-50 hover:opacity-100 hover:text-neon transition-all">Privacy Policy</a>
-                    <span class="mx-2 opacity-50">|</span>
-                    <a href="#" class="opacity-50 hover:opacity-100 hover:text-neon transition-all">Terms of Service</a>
+                  <a href="#" class="opacity-50 hover:opacity-100 hover:text-neon transition-all">Privacy Policy</a>
+                  <span class="mx-2 opacity-50">|</span>
+                  <a href="#" class="opacity-50 hover:opacity-100 hover:text-neon transition-all">Terms of Service</a>
                 </div>
+              </div>
             </div>
         </footer>
 
@@ -1351,8 +1349,8 @@
             #floating-view-circle {
                 display: none;
                 position: fixed;
-                width: 70px;
-                height: 70px;
+                width: 100px;
+                height: 100px;
                 background-color: #876BDA;
                 border-radius: 50%;
                 pointer-events: none;
