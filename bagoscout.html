@@ -16,13 +16,53 @@
                         'neue': ['Neue Haas Grotesk Display Pro', 'sans-serif'],
                     },
                     colors: {
-                        'neon': '#C4FF0F',
+                        'neon': '#876BDA',
                     },
                 }
             }
         }
     </script>
     <style>
+        /* Success Popup */
+        .success-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .success-popup.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .success-popup video {
+            width: 64px;
+            height: 64px;
+        }
+
+        .success-popup p {
+            color: #1c1d20;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+            margin: 0;
+        }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 0;
@@ -272,7 +312,7 @@
             font-size: 11px;
             padding: 6px 12px;
         }
-        
+
         /* Add styles for scroll-to-top button */
         .scroll-to-top {
             position: fixed;
@@ -291,58 +331,59 @@
             z-index: 999;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
-
+        .scroll-to-top:hover{
+            background-color: #876BDA;
+        }
+        .scroll-to-top svg {
+            stroke: #1c1d20;
+            color: #1c1d20;
+        }
+        .scroll-to-top:hover svg {
+            stroke: #fff;
+            color: #fff;
+        }
         .scroll-to-top.visible {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
 
-        .scroll-to-top:hover {
-            background: #C4FF0F;
-            border-color: #C4FF0F;
-            transform: translateY(-2px);
+        img {
+            max-width: 100%;
+            height: auto;
         }
-
-        /* Success Popup */
-        .success-popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
-            padding: 32px;
-            border-radius: 16px;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid #e5e7eb;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .success-popup.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .success-popup video {
-            width: 64px;
-            height: 64px;
-        }
-
-        .success-popup p {
-            color: #1c1d20;
-            font-size: 16px;
-            font-weight: 500;
-            text-align: center;
-            margin: 0;
-        }
+       
+       .contact-liquid-btn {
+           position: relative;
+           overflow: hidden;
+           z-index: 1;
+           transition: color 0.3s cubic-bezier(0.16,1,0.3,1);
+       }
+       .contact-liquid-btn span {
+           position: relative;
+           z-index: 10;
+       }
+       .contact-liquid-btn::before {
+           content: '';
+           position: absolute;
+           left: 0;
+           bottom: 0;
+           width: 100%;
+           height: 0%;
+           background-color: #876BDA;
+           border-radius: inherit;
+           z-index: 0;
+           transition: height 0.5s cubic-bezier(0.16,1,0.3,1);
+           pointer-events: none;
+       }
+       .contact-liquid-btn:hover,
+       .contact-liquid-btn:focus {
+           color: #fff !important;
+       }
+       .contact-liquid-btn:hover::before,
+       .contact-liquid-btn:focus::before {
+           height: 100%;
+       }
     </style>
 </head>
 <body>
@@ -356,11 +397,11 @@
 
     <!-- Scroll to top button -->
     <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="scroll-top-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 19V5M5 12l7-7 7 7"/>
         </svg>
     </button>
-    
+
     <!-- Navigation -->
     <div class="fixed top-6 left-0 right-0 flex justify-center z-[999]">
         <nav class="nav-slide-down flex justify-center items-center bg-white/90 backdrop-blur-sm shadow-sm rounded-full px-3 py-2.5 border-[1px] border-[#e5e7eb]">
@@ -368,7 +409,7 @@
                 <a href="../index.html#about" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#111214] text-[#1c1d20]">ABOUT</a>
                 <a href="../index.html#works" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#111214] text-[#1c1d20]">WORKS</a>
                 <a href="../index.html#skills" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#111214] text-[#1c1d20]">SKILLS</a>
-                <a href="../index.html#contact" class="bg-neon text-black px-4 py-1.5 rounded-full font-medium uppercase tracking-wider text-[11px] hover:bg-[#d8ff5a] transition-colors">CONTACT</a>
+                <button type="button" class="contact-liquid-btn bg-[#1c1d20] text-[#ffffff] px-4 py-1.5 rounded-full font-medium uppercase tracking-wider text-[11px] transition-colors relative z-10" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });"><span>CONTACT</span></button>
             </div>
         </nav>
     </div>
@@ -390,7 +431,7 @@
             </div>
             <div>
                 <h2 class="section-title">LOCATION & YEAR</h2>
-                <p>Philippines © 2024</p>
+                <p>Philippines © 2023</p>
             </div>
         </div>
 
@@ -446,7 +487,11 @@
 
             <div class="flex gap-2">
                 <div class="w-2 h-2 rounded-full bg-[#e5e7eb]"></div>
-                <div class="w-2 h-2 rounded-full bg-[#1c1d20]"></div>
+                <div class="w-2 h-2 rounded-full bg-[#876BDA]"></div>
+                <div class="w-2 h-2 rounded-full bg-[#e5e7eb]"></div>
+                <div class="w-2 h-2 rounded-full bg-[#e5e7eb]"></div>
+                <div class="w-2 h-2 rounded-full bg-[#e5e7eb]"></div>
+                <div class="w-2 h-2 rounded-full bg-[#e5e7eb]"></div>
                 <div class="w-2 h-2 rounded-full bg-[#e5e7eb]"></div>
             </div>
 
@@ -458,119 +503,107 @@
             </a>
         </div>
     </main>
- <!-- Footer Section -->
- <footer id="contact" class="bg-[#f8f9fa] py-16 border-t border-[#e5e7eb] mt-0">
-    <div class="container mx-auto px-4">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-            <!-- Logo and Tagline -->
-            <div class="max-w-xs">
-                <div class="flex items-center mb-4">
-                    <img src="img/logoblack.png" alt="Perocho Logo" class="h-6 mr-2">
-                    <div class="text-2xl font-medium text-[#1c1d20]">Seeger Perocho</div>
+    <!-- Replace the existing footer with the full index.html footer -->
+    <footer id="contact" class="py-16 border-t border-white/5 relative overflow-hidden text-white">
+        <video autoplay muted loop playsinline class="absolute top-0 inset-0 bg-[#1C1D20] left-0 w-full h-full object-cover -z-10" id="footerBgVideo">
+            <source src="img/backgroundmainvid.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+        <div class="absolute inset-0 bg-[#111415] opacity-70 -z-10"></div>
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+                <!-- Logo and Tagline -->
+                <div class="max-w-xs">
+                    <div class="flex items-center mb-4">
+                        <img src="img/letswork.png" alt="Perocho Logo" class="h-6 mr-2 w-[200%] h-[200%]">
+                    </div>
                 </div>
-                <p class="text-[#4b4c4f] text-sm">Creating meaningful digital experiences through thoughtful design and creative solutions.</p>
-            </div>
-
-            <!-- Contact Form -->
-            <div class="max-w-md w-full">
-                <h3 class="text-lg font-medium mb-4 text-[#1c1d20]">Get in Touch</h3>
-                <form action="https://formsubmit.co/seegerperocho2@gmail.com" method="POST" class="space-y-3">
-                    <!-- Honeypot -->
-                    <input type="text" name="_honey" style="display:none">
-                    
-                    <!-- Disable Captcha -->
-                    <input type="hidden" name="_captcha" value="false">
-                    
-                    <!-- Return to your website instead of FormSubmit thank you page -->
-                    <input type="hidden" name="_next" value="https://seegerportfolio.vercel.app/bagoscout.html">
-                    
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div>
-                            <input type="text" id="name" name="name" placeholder="Name" required class="w-full bg-white border border-[#e5e7eb] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-neon transition-colors text-[#1c1d20]">
+                <!-- Contact Form -->
+                <div class="max-w-md w-full">
+                    <form action="https://formsubmit.co/seegerperocho2@gmail.com" method="POST" class="space-y-3">
+                        <!-- Honeypot -->
+                        <input type="text" name="_honey" style="display:none">
+                        <!-- Disable Captcha -->
+                        <input type="hidden" name="_captcha" value="false">
+                        <!-- Return to your website instead of FormSubmit thank you page -->
+                        <input type="hidden" name="_next" value="https://seegerportfolio.vercel.app/bagoscout.html">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                                <input type="text" id="name" name="name" placeholder="Name" required class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-neon transition-colors">
+                            </div>
+                            <div>
+                                <input type="email" id="email" name="email" placeholder="Email" required class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-neon transition-colors">
+                            </div>
                         </div>
                         <div>
-                            <input type="email" id="email" name="email" placeholder="Email" required class="w-full bg-white border border-[#e5e7eb] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-neon transition-colors text-[#1c1d20]">
+                            <input type="text" id="subject" name="subject" placeholder="Subject" required class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-neon transition-colors">
+                        </div>
+                        <div>
+                            <textarea id="message" name="message" rows="3" placeholder="Message" required class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-neon transition-colors"></textarea>
+                        </div>
+                        <div class="flex items-center justify-end">
+                            <button type="submit" class="contact-liquid-btn bg-[#2a2a2a] text-white font-medium px-10 py-3 text-sm rounded-lg transition-colors"><span>Send</span></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="mt-16 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center">
+                <!-- Quick Links -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-8">
+                    <div class="pr-4">
+                        <h4 class="text-lg mb-4">Contact</h4>
+                        <ul class="space-y-2 opacity-70">
+                            <li><a href="mailto:seegerperocho2@gmail.com" class="hover:text-neon transition-colors text-sm sm:text-base break-words">seegerperocho2@gmail.com</a></li>
+                            <li><a href="tel:+639272770032" class="hover:text-neon transition-colors">+639 272 770 032</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg mb-4">Social</h4>
+                        <div class="flex gap-4">
+                            <!-- Facebook -->
+                            <a href="https://facebook.com/" class="w-10 h-10 flex items-center justify-center bg-white/5 rounded-full hover:bg-neon hover:text-white transition-all">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                </svg>
+                            </a>
+                            <!-- Twitter -->
+                            <a href="https://twitter.com/" class="w-10 h-10 flex items-center justify-center bg-white/5 rounded-full hover:bg-neon hover:text-white transition-all">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 4l12 16M6 20L18 4"/>
+                                </svg>
+                            </a>
+                            <!-- Dribbble -->
+                            <a href="https://dribbble.com/" class="w-10 h-10 flex items-center justify-center bg-white/5 rounded-full hover:bg-neon hover:text-white transition-all">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"></path>
+                                </svg>
+                            </a>
+                            <!-- Instagram -->
+                            <a href="https://instagram.com/" class="w-10 h-10 flex items-center justify-center bg-white/5 rounded-full hover:bg-neon hover:text-white transition-all">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                            </a>
                         </div>
                     </div>
-                    <div>
-                        <input type="text" id="subject" name="subject" placeholder="Subject" required class="w-full bg-white border border-[#e5e7eb] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-neon transition-colors text-[#1c1d20]">
-                    </div>
-                    <div>
-                        <textarea id="message" name="message" rows="3" placeholder="Message" required class="w-full bg-white border border-[#e5e7eb] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-neon transition-colors text-[#1c1d20]"></textarea>
-                    </div>
-                    <div class="flex items-center justify-end">
-                        <button type="submit" class="bg-neon text-black font-medium px-4 py-2 text-sm rounded-lg hover:bg-[#d8ff5a] transition-colors">Send</button>
-                    </div>
-                </form>
+                </div>
             </div>
-        </div>
-
-        <div class="mt-16 pt-8 border-t border-[#e5e7eb] flex flex-col sm:flex-row justify-between items-center">
-            <!-- Quick Links -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-8">
-                <div>
-                    <h4 class="text-lg mb-4 text-[#1c1d20]">Navigation</h4>
-                    <ul class="space-y-2 text-[#4b4c4f]">
-                        <li><a href="#about" class="hover:text-neon transition-colors">About</a></li>
-                        <li><a href="#works" class="hover:text-neon transition-colors">Works</a></li>
-                        <li><a href="#skills" class="hover:text-neon transition-colors">Skills</a></li>
-                    </ul>
-                </div>
-                <div class="pr-4">
-                    <h4 class="text-lg mb-4 text-[#1c1d20]">Contact</h4>
-                    <ul class="space-y-2 text-[#4b4c4f]">
-                        <li><a href="mailto:seegerperocho2@gmail.com" class="hover:text-neon transition-colors text-sm sm:text-base break-words">seegerperocho2@gmail.com</a></li>
-                        <li><a href="tel:+639272770032" class="hover:text-neon transition-colors">+639 272 770 032</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-lg mb-4 text-[#1c1d20]">Social</h4>
-                    <div class="flex gap-4">
-                        <!-- Social icons with updated background -->
-                        <a href="https://facebook.com/" class="w-10 h-10 flex items-center justify-center bg-[#f1f2f4] text-[#1c1d20] rounded-full hover:bg-neon hover:text-black transition-all">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                            </svg>
-                        </a>
-                        <!-- Twitter -->
-                        <a href="https://twitter.com/" class="w-10 h-10 flex items-center justify-center bg-[#f1f2f4] text-[#1c1d20] rounded-full hover:bg-neon hover:text-black transition-all">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M6 4l12 16M6 20L18 4"/>
-                            </svg>
-                        </a>
-                        <!-- Dribbble -->
-                        <a href="https://dribbble.com/" class="w-10 h-10 flex items-center justify-center bg-[#f1f2f4] text-[#1c1d20] rounded-full hover:bg-neon hover:text-black transition-all">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"></path>
-                            </svg>
-                        </a>
-                        <!-- Instagram -->
-                        <a href="https://instagram.com/" class="w-10 h-10 flex items-center justify-center bg-[#f1f2f4] text-[#1c1d20] rounded-full hover:bg-neon hover:text-black transition-all">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                            </svg>
-                        </a>
-                    </div>
+            <div class="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center">
+                <div class="text-sm opacity-50">&copy; 2025 Seeger Perocho. All rights reserved.</div>
+                <div class="text-sm mt-4 sm:mt-0">
+                    <a href="#" class="opacity-50 hover:opacity-100 hover:text-neon transition-all">Privacy Policy</a>
+                    <span class="mx-2 opacity-50">|</span>
+                    <a href="#" class="opacity-50 hover:opacity-100 hover:text-neon transition-all">Terms of Service</a>
                 </div>
             </div>
         </div>
-
-        <!-- Copyright -->
-        <div class="mt-12 pt-8 border-t border-[#e5e7eb] flex flex-col sm:flex-row justify-between items-center">
-            <div class="text-sm text-[#4b4c4f]">&copy; 2025 Seeger Perocho. All rights reserved.</div>
-            <div class="text-sm mt-4 sm:mt-0">
-                <a href="#" class="text-[#4b4c4f] hover:text-neon transition-all">Privacy Policy</a>
-                <span class="mx-2 text-[#4b4c4f]">|</span>
-                <a href="#" class="text-[#4b4c4f] hover:text-neon transition-all">Terms of Service</a>
-            </div>
-        </div>
-    </div>
-</footer>
+    </footer>
 
     <script>
+        
         // Handle form submission with success message
         document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -657,7 +690,7 @@
                 });
             }, 100);
         });
-        
+
         // Add scroll to top functionality
         const scrollToTopBtn = document.getElementById('scrollToTop');
 
@@ -676,6 +709,32 @@
                 duration: 1.5,
                 easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t))
             });
+        });
+
+        // Handle form submission
+        const contactForm = document.getElementById('contactForm');
+        const successPopup = document.getElementById('successPopup');
+        const returnUrl = contactForm.querySelector('input[name="_next"]').value;
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Submit the form data
+            await fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm)
+            });
+
+            // Show success popup
+            successPopup.classList.add('show');
+            
+            // Reset form
+            contactForm.reset();
+
+            // Wait 3 seconds then redirect
+            setTimeout(() => {
+                window.location.href = returnUrl;
+            }, 3000);
         });
     </script>
 </body>
