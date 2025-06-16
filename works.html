@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Works - Seeger Perocho</title>
+    <link href="https://db.onlinewebfonts.com/c/bb37aa4c890a41af0059749cc80e352d?family=MoglanDemo" rel="stylesheet">
     <link rel="icon" href="img/logowhite.png" type="image/x-icon">
     <link href="https://fonts.cdnfonts.com/css/neue-haas-grotesk-display-pro" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -152,15 +153,29 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 100%;
+            width: 500%;
             height: 1px;
             background-color: rgba(28, 29, 32, 0.1);
         }
-
+        .not-section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        .not-section-title {
+            color: #4b4c4f86;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            position: relative;
+            padding-bottom: 16px;
+            width: 100%;
+        }
         .info-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 64px;
+            gap: 20px;
             padding-bottom: 48px;
             margin-bottom: 48px;
         }
@@ -457,9 +472,146 @@
            .button-row button {
                padding: 1rem 1.5rem;
                font-size: 0.9rem;
-               min-width: 90px;
+               min-width: 60px;
+               right: 0%;
            }
        }
+       .contact-liquid-btn-active,
+        .contact-liquid-btn.contact-liquid-btn-active {
+            color: #fff !important;
+        }
+        .contact-liquid-btn-active::before,
+        .contact-liquid-btn.contact-liquid-btn-active::before {
+            height: 100%;
+        }
+
+        .project-card-img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 8rem;
+        }
+        @media (max-width: 900px) {
+            .container {
+                max-width: 100% !important;
+                margin-left: 11% !important;
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+            .project-card-img {
+                width: 90%;
+                max-width: 100%;
+                height: auto;
+            }
+        }
+        @media (max-width: 600px) {
+          .container { max-width: 80% !important; }
+          .project-card-img { max-width: 100%; }
+          .title {margin-left: 13% !important;}
+        }
+        @media (max-width: 555px) {
+          .container { max-width: 80% !important; }
+          .project-card-img { max-width: 100%; }
+          .title {margin-left: 4% !important;}
+        }
+        @media (max-width: 500px) {
+          .container { max-width: 80% !important; }
+          .project-card-img { max-width: 100%; }
+          .title {margin-left: 4% !important;}
+        }
+        @media (max-width: 450px) {
+          .container { max-width: 80% !important; padding-left: 0.5rem !important; padding-right: 0.5rem !important; }
+          .project-card-img { max-width: 100%; }
+          .title {margin-left: -10% !important;}
+        }
+        @media (max-width: 449px) {
+          .container { max-width: 80% !important; }
+          .project-card-img { width: 180%; max-width: 180%; margin-left: -40%; margin-bottom: 2rem; }
+          .project-title {margin-left: -15% !important;}
+          .button-row {margin-left: -15% !important;}
+        }
+        @media (max-width: 360px) {
+          .container { max-width: 80% !important; }
+          .project-card-img { width: 117% !important; max-width: 117% !important; margin-left: -10% !important; }
+          .project-title {margin-left: -15% !important;}
+          .button-row {margin-left: -15% !important;}
+        }
+        @media (min-width: 1200px) {
+          .container {
+            margin-right: auto !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+          }
+          .project-card-img {
+            max-width: 100%;
+          }
+        }
+        @media (min-width: 1920px) {
+          .container { max-width: 1700px !important; }
+          .project-card-img { max-width: 98%; }
+          .title {margin-left: 5% !important;}
+        }
+        @media (max-width: 1820px) {
+          .container { max-width: 1600px !important; }
+          .project-card-img { max-width: 97%; }
+          .title {margin-left: 5% !important;}
+        }
+        @media (max-width: 1720px) {
+          .container { max-width: 1500px !important; }
+          .project-card-img { max-width: 96%; }
+          .title {margin-left: 6% !important;}
+        }
+        @media (max-width: 1620px) {
+          .container { max-width: 1400px !important; }
+          .project-card-img { max-width: 95%; }
+          .title {margin-left: 6% !important;}
+        }
+        @media (max-width: 1520px) {
+          .container { max-width: 1300px !important; }
+          .project-card-img { max-width: 94%; }
+          .title {margin-left: 7% !important;}
+        }
+        @media (max-width: 1420px) {
+          .container { max-width: 1200px !important; }
+          .project-card-img { max-width: 93%; }
+          .title {margin-left: 8% !important;}
+        }
+        @media (max-width: 1320px) {
+          .container { max-width: 1100px !important; }
+          .project-card-img { max-width: 92%; }
+          .title {margin-left: 8% !important;}
+        }
+        @media (max-width: 1220px) {
+          .container { max-width: 1000px !important; }
+          .project-card-img { max-width: 91%; }
+          .title {margin-left: 9% !important;}
+        }
+        @media (max-width: 1120px) {
+          .container { max-width: 900px !important; }
+          .project-card-img { max-width: 90%; }
+          .title {margin-left: 11% !important;}
+        }
+        @media (max-width: 1020px) {
+          .container { max-width: 80% !important; }
+          .project-card-img { max-width: 100%; }
+          .title {margin-left: 10% !important;}
+        }
+        @media (max-width: 639px) {
+          .container { max-width: 80% !important; }
+          .project-card-img { max-width: 100%; }
+          .title {margin-left: 13% !important;}
+        }
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s cubic-bezier(0.16,1,0.3,1), transform 2s cubic-bezier(0.16,1,0.3,1);
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
@@ -482,34 +634,44 @@
     <div class="fixed top-6 left-0 right-0 flex justify-center z-[999]">
         <nav class="nav-slide-down flex justify-center items-center bg-white/90 backdrop-blur-sm shadow-sm rounded-full px-3 py-2.5 border-[1px] border-[#e5e7eb]">
             <div class="nav-spread">
-                <a href="../index.html#about" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#111214] text-[#1c1d20]">ABOUT</a>
-                <a href="../index.html#works" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#111214] text-[#1c1d20]">WORKS</a>
-                <a href="../index.html#skills" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#111214] text-[#1c1d20]">SKILLS</a>
-                <button type="button" class="contact-liquid-btn bg-[#1c1d20] text-[#ffffff] px-4 py-1.5 rounded-full font-medium uppercase tracking-wider text-[11px] transition-colors relative z-10" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });"><span>CONTACT</span></button>
+                <a href="../index.html#hero-section" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#0B0D0D] text-[#1c1d20] nav-logo-link">
+                    <img src="img/logoblack.png" alt="About Logo" style="height: 24px; width: auto; display: inline-block; vertical-align: middle;" />
+                <a href="../index.html#about" class="uppercase tracking-wider font-medium text-[11px] px-4 py-1.5 transition-colors contact-liquid-btn text-[#1c1d20] rounded-full"><span>ABOUT</span></a>
+                <a href="../works.html" class="uppercase tracking-wider font-medium text-[11px] rounded-full px-4 py-1.5 transition-colors contact-liquid-btn text-[#1c1d20]"><span>WORKS</span></a>
+                <button type="button" class="contact-liquid-btn text-[#1c1d20] px-4 py-1.5 rounded-full font-medium uppercase tracking-wider text-[11px] transition-colors relative z-10" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });"><span>CONTACT</span></button>
             </div>
         </nav>
     </div>
 
     <!-- Main Content -->
-    <main class="container text-left mx-[6.5em] px-4 max-w-2xl pt-36">
-        <h1 class="project-title fade-in text-[#1c1d20] leading-[1.1]">Crafting digital products with high quality.</h1>
-        <div class="button-row">
-            <button id="contact-btn" class="contact-liquid-btn relative text-[#1c1d20] border-[0.1em] border-[#D7D7D8] px-10 py-5 rounded-full transition-all duration-300 text-[0.5em] font-medium overflow-hidden">
-                <span class="contact-btn-inner relative z-10">UI/UX</span>
-            </button></a>
-            <button id="contact-btn" class="contact-liquid-btn relative text-[#1c1d20] border-[0.1em] border-[#D7D7D8] px-10 py-5 rounded-full transition-all duration-300 text-[0.5em] font-medium overflow-hidden">
-                <span class="contact-btn-inner relative z-10">Graphic</span>
-            </button></a>
-            <button id="contact-btn" class="contact-liquid-btn relative text-[#1c1d20] border-[0.1em] border-[#D7D7D8] px-10 py-5 rounded-full transition-all duration-300 text-[0.5em] font-medium overflow-hidden">
-                <span class="contact-btn-inner relative z-10">Illustration</span>
-            </button></a>
+    <main class="title text-left px-4 max-w-[35em] pt-36">
+        <h1 class="project-title fade-in text-[#1c1d20] leading-[1.1]">Crafting <span class="font-[MoglanDemo] text-[#876BDA]">high-quality</span> digital products.</h1>
+        <div class="button-row fade-in-up mt-10 md:mt-10 lg:mt-10 xl:mt-5">
+            <button id="filter-all" class="contact-liquid-btn contact-liquid-btn-active relative text-[#1c1d20] border-[0.1em] border-[#D7D7D8] px-10 py-5 rounded-full transition-all duration-300 text-[0.5em] font-medium overflow-hidden">
+                <span class="contact-btn-inner relative z-10 text-[1.1em]">All</span>
+            </button>
+            <button id="filter-uiux" class="contact-liquid-btn relative text-[#1c1d20] border-[0.1em] border-[#D7D7D8] px-10 py-5 rounded-full transition-all duration-300 text-[0.5em] font-medium overflow-hidden">
+                <span class="contact-btn-inner relative z-10 text-[1.1em]">UI/UX</span>
+            </button>
+            <button id="filter-graphic" class="contact-liquid-btn relative text-[#1c1d20] border-[0.1em] border-[#D7D7D8] px-10 py-5 rounded-full transition-all duration-300 text-[0.5em] font-medium overflow-hidden">
+                <span class="contact-btn-inner relative z-10 text-[1.1em]">Graphic/Illu-</span>
+            </button>
         </div>
     </main>
+    <!-- Project Cards Section -->
+    <section class="mt-10 mb-20">
+        <div class="container mx-[6.5em] px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 project-image-grid">
+                <img src="img/stackedaicard.png" alt="StackedAI Card" class="project-card-img fade-in-up" data-category="uiux">
+                <img src="img/bagoscoutcard.png" alt="Bagoscout Card" class="project-card-img fade-in-up" data-category="graphic">
+                <img src="img/keiracard.png" alt="Keira Card" class="project-card-img fade-in-up" data-category="graphic">
+            </div>
+        </div>
+    </section>
     <!-- Replace the existing footer with the full index.html footer -->
     <footer id="contact" class="py-16 border-t border-white/5 relative overflow-hidden text-white">
         <video autoplay muted loop playsinline class="absolute top-0 inset-0 bg-[#1C1D20] left-0 w-full h-full object-cover -z-10" id="footerBgVideo">
             <source src="img/backgroundmainvid.webm" type="video/webm">
-            Your browser does not support the video tag.
         </video>
         <div class="absolute inset-0 bg-[#111415] opacity-70 -z-10"></div>
         <div class="container mx-auto px-4">
@@ -738,6 +900,109 @@
                 window.location.href = returnUrl;
             }, 3000);
         });
+    </script>
+    <script>
+    // === NAV SCROLL SPY FOR HOVER EFFECT ===
+    (function() {
+        // Nav buttons
+        const navAbout = document.querySelector('.nav-spread a[href*="#about"], .nav-spread a[href$="#about"]');
+        const navWorks = document.querySelector('.nav-spread a[href*="works.html"], .nav-spread a[href$="works.html"]');
+        const navContact = document.querySelector('.nav-spread button.contact-liquid-btn');
+        // Sections
+        const mainContent = document.querySelector('main');
+        const footer = document.getElementById('contact');
+
+        function clearNavActive() {
+            [navAbout, navWorks, navContact].forEach(btn => btn && btn.classList.remove('contact-liquid-btn-active'));
+        }
+
+        function updateNavActiveByScroll() {
+            const offset = 120; // adjust for nav height if needed
+            const mainRect = mainContent ? mainContent.getBoundingClientRect() : null;
+            const footerRect = footer ? footer.getBoundingClientRect() : null;
+            // If above main content
+            if (mainRect && mainRect.top - offset > 0) {
+                clearNavActive();
+                return;
+            }
+            // If footer is in view (top is above offset)
+            if (footerRect && footerRect.top - offset <= 0) {
+                clearNavActive();
+                if (navContact) navContact.classList.add('contact-liquid-btn-active');
+                return;
+            }
+            // Otherwise, main content (WORKS) is active
+            clearNavActive();
+            if (navWorks) navWorks.classList.add('contact-liquid-btn-active');
+        }
+        window.addEventListener('scroll', updateNavActiveByScroll);
+        window.addEventListener('resize', updateNavActiveByScroll);
+        updateNavActiveByScroll();
+    })();
+    </script>
+    <script>
+    // Project filter functionality with fade-in-up animation and fade-out before fade-in
+    const filterAllBtn = document.getElementById('filter-all');
+    const filterUIUXBtn = document.getElementById('filter-uiux');
+    const filterGraphicBtn = document.getElementById('filter-graphic');
+    const projectImages = document.querySelectorAll('.project-image-grid .project-card-img');
+
+    function showWithFade(img) {
+      img.classList.remove('visible');
+      void img.offsetWidth;
+      img.style.display = 'block';
+      setTimeout(() => img.classList.add('visible'), 10);
+    }
+
+    function hideImage(img) {
+      img.classList.remove('visible');
+      setTimeout(() => { img.style.display = 'none'; }, 400);
+    }
+
+    function fadeOutAllThenFadeIn(filterFn) {
+      // Fade out all
+      projectImages.forEach(img => img.classList.remove('visible'));
+      setTimeout(() => {
+        projectImages.forEach(img => img.style.display = 'none');
+        // Fade in only the filtered images
+        projectImages.forEach(img => {
+          if (filterFn(img)) {
+            showWithFade(img);
+          }
+        });
+      }, 400); // match fade-out duration
+    }
+
+    function setActiveFilter(btn) {
+      [filterAllBtn, filterUIUXBtn, filterGraphicBtn].forEach(b => b.classList.remove('contact-liquid-btn-active'));
+      btn.classList.add('contact-liquid-btn-active');
+    }
+
+    filterAllBtn.addEventListener('click', () => {
+      setActiveFilter(filterAllBtn);
+      fadeOutAllThenFadeIn(() => true);
+    });
+
+    filterUIUXBtn.addEventListener('click', () => {
+      setActiveFilter(filterUIUXBtn);
+      fadeOutAllThenFadeIn(img => img.dataset.category === 'uiux');
+    });
+
+    filterGraphicBtn.addEventListener('click', () => {
+      setActiveFilter(filterGraphicBtn);
+      fadeOutAllThenFadeIn(img => img.dataset.category === 'graphic');
+    });
+    </script>
+    <script>
+    // Fade in filter buttons and project images on page load with stagger
+    window.addEventListener('DOMContentLoaded', () => {
+      const buttonRow = document.querySelector('.button-row');
+      const imgs = document.querySelectorAll('.project-image-grid .project-card-img');
+      setTimeout(() => buttonRow.classList.add('visible'), 200);
+      imgs.forEach((img, i) => {
+        setTimeout(() => img.classList.add('visible'), 800 + 200 * i);
+      });
+    });
     </script>
 </body>
 </html>
