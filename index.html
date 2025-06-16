@@ -48,7 +48,7 @@
             animation: spin 8s linear infinite;
             mix-blend-mode: difference;
             color: white;
-            margin-top: -85px;
+            margin-top: -45px;
             font-size: 12px;
             letter-spacing: 1px;
         }
@@ -1001,6 +1001,14 @@
           display: block;
           margin-bottom: 0;
         }
+        .contact-liquid-btn-active,
+        .contact-liquid-btn.contact-liquid-btn-active {
+            color: #fff !important;
+        }
+        .contact-liquid-btn-active::before,
+        .contact-liquid-btn.contact-liquid-btn-active::before {
+            height: 100%;
+        }
     </style>
 </head>
 
@@ -1024,10 +1032,9 @@
                 <div class="nav-spread">
                     <a href="../index.html#hero-section" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#0B0D0D] text-[#1c1d20] nav-logo-link">
                         <img src="img/logoblack.png" alt="About Logo" style="height: 24px; width: auto; display: inline-block; vertical-align: middle;" />
-                    </a>
-                    <a href="../index.html#about" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#0B0D0D] text-[#1c1d20]">ABOUT</a>
-                    <a href="../index.html#works" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#0B0D0D] text-[#1c1d20]">WORKS</a>
-                    <button type="button" class="contact-liquid-btn bg-[#1c1d20] text-[#ffffff] px-4 py-1.5 rounded-full font-medium uppercase tracking-wider text-[11px] transition-colors relative z-10" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });"><span>CONTACT</span></button>
+                    <a href="../index.html#about" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors contact-liquid-btn text-[#1c1d20] rounded-full"><span>ABOUT</span></a>
+                    <a href="../index.html#works" class="contact-liquid-btn text-[#1c1d20] px-4 py-1.5 rounded-full font-medium text-[11px] transition-colors relative z-10"><span>WORKS</span></a>
+                    <button type="button" class="contact-liquid-btn text-[#1c1d20] px-4 py-1.5 rounded-full font-medium text-[11px] transition-colors relative z-10" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });"><span>CONTACT</span></button>
                 </div>
             </nav>
         </div>
@@ -1050,7 +1057,7 @@
             <div class="container mx-auto px-4 flex items-center justify-center">
                 <div class="relative flex flex-col sm:flex-row items-start justify-between w-full max-w-5xl gap-8">
                     <h1 class="text-[18vw] font-medium sm:text-[14vw] max-w-[450px] md:text-[8vw] z-98 leading-[1] tracking-tighter mb-8 text-white">
-                        <img src="img/profilebanner.png" alt="Seeger Perocho" class="w-full max-w-[210px] sm:max-w-[160px] md:max-w-[260px]">
+                        <img src="img/profilebanner.png" alt="Seeger Perocho" class="w-full max-w-[200px] sm:max-w-[160px] md:max-w-[260px]">
                         <div class="text-[#876BDA] font-medium mt-2 flex flex-col">
                             <div class="h-[1em]"><span id="typing-text" class="inline-block w-[80px]"></span></div>
                             <span class="static-text text-[#ffffff]">Designer.</span>
@@ -1211,7 +1218,7 @@
                                 <span>•</span>
                                 <span>2022</span>
                             </div>
-                            <h3 class="text-4xl mb-4">KITTY.</h3>
+                            <h3 class="text-4xl mb-4">KITTY</h3>
                             <p class="opacity-50 max-w-lg">An online store for everything that your lovely pets may need.</p>
                         </div>
                         <div class="work-item">
@@ -2211,6 +2218,59 @@
                     }, 1100);
                   });
                 }
+
+                // === NAV SCROLL SPY FOR HOVER EFFECT ===
+                // Map nav buttons to sections
+                const navAbout = document.querySelector('.nav-spread a[href*="#about"], .nav-spread a[href$="#about"]');
+                const navWorks = document.querySelector('.nav-spread a[href*="#works"], .nav-spread a[href$="#works"]');
+                const navContact = document.querySelector('.nav-spread button.contact-liquid-btn');
+                // Section elements
+                const sectionAbout = document.getElementById('about');
+                const sectionWorks = document.getElementById('works');
+                const sectionContact = document.getElementById('contact');
+
+                // Helper to clear all active
+                function clearNavActive() {
+                    [navAbout, navWorks, navContact].forEach(btn => btn && btn.classList.remove('contact-liquid-btn-active'));
+                }
+
+                // IntersectionObserver for sections
+                const sectionMap = [
+                    {section: sectionAbout, btn: navAbout},
+                    {section: sectionWorks, btn: navWorks},
+                    {section: sectionContact, btn: navContact}
+                ];
+                let currentActive = null;
+                function updateNavActiveByScroll() {
+                    const offset = 120; // adjust for nav height if needed
+                    const aboutRect = sectionAbout ? sectionAbout.getBoundingClientRect() : null;
+                    if (aboutRect && aboutRect.top - offset > 0) {
+                        // Above ABOUT section (in HERO)
+                        clearNavActive();
+                        return;
+                    }
+                    let closestSection = null;
+                    let minDistance = Infinity;
+                    sectionMap.forEach(({section}) => {
+                        if (!section) return;
+                        const rect = section.getBoundingClientRect();
+                        const distance = Math.abs(rect.top - offset);
+                        if (rect.top - offset <= 0 && distance < minDistance) {
+                            minDistance = distance;
+                            closestSection = section;
+                        }
+                    });
+                    if (closestSection) {
+                        clearNavActive();
+                        const found = sectionMap.find(s => s.section === closestSection);
+                        if (found && found.btn) {
+                            found.btn.classList.add('contact-liquid-btn-active');
+                        }
+                    }
+                }
+                window.addEventListener('scroll', updateNavActiveByScroll);
+                window.addEventListener('resize', updateNavActiveByScroll);
+                updateNavActiveByScroll();
             });
         </script>
     </div>
