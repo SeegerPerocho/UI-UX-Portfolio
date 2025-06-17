@@ -528,7 +528,7 @@
         }
         @media (max-width: 449px) {
           .container { max-width: 80% !important; }
-          .project-card-img { width: 180%; max-width: 180%; margin-left: -40%; margin-bottom: 2rem; }
+          .project-card-img { width: 117% !important; max-width: 117% !important; margin-left: -10% !important; margin-bottom: 2rem; }
           .project-title {margin-left: -15% !important;}
           .button-row {margin-left: -15% !important;}
         }
@@ -612,6 +612,75 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Floating view circle styles */
+        #floating-view-circle {
+            display: none;
+            position: fixed;
+            width: 120px;
+            height: 120px;
+            background-color: #876BDA;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            transform: scale(0);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        #floating-view-circle.zoomed {
+            transform: scale(1);
+        }
+        .img:hover {
+            filter: brightness(0.8);
+            transition: filter 0.4s cubic-bezier(0.16,1,0.3,1);
+        }
+        @media (max-width: 1023px) {
+            #floating-view-circle {
+                display: none !important;
+            }
+        }
+        .mobile-view-circle {
+            position: absolute;
+            top: 65%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: #876BDA;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            box-shadow: 0 4px 24px rgba(135,107,218,0.25);
+            z-index: 2;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 1s cubic-bezier(0.16,1,0.3,1), transform 2s cubic-bezier(0.16,1,0.3,1);
+        }
+        .mobile-view-circle.visible {
+            opacity: 0.95;
+            transform: translate(-50%, -200%) scale(1);
+        }
+        @media (min-width: 1024px) {
+            .mobile-view-circle {
+                display: none !important;
+            }
+        }
+        @media (max-width: 1023px) {
+            .mobile-view-circle {
+                display: flex !important;
+            }
+        }
+        .mobile-view-wrapper {
+            position: relative;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
@@ -636,7 +705,7 @@
             <div class="nav-spread">
                 <a href="../index.html#hero-section" class="uppercase tracking-wider font-medium text-[11px] px-2 py-1.5 transition-colors hover:text-[#0B0D0D] text-[#1c1d20] nav-logo-link">
                     <img src="img/logoblack.png" alt="About Logo" style="height: 24px; width: auto; display: inline-block; vertical-align: middle;" />
-                <a href="../index.html#about" class="uppercase tracking-wider font-medium text-[11px] px-4 py-1.5 transition-colors contact-liquid-btn text-[#1c1d20] rounded-full"><span>ABOUT</span></a>
+                <a href="../index.html" class="uppercase tracking-wider font-medium text-[11px] px-4 py-1.5 transition-colors contact-liquid-btn text-[#1c1d20] rounded-full"><span>HOME</span></a>
                 <a href="../works.html" class="uppercase tracking-wider font-medium text-[11px] rounded-full px-4 py-1.5 transition-colors contact-liquid-btn text-[#1c1d20]"><span>WORKS</span></a>
                 <button type="button" class="contact-liquid-btn text-[#1c1d20] px-4 py-1.5 rounded-full font-medium uppercase tracking-wider text-[11px] transition-colors relative z-10" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });"><span>CONTACT</span></button>
             </div>
@@ -648,13 +717,13 @@
         <h1 class="project-title fade-in text-[#1c1d20] leading-[1.1]">Crafting <span class="font-[MoglanDemo] text-[#876BDA]">high-quality</span> digital products.</h1>
         <div class="button-row fade-in-up mt-10 md:mt-10 lg:mt-10 xl:mt-5">
             <button id="filter-all" class="contact-liquid-btn contact-liquid-btn-active relative text-[#1c1d20] border-[0.1em] border-[#D7D7D8] px-10 py-5 rounded-full transition-all duration-300 text-[0.5em] font-medium overflow-hidden">
-                <span class="contact-btn-inner relative z-10 text-[1.1em]">All</span>
+                <span class="contact-btn-inner relative z-10 text-[0.9em]">All</span>
             </button>
             <button id="filter-uiux" class="contact-liquid-btn relative text-[#1c1d20] border-[0.1em] border-[#D7D7D8] px-10 py-5 rounded-full transition-all duration-300 text-[0.5em] font-medium overflow-hidden">
-                <span class="contact-btn-inner relative z-10 text-[1.1em]">UI/UX</span>
+                <span class="contact-btn-inner relative z-10 text-[0.9em]">UI/UX</span>
             </button>
             <button id="filter-graphic" class="contact-liquid-btn relative text-[#1c1d20] border-[0.1em] border-[#D7D7D8] px-10 py-5 rounded-full transition-all duration-300 text-[0.5em] font-medium overflow-hidden">
-                <span class="contact-btn-inner relative z-10 text-[1.1em]">Graphic/Illu-</span>
+                <span class="contact-btn-inner relative z-10 text-[0.9em]">Graphic/Illu-</span>
             </button>
         </div>
     </main>
@@ -662,9 +731,38 @@
     <section class="mt-10 mb-20">
         <div class="container mx-[6.5em] px-4">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 project-image-grid">
-                <img src="img/stackedaicard.png" alt="StackedAI Card" class="project-card-img fade-in-up" data-category="uiux">
-                <img src="img/bagoscoutcard.png" alt="Bagoscout Card" class="project-card-img fade-in-up" data-category="graphic">
-                <img src="img/keiracard.png" alt="Keira Card" class="project-card-img fade-in-up" data-category="graphic">
+                <span class="mobile-view-wrapper">
+                  <a href="stackedai.html"><img src="img/stackedaicard.png" alt="StackedAI Card" class="img work-item cursor-pointer project-card-img fade-in-up" data-category="uiux"></a>
+                  <span class="mobile-view-circle fade-in-up">view</span>
+                </span></a>
+                <span class="mobile-view-wrapper">
+                    <a href="bagoscout.html"><img src="img/bagoscoutcard.png" alt="Bagoscout Card" class="img work-item cursor-pointer project-card-img fade-in-up" data-category="uiux"></a>
+                  <span class="mobile-view-circle fade-in-up">view</span>
+                </span></a>
+                <span class="mobile-view-wrapper">
+                    <a href="keira.html"><img src="img/keiracard.png" alt="Keira Card" class="img work-item cursor-pointer project-card-img fade-in-up" data-category="uiux"></a>
+                  <span class="mobile-view-circle fade-in-up">view</span>
+                </span></a>
+                <span class="mobile-view-wrapper">
+                    <a href="animeal.html"><img src="img/animealcard.png" alt="Animeal Card" class="img work-item cursor-pointer project-card-img fade-in-up" data-category="uiux"></a>
+                  <span class="mobile-view-circle fade-in-up">view</span>
+                </span></a>
+                <span class="mobile-view-wrapper">
+                    <a href="cycle.html"><img src="img/cyclecard.png" alt="Cycle Card" class="img work-item cursor-pointer project-card-img fade-in-up" data-category="uiux"></a>
+                  <span class="mobile-view-circle fade-in-up">view</span>
+                </span></a>
+                <span class="mobile-view-wrapper">
+                    <a href="kitty.html"><img src="img/kittycard.png" alt="Kitty Card" class="img work-item cursor-pointer project-card-img fade-in-up" data-category="uiux"></a>
+                  <span class="mobile-view-circle fade-in-up">view</span>
+                </span></a>
+                <span class="mobile-view-wrapper">
+                    <a href="rave.html"><img src="img/ravecard.png" alt="Rave Card" class="img work-item cursor-pointer project-card-img fade-in-up" data-category="uiux"></a>
+                  <span class="mobile-view-circle fade-in-up">view</span>
+                </span></a>
+                <span class="mobile-view-wrapper">
+                    <a href="redice.html"></a><img src="img/redicecard.png" alt="Redice Card" class="img work-item cursor-pointer project-card-img fade-in-up" data-category="uiux">
+                    <span class="mobile-view-circle fade-in-up">view</span>
+                  </span></a>
             </div>
         </div>
     </section>
@@ -765,6 +863,11 @@
             </div>
         </div>
     </footer>
+
+    <!-- Floating neon view circle -->
+    <div id="floating-view-circle" style="display:none;pointer-events:none;position:fixed;z-index:99999;width:120px;height:120px;top:0;left:0;">
+        <div style="width:130px;height:130px;border-radius:100%;background:#876BDA;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(135,107,218,0.25);font-family:'Neue Haas Grotesk Display Pro',sans-serif;font-weight:500;font-size:1.3rem;color:#ffffff;">view</div>
+    </div>
 
     <script>
         
@@ -962,12 +1065,19 @@
     function fadeOutAllThenFadeIn(filterFn) {
       // Fade out all
       projectImages.forEach(img => img.classList.remove('visible'));
+      // Also fade out mobile circles
+      document.querySelectorAll('.mobile-view-circle').forEach(circle => circle.classList.remove('visible'));
       setTimeout(() => {
         projectImages.forEach(img => img.style.display = 'none');
         // Fade in only the filtered images
-        projectImages.forEach(img => {
+        projectImages.forEach((img, idx) => {
           if (filterFn(img)) {
             showWithFade(img);
+            // Also fade in the corresponding mobile circle
+            const circle = img.closest('.mobile-view-wrapper')?.querySelector('.mobile-view-circle');
+            if (circle) {
+              setTimeout(() => circle.classList.add('visible'), 10);
+            }
           }
         });
       }, 400); // match fade-out duration
@@ -998,11 +1108,62 @@
     window.addEventListener('DOMContentLoaded', () => {
       const buttonRow = document.querySelector('.button-row');
       const imgs = document.querySelectorAll('.project-image-grid .project-card-img');
+      const mobileCircles = document.querySelectorAll('.mobile-view-circle');
       setTimeout(() => buttonRow.classList.add('visible'), 200);
       imgs.forEach((img, i) => {
-        setTimeout(() => img.classList.add('visible'), 800 + 200 * i);
+        setTimeout(() => {
+          img.classList.add('visible');
+          if (mobileCircles[i]) mobileCircles[i].classList.add('visible');
+        }, 1200 + 200 * i);
       });
     });
+    </script>
+    <script>
+    // Floating neon view circle logic for works.html
+    (function() {
+        const floatingViewCircle = document.getElementById('floating-view-circle');
+        let circleTargetX = 0, circleTargetY = 0;
+        let circleCurrentX = 0, circleCurrentY = 0;
+        let isCircleFollowing = false;
+
+        function animateCircleFollow() {
+            if (!isCircleFollowing) return;
+            circleCurrentX += (circleTargetX - circleCurrentX) * 0.15;
+            circleCurrentY += (circleTargetY - circleCurrentY) * 0.15;
+            floatingViewCircle.style.left = (circleCurrentX - 60) + 'px';
+            floatingViewCircle.style.top = (circleCurrentY - 60) + 'px';
+            requestAnimationFrame(animateCircleFollow);
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            if (isCircleFollowing) {
+                circleTargetX = e.clientX;
+                circleTargetY = e.clientY;
+            }
+        });
+
+        document.querySelectorAll('.work-item').forEach(item => {
+            item.addEventListener('mouseenter', (e) => {
+                if (window.innerWidth <= 1024) return;
+                circleCurrentX = circleTargetX = e.clientX;
+                circleCurrentY = circleTargetY = e.clientY;
+                floatingViewCircle.style.display = 'block';
+                isCircleFollowing = true;
+                requestAnimationFrame(animateCircleFollow);
+                floatingViewCircle.classList.add('zoomed');
+            });
+            item.addEventListener('mouseleave', () => {
+                if (window.innerWidth <= 1024) return;
+                floatingViewCircle.classList.remove('zoomed');
+                isCircleFollowing = false;
+                setTimeout(() => {
+                    if (!isCircleFollowing) {
+                        floatingViewCircle.style.display = 'none';
+                    }
+                }, 350);
+            });
+        });
+    })();
     </script>
 </body>
 </html>
