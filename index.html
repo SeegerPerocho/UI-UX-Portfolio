@@ -1238,11 +1238,27 @@
                                 <span>2021</span>
                             </div>
                             <h3 class="text-4xl mb-4">Rave</h3>
-                            <p class="opacity-50 max-w-lg">Rave is an innovative music platform designed to connect people with personalized listening without boundaries. Play music & anywhere.</p>
+                            <p class="opacity-50 max-w-lg">Rave is an innovative music platform designed to connect people with personalized listening without boundaries.</p>
                         </div>
                         <div class="work-item">
                             <a href="rave.html"><img src="img/rave.png" alt="Rave Preview" class="w-full rounded-lg"></a>
                             <a href="rave.html" class="mobile-circle-btn">
+                                <img src="img/arrowwhite.png" alt="View Project">
+                            </a>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="pl-4 mb-6">
+                                <div class="flex items-center gap-4 text-sm mb-4">
+                                    <span>UI/UX</span>
+                                    <span>•</span>
+                                    <span>2021</span>
+                                </div>
+                                <h3 class="text-4xl mb-4">Redice</h3>
+                                <p class="opacity-50 max-w-lg">Redice or better known as Redice studio is a </p>
+                            </div>
+                        <div class="work-item">
+                            <a href="redice.html"><img src="img/redice.png" alt="Redice Preview" class="w-full rounded-lg"></a>
+                            <a href="redice.html" class="mobile-circle-btn">
                                 <img src="img/arrowwhite.png" alt="View Project">
                             </a>
                         </div>
@@ -1409,10 +1425,13 @@
         <div id="floating-video-rave" style="display:none;pointer-events:none;position:fixed;z-index:99999;width:380px;height:220px;top:0;left:0;">
             <video src="img/stackedAIvid2.mp4" loop muted autoplay style="box-shadow:0 0 24px rgba(0,0,0,0.10); border-radius: 5px;"></video>
         </div>
+         <div id="floating-video-redice" style="display:none;pointer-events:none;position:fixed;z-index:99999;width:380px;height:220px;top:0;left:0;">
+            <video src="img/stackedAIvid2.mp4" loop muted autoplay style="box-shadow:0 0 24px rgba(0,0,0,0.10); border-radius: 5px;"></video>
+        </div>
 
         <!-- Floating neon view circle -->
         <div id="floating-view-circle" style="display:none;pointer-events:none;position:fixed;z-index:99999;width:70px;height:70px;top:0;left:0;">
-            <div style="width:75px;height:75px;border-radius:100%;background:#876BDA;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(135,107,218,0.25);font-family:'Neue Haas Grotesk Display Pro',sans-serif;font-weight:500;font-size:1.1rem;color:#ffffff;">view</div>
+            <div style="width:75px;height:75px;border-radius:100%;background:#876BDA;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(135,107,218,0.25);font-family:'Neue Haas Grotesk Display Pro',sans-serif;font-weight:500;font-size:1rem;color:#ffffff;">view</div>
         </div>
 
         <style>
@@ -1424,6 +1443,7 @@
                 #floating-video-cycle,
                 #floating-video-kitty,
                 #floating-video-rave,
+                #floating-video-redice,
                 #floating-view-circle {
                     display: block;
                 }
@@ -1435,7 +1455,8 @@
             #floating-video-animeal video,
             #floating-video-cycle video,
             #floating-video-kitty video,
-            #floating-video-rave video {
+            #floating-video-rave video, 
+            #floating-video-redice video {
                 transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
                 transform: scale(0);
                 width: 100%;
@@ -1449,7 +1470,8 @@
             #floating-video-animeal.zoomed video,
             #floating-video-cycle.zoomed video,
             #floating-video-kitty.zoomed video,
-            #floating-video-rave.zoomed video {
+            #floating-video-rave.zoomed video,
+            #floating-video-redice.zoomed video {
                 transform: scale(1);
             }
 
@@ -1844,7 +1866,8 @@
                     'Animeal Preview': 'floating-video-animeal',
                     'Cycle Preview': 'floating-video-cycle',
                     'KITTY Preview': 'floating-video-kitty',
-                    'Rave Preview': 'floating-video-rave'
+                    'Rave Preview': 'floating-video-rave',
+                    'Redice Preview': 'floating-video-redice'
                 };
 
                 // Initialize all video elements
